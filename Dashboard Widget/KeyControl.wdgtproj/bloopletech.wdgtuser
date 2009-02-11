@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentSplitViewGeometry</key>
+	<dict>
+		<key>ContentSplitViewConfig</key>
+		<integer>8</integer>
+		<key>SplitViewConfig</key>
+		<integer>3</integer>
+		<key>_collapsingFrameDimension</key>
+		<real>0.0</real>
+		<key>_indexOfCollapsedView</key>
+		<integer>0</integer>
+		<key>_percentageOfCollapsedView</key>
+		<real>0.0</real>
+		<key>sizes</key>
+		<array>
+			<string>{{0, 0}, {1195, 220}}</string>
+			<string>{{0, 230}, {1195, 413}}</string>
+		</array>
+	</dict>
+	<key>ContentViewType</key>
+	<integer>0</integer>
+	<key>Dashboard Widget Prefs</key>
+	<dict>
+		<key>id</key>
+		<string>e3e02af7a993ac41</string>
+		<key>in-layer</key>
+		<true/>
+		<key>path</key>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtprojvdcff2/KeyControl.wdgtproj/project.wdgt/</string>
+		<key>percent-offset-x</key>
+		<integer>0</integer>
+		<key>percent-offset-y</key>
+		<integer>0</integer>
+		<key>percent-type</key>
+		<integer>2</integer>
+		<key>percent-x</key>
+		<real>0.4375</real>
+		<key>percent-y</key>
+		<real>0.41777777671813965</real>
+		<key>pos-x</key>
+		<integer>630</integer>
+		<key>pos-y</key>
+		<integer>376</integer>
+		<key>rosetta</key>
+		<false/>
+	</dict>
+	<key>Design time language</key>
+	<string>en.lproj</string>
+	<key>MainSplitViewGeometry</key>
+	<dict>
+		<key>_collapsingFrameDimension</key>
+		<real>0.0</real>
+		<key>_indexOfCollapsedView</key>
+		<integer>0</integer>
+		<key>_percentageOfCollapsedView</key>
+		<real>0.0</real>
+		<key>sizes</key>
+		<array>
+			<string>{{0, 0}, {244, 664}}</string>
+			<string>{{245, 0}, {1196, 664}}</string>
+		</array>
+	</dict>
+	<key>MainWindowFrame</key>
+	<string>1 134 1440 744 0 0 1440 878 </string>
+	<key>NavigatorSplitViewGeometry</key>
+	<dict>
+		<key>ContentSplitViewConfig</key>
+		<integer>5</integer>
+		<key>SplitViewConfig</key>
+		<integer>1</integer>
+		<key>_collapsingFrameDimension</key>
+		<real>0.0</real>
+		<key>_indexOfCollapsedView</key>
+		<integer>0</integer>
+		<key>_percentageOfCollapsedView</key>
+		<real>0.0</real>
+		<key>sizes</key>
+		<array>
+			<string>{{0, 0}, {245, 363}}</string>
+			<string>{{0, 373}, {245, 270}}</string>
+		</array>
+	</dict>
+	<key>Objects view expanded items</key>
+	<array>
+		<array>
+			<integer>0</integer>
+		</array>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+		</array>
+		<array>
+			<integer>0</integer>
+			<integer>1</integer>
+		</array>
+	</array>
+	<key>Objects view last selections</key>
+	<array/>
+	<key>Opened Steps</key>
+	<array/>
+</dict>
+</plist>

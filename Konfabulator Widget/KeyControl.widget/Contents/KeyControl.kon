@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<widget version="1.0" minimumVersion="2.0">
+   <debug>off</debug>
+
+   <about-box>
+      <image>Images/about.png</image>
+   </about-box>
+
+   <preference name="netScoring">
+      <defaultValue>1</defaultValue>
+      <type>checkbox</type>
+      <title>Internet Scoring</title>
+   </preference>
+
+   <preference name="username">
+      <defaultValue></defaultValue>
+      <type>text</type>
+      <title>Username</title>
+   </preference>
+
+   <preference name="crypt">
+      <defaultValue></defaultValue>
+      <type>text</type>
+      <title>Cryptcode</title>
+   </preference>
+
+   <window title="KeyControl">
+      <name>mainWindow</name>
+      <width>180</width>
+      <height>147</height>
+      <visible>true</visible>
+
+      <image name="front" src="Images/front.png" vOffset="0" hOffset="0" />
+      <text name="display_score" vOffset="120" hOffset="154" width="110" height="27" color="#ffffff" hAlign="right" size="24" font="Helvetica Neue, Helvetica, Arial" data="Have Fun!" />
+      <image name="play" src="Images/play.png" vOffset="25" hOffset="25" onMouseUp="playGame();" />
+      <text name="out" vOffset="74" hOffset="90" width="110" height="100" color="#ffffff" size="68" style="bold" font="Helvetica Neue, Helvetica, Arial" hAlign="center" visible="false" />
+      <text name="biginfo" vOffset="69" hOffset="90" width="134" height="29" color="#ffffff" size="24" style="bold" font="Helvetica Neue, Helvetica, Arial" hAlign="center" />
+      <image name="up" vOffset="102" hOffset="25" src="Images/up.png" visible="false" />
+      <image name="down" vOffset="102" hOffset="25" src="Images/down.png" visible="false" />
+      <textarea name="input" vOffset="0" hOffset="0" width="0" height="0" editable="true" onKeyPress="endRound();" />
+   </window>
+
+   <timer name="startGame" interval="3">
+     <onTimerFired>
+       startGame.ticking = false;
+
+       biginfo.visible = false;
+       display_score.data = "GO!";
+       startRound();
+       playing = true;
+     </onTimerFired>
+   </timer>
+
+   <timer name="endGame" interval="3">
+     <onTimerFired>
+       endGame.ticking = false;
+
+       biginfo.visible = false;
+       play.visible = true;
+       if(display_score.data == "GO!") display_score.data = "Have Fun!";
+     </onTimerFired>
+   </timer>
+
+   <action trigger="onLoad">
+   <!--
+   //All code copyright 2008 Brenton Fletcher.
+   //Check out my portfolio at i.bloople.net
+
+   var ajax = new URL();
+
+   load();
+
+   function load()
+   {
+      if(preferences.crypt.value == '' || preferences.username.value == '')
+      {
+         preferences.crypt.value = randomCrypt(20);
+         preferences.username.value = 'Anonymous-' + randomCrypt(6);
+      }
+   }
+
+   function randomCrypt(count)
+   {
+      var out = "";
+      var randChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      for(var i = 0; i < count; i++) out += randChars.charAt(Math.floor(Math.random() * randChars.length + 1) - 1);
+      return out;
+   }
+
+   function nice(num)
+   {
+      var x = num + '';
+      var rgx = /(\d+)(\d{3})/;
+      while(rgx.test(x)) x = x.replace(rgx, '$1' + ',' + '$2');
+      return x;
+   };
+
+   var playing = false;
+   var allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789";
+   var allowedTime = 1500;
+   var currentChar = null;
+   var lastChar = null;
+   var startTime = null;
+   var endTime = null;
+   var score = 0;
+
+   function playGame()
+   {
+      play.visible = false;
+      out.data = "";
+      out.visible = true;
+
+      biginfo.data = "Wait...";
+      biginfo.visible = true;
+
+      allowedTime = 1500;
+      score = 0;
+
+      startGame.ticking = true;
+   }
+
+   function startRound()
+   {
+      input.focus();
+      while(currentChar == lastChar) currentChar = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
+      lastChar = currentChar;
+      out.data = currentChar;
+      startTime = new Date();
+   }
+
+   function endRound()
+   {
+      if(!playing) return;
+
+      var diff = (new Date()).getTime() - startTime.getTime();
+
+      input.rejectKeyPress();
+
+      if((diff > allowedTime) || (diff <= 60))
+      {
+         gameOver();
+         return;
+      }
+
+      if(system.event.key.toLowerCase() == currentChar.toLowerCase())
+      {
+         score += Math.floor(Math.pow(1.01, allowedTime - diff));
+         display_score.data = nice(score);
+         up.visible = true;
+         down.visible = false;
+      }
+      else
+      {
+         score = Math.floor(score * 0.9);
+         display_score.data = nice(score);
+         down.visible = true;
+         up.visible = false;
+      }
+      
+      if(allowedTime >= 252) allowedTime *= 0.99; 
+
+      startRound();
+   }
+
+   function callback(ajax)
+   {
+      if(ajax.response == 200 && ajax.responseData.length > 1)
+      {
+         var parts = ajax.responseData.split("|");
+         if(parts[0] == "1") preferences.netScoring.value = false;
+         openURL(parts[1]);
+      }
+   }
+
+   function gameOver()
+   {
+      playing = false;
+      out.visible = false;
+      up.visible = false;
+      down.visible = false;
+      biginfo.data = "Game Over";
+      biginfo.visible = true;
+
+      if(preferences.netScoring.value == true)
+      {
+         ajax.clear();
+         ajax.location = "http://kc.bloople.net/add/konfabulator/10/" + preferences.username.value + "/" + preferences.crypt.value + "/" + score
+          + "?" + Math.random();
+
+         ajax.fetchAsync(callback);
+      }
+
+      endGame.ticking = true;
+   }
+   //-->
+   </action>
+</widget>
