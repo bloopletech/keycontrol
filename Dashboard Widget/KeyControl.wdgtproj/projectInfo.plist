@@ -2,15 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppIconImageSettings</key>
+	<string>image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.6095,0.6095,0.6095; image-bottom-color: 0.1946,0.1946,0.1946; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.3467,0.3467,0.3467; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.73; shine-height: 0.61; glass-arc-height: 0.10; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;</string>
 	<key>CYBackwardCompatibleExport</key>
 	<false/>
 	<key>CYProjectFormatVersion</key>
-	<integer>1</integer>
+	<integer>14</integer>
+	<key>MainCSS</key>
+	<string>KeyControl.css</string>
+	<key>MainJS</key>
+	<string>KeyControl.js</string>
+	<key>UseCustomAppIcon</key>
+	<true/>
 	<key>UseCustomDefaultImage</key>
 	<true/>
-	<key>UseCustomWidgetIcon</key>
-	<true/>
-	<key>WidgetIconImageSettings</key>
-	<string>image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.6095,0.6095,0.6095; image-bottom-color: 0.1946,0.1946,0.1946; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.3467,0.3467,0.3467; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.73; shine-height: 0.61; glass-arc-height: 0.10; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;</string>
 </dict>
 </plist>

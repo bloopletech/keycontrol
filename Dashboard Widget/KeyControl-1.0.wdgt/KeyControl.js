@@ -77,7 +77,7 @@ function nice(num)
 };
 
 var playing = false;
-var allowedChars = "123456789";
+var allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789";
 var allowedTime = 1500;
 var char = null;
 var lastChar = null;
@@ -169,7 +169,7 @@ function gameOver()
          }
       };
 
-      ajax.open("GET", "http://kc.bloople.net/add/dashboard/11/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
+      ajax.open("GET", "http://kc.bloople.net/add/10/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
        + "?" + Math.random());
       ajax.send(" ");
    }
