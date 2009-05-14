@@ -1,11 +1,12 @@
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <math.h>
+#include <unistd.h>
 #include <termios.h>
 #include <sys/time.h>
-#include <math.h>
+#include <sys/stat.h>
 
 #define OUT(x) fputs((x), stdout)
 
@@ -17,9 +18,12 @@ void reset_term(void)
 }
 
 
-int main(void)
+int main(int argc, char** argv)
 {
    if(!isatty(STDIN_FILENO)) return 1;
+   
+   struct stat finfo;
+   stat(argv[0], &finfo);
 
    tcgetattr(STDIN_FILENO, &saved_attributes);
    atexit(reset_term);
@@ -44,11 +48,13 @@ int main(void)
    int correctTime = 1500000;
    char buffer[] = "\0\0\0\0\0";
    
-   char* mapping = "`~1!2@3#4$5%6^7&8*9(0)-_=+[{]}\\|;:'\",<.>/?";
+   char* allowedChars = "0123456789abcdefghijklmnopqrstuvwxyz";
+   
+   char* mapping = "1!2@3#4$5%6^7&8*9(0)aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
 
    while(1)
    {
-      char out = (rand() % 95) + 32;
+      char out = allowedChars[(rand() % 36)];
       putchar(out);
       
       struct timeval before;
@@ -89,7 +95,9 @@ int main(void)
 
       if(diff > correctTime)
       {
-         printf("\033[1D%i\n\033[?25h", score);
+         int submitScore = score ^ finfo.st_size;
+
+         printf("\033[1D%i %i\n\033[?25h", score, submitScore);
          return 0;
       }
       if((count > 1) || !valid)
