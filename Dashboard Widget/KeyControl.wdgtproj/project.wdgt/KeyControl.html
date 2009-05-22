@@ -1,52 +1,45 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   <style type="text/css" title="AppleStyle">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css" title="AppleStyle">
    @import "KeyControl.css";
    </style>
-   <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
-   <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
-   <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
-   <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
-   <script type="text/javascript" src="Parts/utilities.js" charset="utf-8"></script>
-   <script type="text/javascript" src="Parts/setup.js" charset="utf-8"></script>
-   <script type="text/javascript" src="Parts/Text.js" charset="utf-8"></script>
-   <script type="text/javascript" src="Parts/InfoButton.js" charset="utf-8"></script>
-   <script type="text/javascript" src="Parts/GlassButton.js" charset="utf-8"></script>
-   <script type="text/javascript" src="KeyControl.js" charset="utf-8"></script>
-   
-<script type="text/javascript" src="Parts/Button.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/utilities.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/setup.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/Text.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/InfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/GlassButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="KeyControl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/Button.js" charset="utf-8"></script>
 </head>
 <body onload="load();">
-   <div id="front">
-      <img id="frontImg" src="Images/front.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.6095,0.6095,0.6095; image-bottom-color: 0.1946,0.1946,0.1946; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.3467,0.3467,0.3467; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.73; shine-height: 0.61; glass-arc-height: 0.10; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
-      <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
-      <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="out" apple-group="text"></div>
-
-      <div apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.8688,0.8688,0.8688; image-bottom-color: 0.3529,0.3529,0.3529; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.2534,0.2534,0.2534; image-border-width: 1; shine-on: 0; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0; shadow-blur: 3.00;" id="play" apple-group="button"></div>
-
-      <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="score" apple-group="text"></div>
-      <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="biginfo" apple-group="text"></div>
-      <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="up" apple-group="text"></div>
-      <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="down" apple-group="text"></div>
-   </div>
-   <div id="back">
-      <img id="backImg" src="Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 0; image-opacity: 1.00; image-top-color: 0.6700,0.6700,0.6700; image-bottom-color: 0.8039,0.8039,0.8039; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.4706,0.4706,0.4706; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.61; shine-height: 0.31; glass-arc-height: -0.10; shadow-include-shadow: 0; shadow-blur: 9.00;">
-
-      <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
-      
-      
-   <div apple-part="com.apple.Dashcode.part.glassbutton" class="apple-no-children" id="glassbutton" apple-group="glassbutton"></div>
-   <div apple-part="com.apple.Dashcode.part.checkboxbutton" id="netScoringCheckBox" apple-group="checkboxbutton">
-	<input type="checkbox" name="Checkbox" id="netScoring" apple-group="checkboxbutton">
-	<div style="position: absolute; top: 2px; left: 18px; text-align: left; vertical-align: middle;" apple-group="checkboxbutton" id="checkboxbutton1">Internet Scoring</div>
-</div>
-   <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="username" apple-group="textfield">
-   <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="userDesc" apple-group="text"></div>
-   <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="crypt" apple-group="textfield1">
-   <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="passDesc" apple-group="text1"></div>
-   </div>
-
+    <div id="front">
+        <img id="frontImg" src="Images/front.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.6095,0.6095,0.6095; image-bottom-color: 0.1946,0.1946,0.1946; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.3467,0.3467,0.3467; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.73; shine-height: 0.61; glass-arc-height: 0.10; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
+        <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="out" apple-group="text"></div>
+        <div apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.8688,0.8688,0.8688; image-bottom-color: 0.3529,0.3529,0.3529; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.2534,0.2534,0.2534; image-border-width: 1; shine-on: 0; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0; shadow-blur: 3.00;" id="play" apple-group="button"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="score" apple-group="text"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="biginfo" apple-group="text" apple-style="part-height-dependent: true;"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="up" apple-group="text" apple-style="part-width-dependent: true;part-height-dependent: true;"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="down" apple-group="text" apple-style="part-width-dependent: true;part-height-dependent: true;"></div>
+    </div>
+    <div id="back">
+        <img id="backImg" src="Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 0; image-opacity: 1.00; image-top-color: 0.6700,0.6700,0.6700; image-bottom-color: 0.8039,0.8039,0.8039; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.4706,0.4706,0.4706; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.61; shine-height: 0.31; glass-arc-height: -0.10; shadow-include-shadow: 0; shadow-blur: 9.00;">
+        <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
+        <div apple-part="com.apple.Dashcode.part.glassbutton" class="apple-no-children" id="glassbutton" apple-group="glassbutton"></div>
+        <div apple-part="com.apple.Dashcode.part.checkboxbutton" id="netScoringCheckBox" apple-group="checkboxbutton">
+            <input type="checkbox" name="Checkbox" id="netScoring" apple-group="checkboxbutton">
+            <div style="position: absolute; top: 2px; left: 18px; text-align: left; vertical-align: middle;" apple-group="checkboxbutton" id="checkboxbutton1">Internet Scoring</div>
+        </div>
+        <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="username" apple-group="textfield">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="userDesc" apple-group="text" apple-style="part-width-dependent: true;part-height-dependent: true;"></div>
+        <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="crypt" apple-group="textfield1">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="passDesc" apple-group="text1" apple-style="part-width-dependent: true;part-height-dependent: true;"></div>
+    </div>
 </body>
 </html>
