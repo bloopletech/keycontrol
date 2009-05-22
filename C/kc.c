@@ -48,13 +48,13 @@ int main(int argc, char** argv)
    int correctTime = 1500000;
    char buffer[] = "\0\0\0\0\0";
    
-   char* allowedChars = "0123456789abcdefghijklmnopqrstuvwxyz";
+   char* allowedChars = "0123456789";
    
    char* mapping = "1!2@3#4$5%6^7&8*9(0)aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
 
    while(1)
    {
-      char out = allowedChars[(rand() % 36)];
+      char out = allowedChars[(rand() % 10)];
       putchar(out);
       
       struct timeval before;
