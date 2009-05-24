@@ -47,12 +47,16 @@ int main(int argc, char** argv)
    int score = 0;
    int correctTime = 1500000;
    char buffer[] = "\0\0\0\0\0";
+   char lastOut = 0;
+   char out = 0;
    
    char* mapping = "`~1!2@3#4$5%6^7&8*9(0)-_=+[{]}\\|;:'\",<.>/?";
 
    while(1)
    {
-      char out = (rand() % 95) + 32;
+      out = (rand() % 95) + 32;
+      while(out == lastOut) out = (rand() % 95) + 32;
+      lastOut = out;
       putchar(out);
       
       struct timeval before;
