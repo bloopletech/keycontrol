@@ -74,16 +74,29 @@ function nice(num)
 	var rgx = /(\d+)(\d{3})/;
 	while(rgx.test(x)) x = x.replace(rgx, '$1' + ',' + '$2');
 	return x;
-};
+};0
 
 var playing = false;
-var allowedChars = "123456789";
+var allowedChars = "abcdefghijklmnopqrstuvwxyz";
 var allowedTime = 1500;
-var char = null;
+var chars = [];
 var lastChar = null;
 var startTime = null;
 var endTime = null;
 var score = 0;
+
+function generateCharacter()
+{
+   var newChar = "";
+   do
+   {
+     newChar = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
+     if(chars.length == 0) break;
+   }
+   while(newChar == chars[chars.length - 1])
+
+   return newChar;
+}
 
 function playGame(event)
 {
@@ -101,6 +114,10 @@ function playGame(event)
    {
       $("biginfo").style.visibility = "hidden";
       $("score").innerHTML = "GO!";
+
+      chars = [];
+      for(var i = 0; i < 6; i++) chars.push(generateCharacter());
+
       startRound();
       playing = true;
    }, 3000);
@@ -108,9 +125,10 @@ function playGame(event)
 
 function startRound()
 {
-   while(char == lastChar) char = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
-   lastChar = char;
-   $("out").innerHTML = char;
+   chars.push(generateCharacter());
+   chars.shift();
+
+   $("out").innerHTML = chars.join("");
    startTime = new Date();
 }
 
@@ -127,7 +145,7 @@ function endRound(event)
       return;
    }
 
-   if(String.fromCharCode(event.charCode).toLowerCase() == char.toLowerCase())
+   if(String.fromCharCode(event.charCode).toLowerCase() == chars[0].toLowerCase())
    {
       score += Math.floor(Math.pow(1.01, allowedTime - diff));
       $("score").innerHTML = nice(score);
@@ -169,9 +187,9 @@ function gameOver()
          }
       };
 
-      ajax.open("GET", "http://kc.bloople.net/add/dashboard/11/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
-       + "?" + Math.random());
-      ajax.send(" ");
+      //ajax.open("GET", "http://kc.bloople.net/add/dashboard/11/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
+      // + "?" + Math.random());
+      //ajax.send(" ");
    }
 
    setTimeout(function()

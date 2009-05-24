@@ -13,8 +13,8 @@ body {
     top: 0px;
     left: 0px;
     right: 0px;
-    width: auto;
     bottom: 0px;
+    width: auto;
     height: auto;
 }
 
@@ -144,15 +144,16 @@ body {
 
 #out {
     position: absolute;
-    font-family: HelveticaNeue-Bold;
-    width: 110px;
-    text-align: center;
     color: rgb(255, 255, 255);
     line-height: 60px;
     height: 76px;
-    font-size: 52pt;
-    left: 35px;
     top: 19px;
+    font-size: 51pt;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    left: 25px;
+    text-align: left;
+    width: 230px;
     visibility: hidden;
 }
 
