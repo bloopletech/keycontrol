@@ -47,14 +47,18 @@ int main(int argc, char** argv)
    int score = 0;
    int correctTime = 1500000;
    char buffer[] = "\0\0\0\0\0";
+   char out = -1;
+   char lastOut = -1;
    
-   char* allowedChars = "0123456789";
+   char* allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789";
    
    char* mapping = "1!2@3#4$5%6^7&8*9(0)aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
 
    while(1)
    {
-      char out = allowedChars[(rand() % 10)];
+      out = allowedChars[(rand() % 10)];
+      while(out == lastOut) out = allowedChars[(rand() % 10)];
+      lastOut = out;
       putchar(out);
       
       struct timeval before;
