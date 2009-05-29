@@ -74,11 +74,13 @@ function nice(num)
 	var rgx = /(\d+)(\d{3})/;
 	while(rgx.test(x)) x = x.replace(rgx, '$1' + ',' + '$2');
 	return x;
-};0
+};
 
 var playing = false;
-var allowedChars = "abcdefghijklmnopqrstuvwxyz";
-var allowedTime = 1500;
+var allowedChars = "0123456789";
+
+var slowestTime = 0;
+var diffs = [];
 var chars = [];
 var lastChar = null;
 var startTime = null;
@@ -116,7 +118,7 @@ function playGame(event)
       $("score").innerHTML = "GO!";
 
       chars = [];
-      for(var i = 0; i < 6; i++) chars.push(generateCharacter());
+      for(var i = 0; i < 4; i++) chars.push(generateCharacter());
 
       startRound();
       playing = true;
@@ -138,11 +140,20 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
-
-   if((diff > allowedTime) || (diff <= 60))
+   diffs.push(diff);
+console.log(diffs);
+   if(slowestTime == 0)
    {
-      gameOver();
-      return;
+      slowestTime = diff;
+   }
+   //else if((diff > (slowestTime * 1.2)) || (diff <= 50))
+   //{
+   //   gameOver();
+   //   return;
+   //}
+   else if(diff < slowestTime)
+   {
+      slowestTime = diff;
    }
 
    if(String.fromCharCode(event.charCode).toLowerCase() == chars[0].toLowerCase())
@@ -159,8 +170,6 @@ function endRound(event)
       $("down").style.visibility = "visible";
       $("up").style.visibility = "hidden";
    }
-   
-   if(allowedTime >= 252) allowedTime *= 0.99; 
 
    startRound();
 }
