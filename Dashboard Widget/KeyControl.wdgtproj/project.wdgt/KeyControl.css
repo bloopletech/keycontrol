@@ -148,13 +148,13 @@ body {
     line-height: 60px;
     height: 76px;
     top: 19px;
-    font-size: 51pt;
     font-weight: bold;
     font-family: 'Helvetica Neue';
     left: 25px;
     text-align: left;
     width: 230px;
     visibility: hidden;
+    font-size: 46pt;
 }
 
 #userDesc {

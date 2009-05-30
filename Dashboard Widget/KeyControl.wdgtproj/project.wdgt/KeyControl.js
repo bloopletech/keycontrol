@@ -11,7 +11,7 @@ var ajax = null;
 function load()
 {
     setupParts();
-    document.body.onkeypress = endRound;
+    document.body.onkeydown = endRound;
     ajax = new XMLHttpRequest();
     ajax.overrideMimeType("text/plain");
 }
@@ -77,7 +77,9 @@ function nice(num)
 };
 
 var playing = false;
-var allowedChars = "0123456789";
+//left up right down
+var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
+var allowedCodes = [37, 38, 39, 40];
 
 var slowestTime = 0;
 var diffs = [];
@@ -89,15 +91,7 @@ var score = 0;
 
 function generateCharacter()
 {
-   var newChar = "";
-   do
-   {
-     newChar = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
-     if(chars.length == 0) break;
-   }
-   while(newChar == chars[chars.length - 1])
-
-   return newChar;
+   return allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
 }
 
 function playGame(event)
@@ -109,7 +103,6 @@ function playGame(event)
    $("biginfo").innerHTML = "Wait...";
    $("biginfo").style.visibility = "visible";
 
-   allowedTime = 1500;
    score = 0;
 
    setTimeout(function()
@@ -140,8 +133,8 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
-   diffs.push(diff);
-console.log(diffs);
+//   diffs.push(diff);
+//console.log(diffs);
    if(slowestTime == 0)
    {
       slowestTime = diff;
@@ -156,9 +149,9 @@ console.log(diffs);
       slowestTime = diff;
    }
 
-   if(String.fromCharCode(event.charCode).toLowerCase() == chars[0].toLowerCase())
+   if(allowedChars[allowedCodes.indexOf(event.keyCode)] == chars[0])
    {
-      score += Math.floor(Math.pow(1.01, allowedTime - diff));
+      if(diff <= 1000) score += 1000 - diff;
       $("score").innerHTML = nice(score);
       $("up").style.visibility = "visible";
       $("down").style.visibility = "hidden";

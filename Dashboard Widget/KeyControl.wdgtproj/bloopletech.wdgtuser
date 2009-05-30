@@ -16,8 +16,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1196, 173}}</string>
-			<string>{{0, 183}, {1196, 519}}</string>
+			<string>{{0, 0}, {1197, 186}}</string>
+			<string>{{0, 196}, {1197, 519}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -25,25 +25,25 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>420860fd1f93af41</string>
+		<string>672b073647a3af41</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtprojDPyRyw/KeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtprojlqhA2X/KeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
 		<integer>0</integer>
 		<key>percent-type</key>
-		<integer>3</integer>
+		<integer>1</integer>
 		<key>percent-x</key>
-		<real>0.04722222313284874</real>
+		<real>0.37291666865348816</real>
 		<key>percent-y</key>
-		<real>0.35222223401069641</real>
+		<real>0.29111111164093018</real>
 		<key>pos-x</key>
-		<integer>1092</integer>
+		<integer>537</integer>
 		<key>pos-y</key>
-		<integer>436</integer>
+		<integer>262</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
@@ -61,18 +61,18 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {243, 723}}</string>
-			<string>{{244, 0}, {1197, 723}}</string>
+			<string>{{0, 0}, {243, 736}}</string>
+			<string>{{244, 0}, {1198, 736}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>4 134 1440 744 0 0 1440 878 </string>
+	<string>3 120 1441 757 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
 		<integer>5</integer>
 		<key>SplitViewConfig</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>_collapsingFrameDimension</key>
 		<real>0.0</real>
 		<key>_indexOfCollapsedView</key>
@@ -81,8 +81,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {245, 352}}</string>
-			<string>{{0, 362}, {245, 340}}</string>
+			<string>{{0, 0}, {245, 359}}</string>
+			<string>{{0, 369}, {245, 346}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
