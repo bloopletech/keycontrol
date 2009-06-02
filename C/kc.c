@@ -68,7 +68,12 @@ int main(int argc, char** argv)
       gettimeofday(&after, NULL);
       
       long long int diff = ((after.tv_sec * 1000000) + after.tv_usec) - ((before.tv_sec * 1000000) + before.tv_usec);
-
+      puts("****");
+      printf("%i", buffer[0]);
+      printf("%i", buffer[1]);
+      printf("%i", buffer[2]);
+      printf("%i", buffer[3]);
+      /*
       int valid = (buffer[0] == out) || (tolower(buffer[0]) == tolower(out));
 
       if(!valid)
@@ -113,6 +118,6 @@ int main(int argc, char** argv)
          OUT("  \033[3D");
       }
       
-      if(correctTime > 252) correctTime = floor(correctTime * 0.99);
+      if(correctTime > 252) correctTime = floor(correctTime * 0.99);*/
    }
 }
