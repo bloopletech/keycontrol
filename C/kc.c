@@ -32,7 +32,7 @@ int main(int argc, char** argv)
    tcgetattr(STDIN_FILENO, &tattr);
 
    tattr.c_lflag &= ~(ICANON | ECHO | IEXTEN);
-   tattr.c_iflag &= ~(ICRNL | ISTRIP | CSIZE | PARENB) | CS8;
+   tattr.c_iflag &= ~(CSIZE | PARENB) | CS8;
    tattr.c_cc[VMIN] = 0;
    tattr.c_cc[VTIME] = 100;
 
@@ -45,19 +45,17 @@ int main(int argc, char** argv)
    OUT("\033[?25l");
 
    int score = 0;
-   int correctTime = 1500000;
+   int chars[] = { 0, 0, 0, 0 };
+   //left up right down
+   char* allowedChars[] = { "\xe2\x97\x80 ", "\xe2\x96\xb2 ", "\xe2\x96\xb6 ", "\xe2\x96\xbc " };
+   int allowedCodes[] = { 68, 65, 67, 66 };
    char buffer[] = "\0\0\0\0\0";
-   char lastOut = 0;
-   char out = 0;
    
-   char* mapping = "`~1!2@3#4$5%6^7&8*9(0)-_=+[{]}\\|;:'\",<.>/?";
+   for(int i = 0; i < 3; i++) chars[i] = rand() % 4;
 
    while(1)
-   {
-      out = (rand() % 95) + 32;
-      while(out == lastOut) out = (rand() % 95) + 32;
-      lastOut = out;
-      putchar(out);
+   {      
+      for(int i = 0; i < 4; i++) OUT(allowedChars[chars[i]]);
       
       struct timeval before;
       gettimeofday(&before, NULL);
@@ -68,56 +66,28 @@ int main(int argc, char** argv)
       gettimeofday(&after, NULL);
       
       long long int diff = ((after.tv_sec * 1000000) + after.tv_usec) - ((before.tv_sec * 1000000) + before.tv_usec);
-      puts("****");
-      printf("%i", buffer[0]);
-      printf("%i", buffer[1]);
-      printf("%i", buffer[2]);
-      printf("%i", buffer[3]);
-      /*
-      int valid = (buffer[0] == out) || (tolower(buffer[0]) == tolower(out));
 
-      if(!valid)
+      int valid = buffer[2] == allowedCodes[chars[0]];
+
+      if(diff > 1000000)
       {
-         for(int i = 1; i < strlen(mapping); i += 2)
-         {
-            if((buffer[0] == mapping[i]) && (mapping[i - 1] == out))
-            {
-               valid = 1;
-               break;
-            }
-         }
-      }
-
-      if(!valid)
-      {
-         for(int i = 0; i < (strlen(mapping) - 1); i += 2)
-         {
-            if((buffer[0] == mapping[i]) && (mapping[i + 1] == out))
-            {
-               valid = 1;
-               break;
-            }
-         }
-      }
-
-      if(diff > correctTime)
-      {
-         int submitScore = score ^ finfo.st_size;
-
-         printf("\033[1D%i %i\n\033[?25h", score, submitScore);
+         printf("  \033[10D%i          \n\033[?25h", score);
          return 0;
       }
-      if((count > 1) || !valid)
+      if((count > 3) || !valid)
       {
-         OUT(" X\033[3D");
+         OUT(" X\033[10D");
          score -= 100;
       }
       else
       {
-         score += floor(pow(1.05, 1000 - (diff / 1000.0)));
-         OUT("  \033[3D");
+         score += 1000 - round(diff / 1000.0);
+         OUT("  \033[10D");
       }
-      
-      if(correctTime > 252) correctTime = floor(correctTime * 0.99);*/
+
+      chars[0] = chars[1];
+      chars[1] = chars[2];
+      chars[2] = chars[3];
+      chars[3] = rand() % 4;
    }
 }
