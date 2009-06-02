@@ -16,8 +16,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1197, 186}}</string>
-			<string>{{0, 196}, {1197, 519}}</string>
+			<string>{{0, 0}, {1197, 159}}</string>
+			<string>{{0, 169}, {1197, 476}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -25,11 +25,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>672b073647a3af41</string>
+		<string>a46ca92212a8af41</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtprojlqhA2X/KeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtprojbdtw1v/KeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -61,12 +61,12 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {243, 736}}</string>
-			<string>{{244, 0}, {1198, 736}}</string>
+			<string>{{0, 0}, {243, 666}}</string>
+			<string>{{244, 0}, {1198, 666}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>3 120 1441 757 0 0 1440 878 </string>
+	<string>-1437 213 1441 687 -1280 -124 1280 1024 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -81,8 +81,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {245, 359}}</string>
-			<string>{{0, 369}, {245, 346}}</string>
+			<string>{{0, 0}, {245, 323}}</string>
+			<string>{{0, 333}, {245, 312}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
