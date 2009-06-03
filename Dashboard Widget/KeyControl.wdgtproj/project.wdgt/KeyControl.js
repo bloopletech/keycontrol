@@ -135,6 +135,8 @@ function endRound(event)
    var diff = (new Date()).getTime() - startTime.getTime();
 //   diffs.push(diff);
 //console.log(diffs);
+   if(diff < 50) gameOver();
+
    if(slowestTime == 0)
    {
       slowestTime = diff;
