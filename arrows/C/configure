@@ -1,0 +1,1 @@
+echo "To configure, edit Makefile and change PREFIX, BINDIR, and MANDIR as necessary (The defaults may work fine for you)."

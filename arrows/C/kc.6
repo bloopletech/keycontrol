@@ -1,0 +1,29 @@
+.\" Process this file with
+.\" groff -man -Tascii foo.1
+.\"
+.TH KC 6 "JANUARY 2008" KeyControl "User Manuals"
+.SH NAME
+kc \- KeyControl
+.SH SYNOPSIS
+.B kc
+.SH DESCRIPTION
+.B KeyControl
+is a reaction testing game that tests your ability to type quickly.
+KeyControl does this by presenting a character on the screen. You then have
+to type this character on your keyboard a quickly as possible. If you
+enter the correct character, your score is increased; enter an incorrect
+character and your score drops. Once you've entered the character, a new
+character is shown and the process repeats. After each character, the time
+you have to enter the next character is decreased (i.e. the game gets
+harder the longer you play it). When you enter a character too slowly,
+the game ends and your final score is displayed.
+
+Note: You don't need to use the shift key when playing; e.g. if the games
+asks for ^, then you can type 6, no shift.
+.SH BUGS
+The game uses vt100 terminal commands and may not work on a vt100 incompatible terminal.
+The game assumes a standard PC keyboard layout for the non-alphanumeric keys; some
+foreign keyboard layouts may map these keys differently.
+.SH AUTHOR
+Brenton Fletcher <impactbc@hotmail.com>
+
