@@ -31,13 +31,16 @@ body {
 }
 
 #backImg {
-    position: absolute;
     display: block;
+    margin-top: 0px;
+    -khtml-margin-top-collapse: separate;
+    -khtml-margin-bottom-collapse: separate;
+    position: absolute;
     top: 0px;
     left: 0px;
-    bottom: 0px;
     right: 0px;
     width: auto;
+    bottom: 0px;
     height: auto;
 }
 
@@ -57,11 +60,11 @@ body {
     color: rgb(255, 255, 255);
     font-size: 18pt;
     font-family: HelveticaNeue;
-    width: 110px;
     top: 95px;
     text-align: right;
     padding: 0px;
-    left: 43px;
+    width: 203px;
+    left: 52px;
 }
 
 #biginfo {
@@ -73,9 +76,9 @@ body {
     width: 134px;
     font-size: 18pt;
     font-family: HelveticaNeue-Bold;
-    left: 23px;
     top: 43px;
     visibility: hidden;
+    left: 73px;
 }
 
 #up {
@@ -117,8 +120,8 @@ body {
     right: 25px;
     top: 44px;
     font-size: 10pt;
-    left: 63px;
-    width: 86px;
+    width: 158px;
+    left: 95px;
 }
 
 #crypt {
@@ -127,8 +130,8 @@ body {
     font-family: HelveticaNeue;
     font-size: 10pt;
     top: 67px;
-    left: 63px;
-    width: 86px;
+    width: 158px;
+    left: 95px;
 }
 
 #play {
@@ -137,9 +140,9 @@ body {
     text-align: center;
     font-size: 22px;
     height: 64px;
-    left: 25px;
     width: 130px;
     top: 25px;
+    left: 75px;
 }
 
 #out {
@@ -164,8 +167,10 @@ body {
     font-size: 10pt;
     text-overflow: ellipsis;
     overflow: hidden;
-    top: 49px;
+    top: 46px;
     left: 25px;
+    width: auto;
+    height: auto;
 }
 
 #passDesc {
@@ -177,6 +182,8 @@ body {
     overflow: hidden;
     top: 72px;
     left: 25px;
+    width: auto;
+    height: auto;
 }
 
 #netScoringCheckBox {

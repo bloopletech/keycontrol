@@ -16,8 +16,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1197, 159}}</string>
-			<string>{{0, 169}, {1197, 476}}</string>
+			<string>{{0, 0}, {1197, 191}}</string>
+			<string>{{0, 201}, {1197, 444}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -25,11 +25,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>ac1c025770adaf41</string>
+		<string>c13898ed98baaf41</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtproj18FfME/KeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.KeyControl.wdgtproj2bLssK/KeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -94,20 +94,18 @@
 			<integer>0</integer>
 			<integer>0</integer>
 		</array>
-	</array>
-	<key>Objects view last selections</key>
-	<array>
 		<array>
 			<integer>0</integer>
-			<integer>0</integer>
-			<integer>2</integer>
+			<integer>1</integer>
 		</array>
 	</array>
+	<key>Objects view last selections</key>
+	<array/>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>
 	<array>
-		<string>front</string>
+		<string>back</string>
 	</array>
 </dict>
 </plist>

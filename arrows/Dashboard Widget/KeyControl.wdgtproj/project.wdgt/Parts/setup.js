@@ -11,9 +11,9 @@ var dashcodePartSpecs = {
     "glassbutton": { "creationFunction": "CreateGlassButton", "onclick": "gotoSite", "text": "Website" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
     "out": { "creationFunction": "CreateText" },
-    "passDesc": { "creationFunction": "CreateText", "text": "Pass:" },
+    "passDesc": { "creationFunction": "CreateText", "text": "Password:" },
     "play": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "playGame", "rightImageWidth": 5, "text": "Play" },
     "score": { "creationFunction": "CreateText", "text": "Have Fun!" },
     "up": { "creationFunction": "CreateText", "text": "⬆" },
-    "userDesc": { "creationFunction": "CreateText", "text": "User:" }
+    "userDesc": { "creationFunction": "CreateText", "text": "Username:" }
 };
