@@ -3,15 +3,15 @@ BINDIR=$(PREFIX)/local/bin
 MANDIR=$(PREFIX)/share/man
 
 all:
-	gcc -Wall -pedantic -std=c99 -o kc kc.c
+	gcc -Wall -pedantic -std=c99 -o akc akc.c
 
 install:
-	cp ./kc $(BINDIR)/
-	cp ./kc.6 $(MANDIR)/man6/
+	cp ./akc $(BINDIR)/
+	cp ./akc.6 $(MANDIR)/man6/
 
 clean:
-	rm ./kc
+	rm ./akc
 
 uninstall:
-	rm $(BINDIR)/kc
-	rm $(MANDIR)/man6/kc.6
+	rm $(BINDIR)/akc
+	rm $(MANDIR)/man6/akc.6

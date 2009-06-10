@@ -6,6 +6,5 @@
  */
 var localizedStrings = {
     " ": "h",
-    "Done": "Done",
-    "rtjurtj": "h"
+    "Done": "Done"
 };

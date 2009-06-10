@@ -9,13 +9,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>KeyControl</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.bloople.widget.KeyControl</string>
+	<string>net.bloople.widget.ArrowKeyControl</string>
 	<key>CFBundleName</key>
 	<string>KeyControl</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.0</string>
 	<key>CloseBoxInsetX</key>
 	<integer>15</integer>
 	<key>CloseBoxInsetY</key>

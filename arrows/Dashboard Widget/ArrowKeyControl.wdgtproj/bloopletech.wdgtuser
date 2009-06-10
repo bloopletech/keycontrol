@@ -48,7 +48,12 @@
 		<false/>
 	</dict>
 	<key>DeploymentOptions</key>
-	<dict/>
+	<dict>
+		<key>SavePath</key>
+		<string>/Users/bloopletech/key/kc/arrows/Dashboard Widget</string>
+		<key>WidgetDeployName</key>
+		<string>ArrowKeyControl.wdgtproj</string>
+	</dict>
 	<key>Design time language</key>
 	<string>en.lproj</string>
 	<key>MainSplitViewGeometry</key>
@@ -100,7 +105,11 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array/>
+	<array>
+		<array>
+			<integer>0</integer>
+		</array>
+	</array>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>

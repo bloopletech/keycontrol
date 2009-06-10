@@ -1,0 +1,27 @@
+.\" Process this file with
+.\" groff -man -Tascii foo.1
+.\"
+.TH AKC 6 "JUNE 2009" ArrowKeyControl "User Manuals"
+.SH NAME
+akc \- ArrowKeyControl
+.SH SYNOPSIS
+.B akc
+.SH DESCRIPTION
+.B ArrowKeyControl
+is a reaction testing game that tests your ability to type quickly.
+ArrowKeyControl does this by displaying 4 arrows; the arrows correspond
+to the arrow keys on the keyboard. You have to type the left-most arrow
+displayed (which could be the up, down, left, or right arrow keys). As
+soon as you type a key, the left-most arrow moves off the screen to be
+replaced by the one just to its right; you know have to press this arrow.
+The game continues like this as long as you press each key fast enough;
+too slow and the game ends. The faster you type the correct keys, the
+more you score; enter a wrong key and your score does down by 10%.
+
+.SH BUGS
+The game uses vt100 terminal commands and may not work on a vt100 incompatible terminal.
+An Unicode (UTF-8) supporting terminal is required, and the game requires valid glyphs
+for the triangle arrows in your terminal font to work.
+.SH AUTHOR
+Brenton Fletcher <i@bloople.net>
+
