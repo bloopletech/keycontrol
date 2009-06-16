@@ -82,6 +82,7 @@ var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
 var allowedCodes = [37, 38, 39, 40];
 
 var slowestTime = 0;
+var allowedTime = 1000;
 var diffs = [];
 var chars = [];
 var lastChar = null;
@@ -135,7 +136,7 @@ function endRound(event)
    var diff = (new Date()).getTime() - startTime.getTime();
 //   diffs.push(diff);
 //console.log(diffs);
-   if(diff < 50 || diff > 1000) gameOver();
+   if(diff < 50 || diff > allowedTime) gameOver();
 
    if(slowestTime == 0)
    {
@@ -165,6 +166,9 @@ function endRound(event)
       $("down").style.visibility = "visible";
       $("up").style.visibility = "hidden";
    }
+
+   allowedTime -= 20;
+   console.log(allowedTime);
 
    startRound();
 }
