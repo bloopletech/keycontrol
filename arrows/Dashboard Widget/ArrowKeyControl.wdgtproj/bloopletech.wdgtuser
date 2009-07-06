@@ -16,8 +16,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1197, 191}}</string>
-			<string>{{0, 201}, {1197, 444}}</string>
+			<string>{{0, 0}, {1196, 256}}</string>
+			<string>{{0, 266}, {1196, 444}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -25,11 +25,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>4d4d3acf74caaf41</string>
+		<string>f208f25a4602b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojRbSC95/ArrowKeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojuqdFjG/ArrowKeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -37,13 +37,13 @@
 		<key>percent-type</key>
 		<integer>1</integer>
 		<key>percent-x</key>
-		<real>0.37291666865348816</real>
+		<real>0.36875000596046448</real>
 		<key>percent-y</key>
-		<real>0.29111111164093018</real>
+		<real>0.40000000596046448</real>
 		<key>pos-x</key>
-		<integer>537</integer>
+		<integer>531</integer>
 		<key>pos-y</key>
-		<integer>262</integer>
+		<integer>360</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
@@ -66,12 +66,12 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {243, 666}}</string>
-			<string>{{244, 0}, {1198, 666}}</string>
+			<string>{{0, 0}, {243, 731}}</string>
+			<string>{{244, 0}, {1197, 731}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>-1437 213 1441 687 -1280 -124 1280 1024 </string>
+	<string>0 126 1440 752 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -86,8 +86,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {245, 323}}</string>
-			<string>{{0, 333}, {245, 312}}</string>
+			<string>{{0, 0}, {245, 356}}</string>
+			<string>{{0, 366}, {245, 344}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -105,7 +105,13 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array/>
+	<array>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>2</integer>
+		</array>
+	</array>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>

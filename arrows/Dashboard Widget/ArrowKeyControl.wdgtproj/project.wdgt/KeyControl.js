@@ -81,7 +81,6 @@ var playing = false;
 var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
 var allowedCodes = [37, 38, 39, 40];
 
-var slowestTime = 0;
 var allowedTime = 1000;
 var diffs = [];
 var chars = [];
@@ -105,12 +104,13 @@ function playGame(event)
    $("biginfo").style.visibility = "visible";
 
    score = 0;
+   allowedTime = 1000;
 
    setTimeout(function()
    {
       $("biginfo").style.visibility = "hidden";
       $("score").innerHTML = "GO!";
-
+diffs = [];
       chars = [];
       for(var i = 0; i < 4; i++) chars.push(generateCharacter());
 
@@ -134,23 +134,9 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
-//   diffs.push(diff);
-//console.log(diffs);
-   if(diff < 50 || diff > allowedTime) gameOver();
+   diffs.push(diff);
 
-   if(slowestTime == 0)
-   {
-      slowestTime = diff;
-   }
-   //else if((diff > (slowestTime * 1.2)) || (diff <= 50))
-   //{
-   //   gameOver();
-   //   return;
-   //}
-   else if(diff < slowestTime)
-   {
-      slowestTime = diff;
-   }
+   if(diff < 50 || diff > allowedTime) gameOver();
 
    if(allowedChars[allowedCodes.indexOf(event.keyCode)] == chars[0])
    {
@@ -161,20 +147,22 @@ function endRound(event)
    }
    else
    {
-      score = Math.floor(score * 0.9);
+      score = Math.floor(score * 0.5);
       $("score").innerHTML = nice(score);
       $("down").style.visibility = "visible";
       $("up").style.visibility = "hidden";
+
+     if(score <= 0) gameOver();
    }
 
-   allowedTime -= 20;
-   console.log(allowedTime);
+   allowedTime -= 7;
 
    startRound();
 }
 
 function gameOver()
 {
+console.log(diffs);
    playing = false;
    $("out").style.visibility = "hidden";
    $("up").style.visibility = "hidden";

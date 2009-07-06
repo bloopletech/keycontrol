@@ -9,7 +9,7 @@ var dashcodePartSpecs = {
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "down": { "creationFunction": "CreateText", "text": "⬇" },
     "glassbutton": { "creationFunction": "CreateGlassButton", "onclick": "gotoSite", "text": "Website" },
-    "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
+    "info": { "backgroundStyle": "white", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
     "out": { "creationFunction": "CreateText" },
     "passDesc": { "creationFunction": "CreateText", "text": "Password:" },
     "play": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "playGame", "rightImageWidth": 5, "text": "Play" },
