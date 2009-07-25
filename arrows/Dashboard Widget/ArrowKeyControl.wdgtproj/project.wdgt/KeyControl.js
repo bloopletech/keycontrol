@@ -1,4 +1,4 @@
-//All non-Apple-copyright code copyright 2008 Brenton Fletcher.
+//All non-Apple-copyright code copyright 2008-2009 Brenton Fletcher.
 //Check out my portfolio at i.bloople.net
 
 function $(x)
@@ -112,7 +112,7 @@ function playGame(event)
       $("score").innerHTML = "GO!";
 diffs = [];
       chars = [];
-      for(var i = 0; i < 4; i++) chars.push(generateCharacter());
+      for(var i = 0; i < 3; i++) chars.push(generateCharacter());
 
       startRound();
       playing = true;
@@ -124,7 +124,7 @@ function startRound()
    chars.push(generateCharacter());
    chars.shift();
 
-   $("out").innerHTML = chars.join("");
+   $("out").innerHTML = chars[0];
    startTime = new Date();
 }
 
@@ -135,24 +135,16 @@ function endRound(event)
 
    var diff = (new Date()).getTime() - startTime.getTime();
    diffs.push(diff);
+   
+   var correct = allowedChars[allowedCodes.indexOf(event.keyCode)] == chars[0];
 
-   if(diff < 50 || diff > allowedTime) gameOver();
+   if(diff < 50 || diff > allowedTime || !correct) gameOver();
 
-   if(allowedChars[allowedCodes.indexOf(event.keyCode)] == chars[0])
+   if(correct)
    {
       if(diff <= 1000) score += 1000 - diff;
       $("score").innerHTML = nice(score);
-      $("up").style.visibility = "visible";
-      $("down").style.visibility = "hidden";
-   }
-   else
-   {
-      score = Math.floor(score * 0.5);
-      $("score").innerHTML = nice(score);
-      $("down").style.visibility = "visible";
-      $("up").style.visibility = "hidden";
-
-     if(score <= 0) gameOver();
+      cloneAndGrow(chars[0]);
    }
 
    allowedTime -= 7;
@@ -165,8 +157,6 @@ function gameOver()
 console.log(diffs);
    playing = false;
    $("out").style.visibility = "hidden";
-   $("up").style.visibility = "hidden";
-   $("down").style.visibility = "hidden";
    $("biginfo").innerHTML = "Game Over";
    $("biginfo").style.visibility = "visible";
 
@@ -200,3 +190,11 @@ function gotoSite(event)
 {
    window.widget.openURL("http://kc.bloople.net");
 }
+
+function cloneAndGrow(character)
+{
+  var growNode = $("out").cloneNode();
+  growNode.setTimeout(function()
+  {
+  
+  }, 
