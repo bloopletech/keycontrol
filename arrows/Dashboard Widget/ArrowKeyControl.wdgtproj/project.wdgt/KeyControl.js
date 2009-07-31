@@ -81,17 +81,22 @@ var playing = false;
 var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
 var allowedCodes = [37, 38, 39, 40];
 
-var allowedTime = 1000;
+var allowedTime = 750;
 var diffs = [];
-var chars = [];
+var character = '';
 var lastChar = null;
 var startTime = null;
 var endTime = null;
 var score = 0;
 
+var timeUsedInterval = null;
+
 function generateCharacter()
 {
-   return allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
+
+   var newChar = character;
+   while(newChar == character) newChar = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
+   return newChar;
 }
 
 function playGame(event)
@@ -104,15 +109,14 @@ function playGame(event)
    $("biginfo").style.visibility = "visible";
 
    score = 0;
-   allowedTime = 1000;
+   allowedTime = 750;
 
    setTimeout(function()
    {
       $("biginfo").style.visibility = "hidden";
       $("score").innerHTML = "GO!";
 diffs = [];
-      chars = [];
-      for(var i = 0; i < 3; i++) chars.push(generateCharacter());
+      character = '';
 
       startRound();
       playing = true;
@@ -121,10 +125,12 @@ diffs = [];
 
 function startRound()
 {
-   chars.push(generateCharacter());
-   chars.shift();
+   character = generateCharacter();
+   $("out").innerHTML = character;
 
-   $("out").innerHTML = chars[0];
+   $("time_used").style.width = "13px";
+   timeUsedInterval = window.setInterval(updateTimeUsed, 50);
+   
    startTime = new Date();
 }
 
@@ -134,27 +140,35 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
+   alert(diff);
    diffs.push(diff);
-   
-   var correct = allowedChars[allowedCodes.indexOf(event.keyCode)] == chars[0];
 
-   if(diff < 50 || diff > allowedTime || !correct) gameOver();
+   $("time_used").style.width = "0px";
+   window.clearInterval(timeUsedInterval);
+   
+   var correct = allowedChars[allowedCodes.indexOf(event.keyCode)] == character;
+
+   if(diff < 50 || diff > allowedTime || !correct)
+   {
+      gameOver();
+      return;
+   }
 
    if(correct)
    {
       if(diff <= 1000) score += 1000 - diff;
       $("score").innerHTML = nice(score);
-      cloneAndGrow(chars[0]);
+      //cloneAndGrow(character);
    }
 
-   allowedTime -= 7;
+   if(allowedTime >= 200) allowedTime -= 10;
 
    startRound();
 }
 
 function gameOver()
 {
-console.log(diffs);
+//console.log(diffs);
    playing = false;
    $("out").style.visibility = "hidden";
    $("biginfo").innerHTML = "Game Over";
@@ -191,10 +205,54 @@ function gotoSite(event)
    window.widget.openURL("http://kc.bloople.net");
 }
 
-function cloneAndGrow(character)
+function updateTimeUsed()
 {
+   var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
+   if(ratio > 1)
+   {
+      $("time_used").style.width = "207px";
+      window.clearInterval(timeUsedInterval);
+   }
+   else
+   {
+      $("time_used").style.width = (ratio * 194) + 13 + "px";
+      
+   /*
+   var movePerFrame = 194 / (allowedTime / 50.0);
+   var currentWidth = $("time_used").clientWidth;
+   alert(currentWidth);
+*/
+
+   /*if((currentWidth + movePerFrame) > (207))
+   {
+      $("time_used").style.width = "207px";
+      window.clearInterval(timeUsedInterval);
+   }
+   else
+   {
+      $("time_used").style.width = (currentWidth + movePerFrame) + "px";
+   }*/
+}
+
+function cloneAndGrow(character)
+{/*
   var growNode = $("out").cloneNode();
-  growNode.setTimeout(function()
+  $("out").parentNode.appendChild(growNode);
+  growNode.opacity = 0.5;
+  setTimeout(function()
   {
-  
-  }, 
+      var oldWidth = growNode.clientWidth;
+      alert(oldWidth);
+      growNode.style.width = oldWidth * 1.1 + "px";
+      var newWidth = growNode.clientWidth;
+      alert(newWidth);
+      growNode.style.left = growNode.style.left - ((newWidth - oldWidth) / 2.0) + "px";
+
+      var oldHeight = growNode.clientHeight;
+      growNode.style.height = oldHeight * 1.1 + "px";
+      var newHeight = growNode.clientHeight;
+      alert(growNode.style.top);
+      growNode.style.top = growNode.style.top - ((newHeight - oldHeight) / 2.0) + "px";
+            alert(growNode.style.top);
+  }, 100);*/
+}

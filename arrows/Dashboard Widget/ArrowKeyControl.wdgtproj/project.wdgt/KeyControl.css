@@ -171,3 +171,27 @@ body {
     left: 25px;
     width: 130px;
 }
+
+#time_used, #content_wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 220px;
+    height: 200px;
+}
+
+#time_used {
+    background-image: url(Images/front_time_used.png);
+    width: 0px;
+    z-index: 1;
+}
+
+#content_wrapper {
+    z-index: 2;
+    left: 0px;
+    right: 0px;
+    width: auto;
+    top: 0px;
+    bottom: 0px;
+    height: auto;
+}
