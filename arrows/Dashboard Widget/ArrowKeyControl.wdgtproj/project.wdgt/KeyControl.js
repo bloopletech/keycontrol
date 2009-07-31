@@ -82,7 +82,6 @@ var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
 var allowedCodes = [37, 38, 39, 40];
 
 var allowedTime = 750;
-var diffs = [];
 var character = '';
 var lastChar = null;
 var startTime = null;
@@ -94,9 +93,10 @@ var timeUsedInterval = null;
 function generateCharacter()
 {
 
-   var newChar = character;
+   /*var newChar = character;
    while(newChar == character) newChar = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
-   return newChar;
+   return newChar;*/
+   return allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
 }
 
 function playGame(event)
@@ -115,7 +115,6 @@ function playGame(event)
    {
       $("biginfo").style.visibility = "hidden";
       $("score").innerHTML = "GO!";
-diffs = [];
       character = '';
 
       startRound();
@@ -140,8 +139,6 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
-   alert(diff);
-   diffs.push(diff);
 
    $("time_used").style.width = "0px";
    window.clearInterval(timeUsedInterval);
@@ -158,7 +155,6 @@ function endRound(event)
    {
       if(diff <= 1000) score += 1000 - diff;
       $("score").innerHTML = nice(score);
-      //cloneAndGrow(character);
    }
 
    if(allowedTime >= 200) allowedTime -= 10;
@@ -168,7 +164,6 @@ function endRound(event)
 
 function gameOver()
 {
-//console.log(diffs);
    playing = false;
    $("out").style.visibility = "hidden";
    $("biginfo").innerHTML = "Game Over";
@@ -216,43 +211,5 @@ function updateTimeUsed()
    else
    {
       $("time_used").style.width = (ratio * 194) + 13 + "px";
-      
-   /*
-   var movePerFrame = 194 / (allowedTime / 50.0);
-   var currentWidth = $("time_used").clientWidth;
-   alert(currentWidth);
-*/
-
-   /*if((currentWidth + movePerFrame) > (207))
-   {
-      $("time_used").style.width = "207px";
-      window.clearInterval(timeUsedInterval);
    }
-   else
-   {
-      $("time_used").style.width = (currentWidth + movePerFrame) + "px";
-   }*/
-}
-
-function cloneAndGrow(character)
-{/*
-  var growNode = $("out").cloneNode();
-  $("out").parentNode.appendChild(growNode);
-  growNode.opacity = 0.5;
-  setTimeout(function()
-  {
-      var oldWidth = growNode.clientWidth;
-      alert(oldWidth);
-      growNode.style.width = oldWidth * 1.1 + "px";
-      var newWidth = growNode.clientWidth;
-      alert(newWidth);
-      growNode.style.left = growNode.style.left - ((newWidth - oldWidth) / 2.0) + "px";
-
-      var oldHeight = growNode.clientHeight;
-      growNode.style.height = oldHeight * 1.1 + "px";
-      var newHeight = growNode.clientHeight;
-      alert(growNode.style.top);
-      growNode.style.top = growNode.style.top - ((newHeight - oldHeight) / 2.0) + "px";
-            alert(growNode.style.top);
-  }, 100);*/
 }

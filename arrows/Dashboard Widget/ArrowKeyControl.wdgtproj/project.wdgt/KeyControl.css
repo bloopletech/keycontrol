@@ -64,9 +64,10 @@ body {
     padding: 0px;
     left: 25px;
     width: 170px;
-    font-size: 16pt;
-    height: 25px;
-    top: 150px;
+    font-size: 18pt;
+    line-height: 18pt;
+    height: 27px;
+    top: 148px;
 }
 
 #biginfo {
@@ -86,7 +87,7 @@ body {
 
 #glassbutton {
     position: absolute;
-    top: 105px;
+    top: 158px;
     left: 25px;
 }
 
@@ -95,10 +96,10 @@ body {
     color: black;
     font-family: HelveticaNeue;
     right: 25px;
-    top: 44px;
     font-size: 10pt;
     width: 158px;
-    left: 95px;
+    left: 25px;
+    top: 60px;
 }
 
 #crypt {
@@ -106,9 +107,9 @@ body {
     color: black;
     font-family: HelveticaNeue;
     font-size: 10pt;
-    top: 67px;
     width: 158px;
-    left: 95px;
+    left: 25px;
+    top: 106px;
 }
 
 #play {
@@ -116,10 +117,10 @@ body {
     font-family: HelveticaNeue-Bold;
     text-align: center;
     font-size: 22px;
-    height: 64px;
     width: 130px;
-    top: 47px;
     left: 45px;
+    height: 77px;
+    top: 44px;
 }
 
 #out {
@@ -132,8 +133,8 @@ body {
     width: 170px;
     text-align: center;
     height: 120px;
-    font-size: 80pt;
-    line-height: 80pt;
+    font-size: 90pt;
+    line-height: 90pt;
     visibility: hidden;
 }
 
@@ -157,8 +158,8 @@ body {
     font-size: 10pt;
     text-overflow: ellipsis;
     overflow: hidden;
-    top: 72px;
     left: 25px;
+    top: 93px;
     width: auto;
     height: auto;
 }
