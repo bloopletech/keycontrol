@@ -14,7 +14,5 @@
 	<string>KeyControl.js</string>
 	<key>UseCustomAppIcon</key>
 	<true/>
-	<key>UseCustomDefaultImage</key>
-	<true/>
 </dict>
 </plist>
