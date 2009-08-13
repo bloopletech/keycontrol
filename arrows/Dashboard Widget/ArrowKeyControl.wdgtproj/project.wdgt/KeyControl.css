@@ -34,23 +34,20 @@ body {
 
 #backImg {
     display: block;
-    margin-top: 0px;
     -khtml-margin-top-collapse: separate;
     -khtml-margin-bottom-collapse: separate;
     position: absolute;
-    top: 0px;
     left: 0px;
-    right: 0px;
-    width: auto;
-    bottom: 0px;
-    height: auto;
+    width: 200px;
+    height: 180px;
+    top: 0px;
 }
 
 #done {
     position: absolute;
-    right: 21px;
+    right: 25px;
     margin-left: auto;
-    bottom: 19px;
+    bottom: 25px;
     margin-top: auto;
 }
 
@@ -87,8 +84,8 @@ body {
 
 #glassbutton {
     position: absolute;
-    top: 158px;
     left: 25px;
+    top: 132px;
 }
 
 #username {
@@ -97,9 +94,9 @@ body {
     font-family: HelveticaNeue;
     right: 25px;
     font-size: 10pt;
-    width: 158px;
     left: 25px;
-    top: 60px;
+    width: 144px;
+    top: 59px;
 }
 
 #crypt {
@@ -107,9 +104,9 @@ body {
     color: black;
     font-family: HelveticaNeue;
     font-size: 10pt;
-    width: 158px;
     left: 25px;
-    top: 106px;
+    width: 144px;
+    top: 101px;
 }
 
 #play {
@@ -160,7 +157,7 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     left: 25px;
-    top: 93px;
+    top: 89px;
     width: auto;
     height: auto;
 }

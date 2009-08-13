@@ -21,11 +21,11 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>4</integer>
+	<integer>0</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>425a3f545934b041</string>
+		<string>fa0884865a34b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
@@ -114,16 +114,12 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array>
-		<array>
-			<integer>4</integer>
-		</array>
-	</array>
+	<array/>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>
 	<array>
-		<string>front</string>
+		<string>back</string>
 	</array>
 </dict>
 </plist>
