@@ -21,34 +21,36 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>0</integer>
+	<integer>4</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>f38f1eddcb25b041</string>
+		<string>425a3f545934b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojorZhth/ArrowKeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojKqfSQ1/ArrowKeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
 		<integer>0</integer>
 		<key>percent-type</key>
-		<integer>2</integer>
+		<integer>1</integer>
 		<key>percent-x</key>
-		<real>0.25902777910232544</real>
+		<real>0.1840277761220932</real>
 		<key>percent-y</key>
-		<real>0.14333333075046539</real>
+		<real>0.10666666924953461</real>
 		<key>pos-x</key>
-		<integer>847</integer>
+		<integer>265</integer>
 		<key>pos-y</key>
-		<integer>129</integer>
+		<integer>96</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
 	<key>DeploymentOptions</key>
 	<dict>
+		<key>Account</key>
+		<string>file://localhost/Users/bloopletech/Sites/</string>
 		<key>SavePath</key>
 		<string>/Users/bloopletech/key/kc/arrows/Dashboard Widget</string>
 		<key>WidgetDeployName</key>
@@ -112,7 +114,11 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array/>
+	<array>
+		<array>
+			<integer>4</integer>
+		</array>
+	</array>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>

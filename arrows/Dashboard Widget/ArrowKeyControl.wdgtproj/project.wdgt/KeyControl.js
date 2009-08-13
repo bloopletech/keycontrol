@@ -81,11 +81,9 @@ var playing = false;
 var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
 var allowedCodes = [37, 38, 39, 40];
 
-var allowedTime = 750;
+var allowedTime = 0;
 var character = '';
-var lastChar = null;
 var startTime = null;
-var endTime = null;
 var score = 0;
 
 var timeUsedInterval = null;
@@ -109,17 +107,17 @@ function playGame(event)
    $("biginfo").style.visibility = "visible";
 
    score = 0;
-   allowedTime = 750;
+   allowedTime = 1000;
 
    setTimeout(function()
    {
       $("biginfo").style.visibility = "hidden";
       $("score").innerHTML = "GO!";
-      character = '';
+      character = generateCharacter();
 
       startRound();
       playing = true;
-   }, 3000);
+   }, 1500);
 }
 
 function startRound()
@@ -128,7 +126,7 @@ function startRound()
    $("out").innerHTML = character;
 
    $("time_used").style.width = "13px";
-   timeUsedInterval = window.setInterval(updateTimeUsed, 50);
+   timeUsedInterval = window.setInterval(updateTimeUsed, 20);
    
    startTime = new Date();
 }
@@ -153,11 +151,11 @@ function endRound(event)
 
    if(correct)
    {
-      if(diff <= 1000) score += 1000 - diff;
+      score += allowedTime - diff;
       $("score").innerHTML = nice(score);
    }
 
-   if(allowedTime >= 200) allowedTime -= 10;
+   if(allowedTime >= 200) allowedTime -= ((allowedTime - diff) / 2) > 20 ? Math.round(((allowedTime - diff) / 2)) : 20;
 
    startRound();
 }
@@ -182,7 +180,7 @@ function gameOver()
          }
       };
 
-      //ajax.open("GET", "http://kc.bloople.net/add/dashboard/11/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
+      //ajax.open("GET", "http://akc.bloople.net/add/dashboard/11/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
       // + "?" + Math.random());
       //ajax.send(" ");
    }
@@ -192,12 +190,12 @@ function gameOver()
       $("biginfo").style.visibility = "hidden";
       $("play").style.visibility = "visible";
       if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
-   }, 3000);
+   }, 1500);
 }
 
 function gotoSite(event)
 {
-   window.widget.openURL("http://kc.bloople.net");
+   window.widget.openURL("http://akc.bloople.net");
 }
 
 function updateTimeUsed()
@@ -205,11 +203,11 @@ function updateTimeUsed()
    var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
    if(ratio > 1)
    {
-      $("time_used").style.width = "207px";
+      $("time_used").style.width = "189px";
       window.clearInterval(timeUsedInterval);
    }
    else
    {
-      $("time_used").style.width = (ratio * 194) + 13 + "px";
+      $("time_used").style.width = (ratio * 176) + 13 + "px";
    }
 }

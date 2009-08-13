@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppIconImageSettings</key>
-	<string>image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.6095,0.6095,0.6095; image-bottom-color: 0.1946,0.1946,0.1946; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.3467,0.3467,0.3467; image-border-width: 1; shine-on: 1; shine-strength: 0.00; shine-alpha-level: 0.73; shine-height: 0.61; glass-arc-height: 0.10; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;</string>
+	<string>image-theme: 0; image-shape: 3; image-opacity: 1.00; image-top-color: 0.113138683,0.142335773,0.777372241,1; image-bottom-color: 0.609499991,0.609499991,0.609499991,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.295613021,0.295613021,0.295613021,1; image-border-width: 1; shine-on: 1; shine-strength: 0.13; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.10; embossed-on: 0; embossed-depth: 0; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;</string>
 	<key>CYBackwardCompatibleExport</key>
 	<false/>
 	<key>CYProjectFormatVersion</key>
@@ -13,6 +13,8 @@
 	<key>MainJS</key>
 	<string>KeyControl.js</string>
 	<key>UseCustomAppIcon</key>
+	<true/>
+	<key>UseCustomDefaultImage</key>
 	<true/>
 </dict>
 </plist>

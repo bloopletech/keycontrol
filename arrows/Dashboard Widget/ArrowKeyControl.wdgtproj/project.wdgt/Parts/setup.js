@@ -12,6 +12,6 @@ var dashcodePartSpecs = {
     "out": { "creationFunction": "CreateText" },
     "passDesc": { "creationFunction": "CreateText", "text": "Password:" },
     "play": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "playGame", "rightImageWidth": 5, "text": "Play" },
-    "score": { "creationFunction": "CreateText", "text": "Have Fun!" },
+    "score": { "creationFunction": "CreateText", "text": "Have fun!" },
     "userDesc": { "creationFunction": "CreateText", "text": "Username:" }
 };

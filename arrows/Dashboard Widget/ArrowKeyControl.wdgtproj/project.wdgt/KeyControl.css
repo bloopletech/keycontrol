@@ -13,8 +13,8 @@ body {
     top: 0px;
     left: 0px;
     right: 0px;
-    width: auto;
     bottom: 0px;
+    width: auto;
     height: auto;
 }
 
@@ -24,8 +24,8 @@ body {
     bottom: 18px;
     width: 13px;
     height: 13px;
-    left: auto;
-    top: 172px;
+    top: 151px;
+    left: 16px;
 }
 
 #back {
@@ -62,12 +62,12 @@ body {
     font-family: HelveticaNeue;
     text-align: right;
     padding: 0px;
-    left: 25px;
-    width: 170px;
-    font-size: 18pt;
     line-height: 18pt;
     height: 27px;
-    top: 148px;
+    top: 133px;
+    width: 150px;
+    left: 25px;
+    font-size: 17pt;
 }
 
 #biginfo {
@@ -76,11 +76,11 @@ body {
     overflow: hidden;
     color: rgb(255, 255, 255);
     text-align: center;
-    width: 134px;
     font-size: 18pt;
     font-family: HelveticaNeue-Bold;
-    top: 68px;
-    left: 43px;
+    width: 134px;
+    left: 34px;
+    top: 67px;
     height: auto;
     visibility: hidden;
 }
@@ -118,23 +118,24 @@ body {
     text-align: center;
     font-size: 22px;
     width: 130px;
-    left: 45px;
     height: 64px;
-    top: 50px;
+    left: 34px;
+    top: 46px;
 }
 
 #out {
     position: absolute;
     color: rgb(255, 255, 255);
-    top: 19px;
     font-weight: bold;
     font-family: 'Helvetica Neue';
     left: 25px;
-    width: 170px;
+    width: 150px;
+    top: 25px;
+    height: 106px;
     text-align: center;
-    height: 120px;
-    font-size: 90pt;
-    line-height: 90pt;
+    letter-spacing: 4px;
+    line-height: 75pt;
+    font-size: 75pt;
     visibility: hidden;
 }
 
@@ -192,7 +193,7 @@ body {
     left: 0px;
     right: 0px;
     width: auto;
-    top: 0px;
-    bottom: 0px;
     height: auto;
+    bottom: 0px;
+    top: 0px;
 }
