@@ -25,11 +25,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>fa0884865a34b041</string>
+		<string>e4f33a4edf36b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojKqfSQ1/ArrowKeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojqkDOXZ/ArrowKeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -37,13 +37,13 @@
 		<key>percent-type</key>
 		<integer>1</integer>
 		<key>percent-x</key>
-		<real>0.1840277761220932</real>
+		<real>0.39097222685813904</real>
 		<key>percent-y</key>
-		<real>0.10666666924953461</real>
+		<real>0.31222221255302429</real>
 		<key>pos-x</key>
-		<integer>265</integer>
+		<integer>563</integer>
 		<key>pos-y</key>
-		<integer>96</integer>
+		<integer>281</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
@@ -114,12 +114,17 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array/>
+	<array>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+		</array>
+	</array>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>
 	<array>
-		<string>back</string>
+		<string>front</string>
 	</array>
 </dict>
 </plist>

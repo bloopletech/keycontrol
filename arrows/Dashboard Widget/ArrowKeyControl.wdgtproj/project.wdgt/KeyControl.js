@@ -82,6 +82,7 @@ var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
 var allowedCodes = [37, 38, 39, 40];
 
 var allowedTime = 0;
+var percentChange = 0;
 var character = '';
 var startTime = null;
 var score = 0;
@@ -107,7 +108,8 @@ function playGame(event)
    $("biginfo").style.visibility = "visible";
 
    score = 0;
-   allowedTime = 1000;
+   allowedTime = 1500;
+   percentChange = 0.01;
 
    setTimeout(function()
    {
@@ -155,7 +157,12 @@ function endRound(event)
       $("score").innerHTML = nice(score);
    }
 
-   if(allowedTime >= 200) allowedTime -= ((allowedTime - diff) / 2) > 20 ? Math.round(((allowedTime - diff) / 2)) : 20;
+   if(allowedTime >= 200)
+   {
+      var allowedTimeChange = Math.round((allowedTime - diff) * percentChange);
+      allowedTime -= allowedTimeChange > 20 ? allowedTimeChange : 20;
+      percentChange += 0.01;
+   }
 
    startRound();
 }
@@ -180,9 +187,9 @@ function gameOver()
          }
       };
 
-      //ajax.open("GET", "http://akc.bloople.net/add/dashboard/11/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
-      // + "?" + Math.random());
-      //ajax.send(" ");
+      ajax.open("GET", "http://akc.bloople.net/add/dashboard/10/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
+       + "?" + Math.random());
+      ajax.send(" ");
    }
 
    setTimeout(function()
