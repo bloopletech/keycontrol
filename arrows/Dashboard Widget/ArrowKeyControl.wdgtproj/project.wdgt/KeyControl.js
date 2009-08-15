@@ -108,7 +108,7 @@ function playGame(event)
    $("biginfo").style.visibility = "visible";
 
    score = 0;
-   allowedTime = 1500;
+   allowedTime = 1000;
    percentChange = 0.01;
 
    setTimeout(function()
@@ -157,10 +157,10 @@ function endRound(event)
       $("score").innerHTML = nice(score);
    }
 
-   if(allowedTime >= 200)
+   if(allowedTime > 200)
    {
-      var allowedTimeChange = Math.round((allowedTime - diff) * percentChange);
-      allowedTime -= allowedTimeChange > 20 ? allowedTimeChange : 20;
+      var allowedTimeChange = Math.round(((allowedTime > 750 ? 750 : allowedTime) - diff) * percentChange);
+      allowedTime -= allowedTimeChange > 15 ? allowedTimeChange : 15;
       percentChange += 0.01;
    }
 

@@ -25,25 +25,25 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>e4f33a4edf36b041</string>
+		<string>eaca83682537b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojqkDOXZ/ArrowKeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojGE952i/ArrowKeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
 		<integer>0</integer>
 		<key>percent-type</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>percent-x</key>
-		<real>0.39097222685813904</real>
+		<real>0.38472223281860352</real>
 		<key>percent-y</key>
-		<real>0.31222221255302429</real>
+		<real>0.15666666626930237</real>
 		<key>pos-x</key>
-		<integer>563</integer>
+		<integer>686</integer>
 		<key>pos-y</key>
-		<integer>281</integer>
+		<integer>141</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
@@ -75,7 +75,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>1 191 1440 687 0 0 1440 878 </string>
+	<string>2 191 1440 687 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -114,12 +114,7 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array>
-		<array>
-			<integer>0</integer>
-			<integer>0</integer>
-		</array>
-	</array>
+	<array/>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>

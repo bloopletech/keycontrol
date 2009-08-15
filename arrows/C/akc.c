@@ -45,27 +45,28 @@ int main(int argc, char** argv)
    OUT("\033[?25l");
 
    int score = 0;
-   int chars[] = { 0, 0, 0, 0 };
+   int character = rand() % 4;
+   int allowedTime = 1000;
+   double percentChange = 0.01;
+   int allowedTimeChange = 0;
    //left up right down
    char* allowedChars[] = { "\xe2\x97\x80 ", "\xe2\x96\xb2 ", "\xe2\x96\xb6 ", "\xe2\x96\xbc " };
    int allowedCodes[] = { 68, 65, 67, 66 };
    char buffer[] = "\0\0\0\0\0";
    int firstTime = 0;
-   
-   for(int i = 0; i < 3; i++) chars[i] = rand() % 4;
 
    while(1)
    {
-      for(int i = 0; i < 4; i++) OUT(allowedChars[chars[i]]);
+      OUT(allowedChars[character]);
 
       if(firstTime == 0)
       {
-         OUT("   ");
+         OUT(" ");
          firstTime = 1;
       }
       else
       {
-         OUT("\033[3C");
+         OUT("\033[1C");
       }
 
       printf("%i", score);
@@ -79,41 +80,26 @@ int main(int argc, char** argv)
       struct timeval after;
       gettimeofday(&after, NULL);
       
-      long long int diff = ((after.tv_sec * 1000000) + after.tv_usec) - ((before.tv_sec * 1000000) + before.tv_usec);
+      long long int diff = round((((after.tv_sec * 1000000) + after.tv_usec) - ((before.tv_sec * 1000000) + before.tv_usec)) / 1000.0);
+      int valid = buffer[2] == allowedCodes[character];
 
-      int valid = buffer[2] == allowedCodes[chars[0]];
-
-      int spaces = 2;
-      int scoreTemp = score;
-      while(scoreTemp > 0)
-      {
-         spaces++;
-         scoreTemp = scoreTemp / 10;
-      }
-
-      if(spaces == 2) spaces = 3;
-
-      printf("\033[%iD", spaces);
-
-      if(diff < 50000 || diff > 1000000)
+      if(diff < 50 || diff > allowedTime || !valid || (count > 3))
       {
          OUT("\n\033[?25h");
          return 0;
       }
-      if((count > 3) || !valid)
-      {
-         OUT("X\033[100D");
-         score -= 100;
-      }
       else
       {
-         score += 1000 - round(diff / 1000.0);
+         score += allowedTime - diff;
          OUT(" \033[100D");
       }
 
-      chars[0] = chars[1];
-      chars[1] = chars[2];
-      chars[2] = chars[3];
-      chars[3] = rand() % 4;
+      character = rand() % 4;
+      if(allowedTime > 200)
+      {
+         allowedTimeChange = round(((allowedTime > 750 ? 750 : allowedTime) - diff) * percentChange);
+         allowedTime -= allowedTimeChange > 15 ? allowedTimeChange : 15;
+         percentChange += 0.01;
+      }
    }
 }
