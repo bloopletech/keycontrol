@@ -109,7 +109,7 @@ function playGame(event)
 
    score = 0;
    allowedTime = 1000;
-   percentChange = 0.01;
+   percentChange = 0.005;
 
    setTimeout(function()
    {
@@ -139,6 +139,7 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
+   alert(allowedTime);
 
    $("time_used").style.width = "0px";
    window.clearInterval(timeUsedInterval);
@@ -157,11 +158,12 @@ function endRound(event)
       $("score").innerHTML = nice(score);
    }
 
-   if(allowedTime > 200)
+   //scoring version 1
+   if(allowedTime > 300)
    {
-      var allowedTimeChange = Math.round(((allowedTime > 750 ? 750 : allowedTime) - diff) * percentChange);
-      allowedTime -= allowedTimeChange > 15 ? allowedTimeChange : 15;
-      percentChange += 0.01;
+      var allowedTimeChange = Math.round((allowedTime - diff) * percentChange * 0.5);
+      allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
+      percentChange += 0.005;
    }
 
    startRound();

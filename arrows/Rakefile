@@ -1,0 +1,29 @@
+task :default => [:check_scoring_versions]
+
+task :check_scoring_versions do
+  last_version = 0
+  files = { './C/akc.c' => 0, './Dashboard Widget/ArrowKeyControl.wdgtproj/project.wdgt/KeyControl.js' => 0, './Konfabulator Widget/ArrowKeyControl.widget/Contents/ArrowKeyControl.kon' => 0 }
+  files.each_pair do |fn, ver|
+    fnr = File.expand_path(fn)
+    unless File.exists?(fnr)
+      puts "Missing file #{fn}"
+      next
+    end
+
+    File.read(fnr) =~ /scoring version (\d+)$/
+
+    unless $1
+      puts "File #{fn} missing scoring version"
+      next
+    end
+    
+    files[fn] = $1.to_i
+  end
+
+  current_ver_fn, current_ver_ver = files.sort { |(ak, av), (bk, bv)| bv <=> av }.first
+  puts "Current version is #{current_ver_ver}"
+  files.delete_if { |k, v| v == current_ver_ver || v == 0 }
+  files.each_pair do |k, v|
+    puts "File #{k} has wrong version #{v}"
+  end
+end

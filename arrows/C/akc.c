@@ -47,7 +47,7 @@ int main(int argc, char** argv)
    int score = 0;
    int character = rand() % 4;
    int allowedTime = 1000;
-   double percentChange = 0.01;
+   double percentChange = 0.005;
    int allowedTimeChange = 0;
    //left up right down
    char* allowedChars[] = { "\xe2\x97\x80 ", "\xe2\x96\xb2 ", "\xe2\x96\xb6 ", "\xe2\x96\xbc " };
@@ -94,12 +94,13 @@ int main(int argc, char** argv)
          OUT(" \033[100D");
       }
 
+      //scoring version 1
       character = rand() % 4;
-      if(allowedTime > 200)
+      if(allowedTime > 300)
       {
-         allowedTimeChange = round(((allowedTime > 750 ? 750 : allowedTime) - diff) * percentChange);
-         allowedTime -= allowedTimeChange > 15 ? allowedTimeChange : 15;
-         percentChange += 0.01;
+         allowedTimeChange = round((allowedTime - diff) * percentChange * 0.5);
+         allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
+         percentChange += 0.005;
       }
    }
 }
