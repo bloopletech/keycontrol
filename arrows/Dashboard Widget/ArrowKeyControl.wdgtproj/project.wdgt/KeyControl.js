@@ -139,7 +139,6 @@ function endRound(event)
    if(!playing) return;
 
    var diff = (new Date()).getTime() - startTime.getTime();
-   alert(allowedTime);
 
    $("time_used").style.width = "0px";
    window.clearInterval(timeUsedInterval);
