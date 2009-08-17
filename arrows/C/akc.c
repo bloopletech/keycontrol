@@ -47,13 +47,15 @@ int main(int argc, char** argv)
    int score = 0;
    int character = rand() % 4;
    int allowedTime = 1000;
-   double percentChange = 0.005;
+   double percentChange = 0.01;
    int allowedTimeChange = 0;
    //left up right down
    char* allowedChars[] = { "\xe2\x97\x80 ", "\xe2\x96\xb2 ", "\xe2\x96\xb6 ", "\xe2\x96\xbc " };
    int allowedCodes[] = { 68, 65, 67, 66 };
    char buffer[] = "\0\0\0\0\0";
    int firstTime = 0;
+   
+   sleep(1.5);
 
    while(1)
    {
@@ -94,13 +96,13 @@ int main(int argc, char** argv)
          OUT(" \033[100D");
       }
 
-      //scoring version 1
+      //scoring version 2
       character = rand() % 4;
       if(allowedTime > 300)
       {
-         allowedTimeChange = round((allowedTime - diff) * percentChange * 0.5);
+         allowedTimeChange = round((allowedTime - diff) * percentChange);
          allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
-         percentChange += 0.005;
+         if(percentChange < 0.25) percentChange += 0.01;
       }
    }
 }

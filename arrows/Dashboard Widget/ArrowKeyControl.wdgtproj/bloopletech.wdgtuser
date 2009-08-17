@@ -25,11 +25,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>6762ba304738b041</string>
+		<string>69e04b567639b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtproj37tbgk/ArrowKeyControl.wdgtproj/project.wdgt/</string>
+		<string>/private/var/folders/PJ/PJyat+HdFRmhBcZy-yqaR++++TI/-Tmp-/Dashcode/.ArrowKeyControl.wdgtprojPBZ9xl/ArrowKeyControl.wdgtproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -75,7 +75,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>2 191 1440 687 0 0 1440 878 </string>
+	<string>-4 191 1440 687 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
