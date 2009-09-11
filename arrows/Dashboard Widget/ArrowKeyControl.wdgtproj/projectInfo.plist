@@ -2,19 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AppIconImageSettings</key>
-	<string>image-theme: 0; image-shape: 3; image-opacity: 1.00; image-top-color: 0.113138683,0.142335773,0.777372241,1; image-bottom-color: 0.609499991,0.609499991,0.609499991,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.295613021,0.295613021,0.295613021,1; image-border-width: 1; shine-on: 1; shine-strength: 0.13; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.10; embossed-on: 0; embossed-depth: 0; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;</string>
-	<key>CYBackwardCompatibleExport</key>
-	<false/>
+	<key>AvailableProducts</key>
+	<dict>
+		<key>Widget</key>
+		<dict>
+			<key>AppIconImageSettings</key>
+			<string>image-theme: 0; image-shape: 3; image-opacity: 1.00; image-top-color: 0.113138683,0.142335773,0.777372241,1; image-bottom-color: 0.609499991,0.609499991,0.609499991,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.295613021,0.295613021,0.295613021,1; image-border-width: 1; shine-on: 1; shine-strength: 0.13; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.10; embossed-on: 0; embossed-depth: 0; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;</string>
+			<key>CYBackwardCompatibleExport</key>
+			<false/>
+			<key>MainCSS</key>
+			<string>KeyControl.css</string>
+			<key>MainJS</key>
+			<string>KeyControl.js</string>
+			<key>ProductDir</key>
+			<string>widget.wdgt</string>
+			<key>UseCustomAppIcon</key>
+			<true/>
+			<key>UseCustomDefaultImage</key>
+			<true/>
+		</dict>
+	</dict>
 	<key>CYProjectFormatVersion</key>
-	<integer>14</integer>
-	<key>MainCSS</key>
-	<string>KeyControl.css</string>
-	<key>MainJS</key>
-	<string>KeyControl.js</string>
-	<key>UseCustomAppIcon</key>
-	<true/>
-	<key>UseCustomDefaultImage</key>
+	<integer>40</integer>
+	<key>IsInCodeGeneratorMode</key>
 	<true/>
 </dict>
 </plist>

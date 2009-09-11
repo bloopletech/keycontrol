@@ -8,16 +8,12 @@
 		<integer>8</integer>
 		<key>SplitViewConfig</key>
 		<integer>3</integer>
-		<key>_collapsingFrameDimension</key>
-		<real>0.0</real>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
-		<key>_percentageOfCollapsedView</key>
-		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1196, 248}}</string>
-			<string>{{0, 258}, {1196, 387}}</string>
+			<string>{{0, 0}, {1195, 241}}</string>
+			<string>{{0, 251}, {1195, 459}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -62,36 +58,28 @@
 	<string>363 458 479 226 0 0 1440 878 </string>
 	<key>MainSplitViewGeometry</key>
 	<dict>
-		<key>_collapsingFrameDimension</key>
-		<real>0.0</real>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
-		<key>_percentageOfCollapsedView</key>
-		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {243, 666}}</string>
-			<string>{{244, 0}, {1197, 666}}</string>
+			<string>{{0, 0}, {244, 731}}</string>
+			<string>{{245, 0}, {1196, 731}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>-4 191 1440 687 0 0 1440 878 </string>
+	<string>1 126 1440 752 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
 		<integer>5</integer>
 		<key>SplitViewConfig</key>
-		<integer>3</integer>
-		<key>_collapsingFrameDimension</key>
-		<real>0.0</real>
+		<integer>1</integer>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
-		<key>_percentageOfCollapsedView</key>
-		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {245, 323}}</string>
-			<string>{{0, 333}, {245, 312}}</string>
+			<string>{{0, 0}, {246, 388}}</string>
+			<string>{{0, 398}, {246, 312}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -121,5 +109,25 @@
 	<array>
 		<string>front</string>
 	</array>
+	<key>Widget</key>
+	<dict>
+		<key>Objects view expanded items</key>
+		<array>
+			<array>
+				<integer>0</integer>
+			</array>
+		</array>
+		<key>Objects view last selections</key>
+		<array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+		</array>
+		<key>Visible StackLayout Views</key>
+		<array>
+			<string>front</string>
+		</array>
+	</dict>
 </dict>
 </plist>
