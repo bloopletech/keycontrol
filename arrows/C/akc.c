@@ -92,17 +92,16 @@ int main(int argc, char** argv)
       }
       else
       {
-         score += allowedTime - diff;
+         score += 1000 - diff;
          OUT(" \033[100D");
       }
 
-      //scoring version 2
+      //scoring version 3
       character = rand() % 4;
       if(allowedTime > 300)
       {
          allowedTimeChange = round((allowedTime - diff) * percentChange);
          allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
-         if(percentChange < 0.25) percentChange += 0.01;
       }
    }
 }
