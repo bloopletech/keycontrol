@@ -109,7 +109,7 @@ function playGame(event)
 
    score = 0;
    allowedTime = 1000;
-   percentChange = 0.08;
+   percentChange = 0.1;
 
    setTimeout(function()
    {
@@ -153,7 +153,7 @@ function endRound(event)
 
    if(correct)
    {
-      score += allowedTime - diff;
+      score += (1000 - diff);
       $("score").innerHTML = nice(score);
    }
 
@@ -161,9 +161,7 @@ function endRound(event)
    if(allowedTime > 300)
    {
       var allowedTimeChange = Math.round((allowedTime - diff) * percentChange);
-      //console.log("diff " + diff + ", change " + (allowedTimeChange > 10 ? allowedTimeChange : 10) + ", now " + allowedTime);
       allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
-      //if(percentChange < 0.15) percentChange += 0.05;
    }
 
    startRound();

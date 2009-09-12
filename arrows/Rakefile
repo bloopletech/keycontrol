@@ -2,7 +2,7 @@ task :default => [:check_scoring_versions]
 
 task :check_scoring_versions do
   last_version = 0
-  files = { './C/akc.c' => 0, './Dashboard Widget/ArrowKeyControl.wdgtproj/project.wdgt/KeyControl.js' => 0, './Konfabulator Widget/ArrowKeyControl.widget/Contents/ArrowKeyControl.kon' => 0 }
+  files = { './C/akc.c' => 0, './Dashboard Widget/ArrowKeyControl.wdgtproj/project/widget.wdgt/KeyControl.js' => 0, './Konfabulator Widget/ArrowKeyControl.widget/Contents/ArrowKeyControl.kon' => 0 }
   files.each_pair do |fn, ver|
     fnr = File.expand_path(fn)
     unless File.exists?(fnr)

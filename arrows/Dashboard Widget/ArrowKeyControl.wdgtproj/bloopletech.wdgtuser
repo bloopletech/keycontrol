@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CYLastWindowPosition</key>
+	<string>{49, 422}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -67,7 +69,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>1 126 1440 752 0 0 1440 878 </string>
+	<string>0 126 1440 752 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -112,15 +114,10 @@
 	<key>Widget</key>
 	<dict>
 		<key>Objects view expanded items</key>
-		<array>
-			<array>
-				<integer>0</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Objects view last selections</key>
 		<array>
 			<array>
-				<integer>0</integer>
 				<integer>0</integer>
 			</array>
 		</array>
