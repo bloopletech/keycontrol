@@ -11,9 +11,9 @@
 			<key>CYBackwardCompatibleExport</key>
 			<true/>
 			<key>MainCSS</key>
-			<string>KeyControl.css</string>
+			<string>ArrowKeyControl.css</string>
 			<key>MainJS</key>
-			<string>KeyControl.js</string>
+			<string>ArrowKeyControl.js</string>
 			<key>ProductDir</key>
 			<string>widget.wdgt</string>
 			<key>UseCustomAppIcon</key>

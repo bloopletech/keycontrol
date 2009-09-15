@@ -75,7 +75,7 @@
 		<key>ContentSplitViewConfig</key>
 		<integer>5</integer>
 		<key>SplitViewConfig</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
 		<key>sizes</key>
@@ -114,7 +114,11 @@
 	<key>Widget</key>
 	<dict>
 		<key>Objects view expanded items</key>
-		<array/>
+		<array>
+			<array>
+				<integer>0</integer>
+			</array>
+		</array>
 		<key>Objects view last selections</key>
 		<array>
 			<array>
