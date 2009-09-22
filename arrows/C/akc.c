@@ -55,7 +55,7 @@ int main(int argc, char** argv)
    char buffer[] = "\0\0\0\0\0";
    int firstTime = 0;
    
-   sleep(1.5);
+   sleep(1);
 
    while(1)
    {
