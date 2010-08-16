@@ -3,7 +3,7 @@ BINDIR=$(PREFIX)/local/bin
 MANDIR=$(PREFIX)/share/man
 
 all:
-	gcc -Wall -pedantic -std=c99 -o akc akc.c
+	gcc -Wall -pedantic -std=c99 -lm -o akc akc.c
 
 install:
 	cp ./akc $(BINDIR)/
