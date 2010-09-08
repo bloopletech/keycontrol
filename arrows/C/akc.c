@@ -2,7 +2,6 @@
 #if !defined(BSD) && !defined(__APPLE__)
   #include <stdio_ext.h>
   #include <time.h>
-  #include <stat.h>
 #endif
 #include <stdlib.h>
 #include <ctype.h>
