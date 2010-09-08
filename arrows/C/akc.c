@@ -1,6 +1,7 @@
 #include <stdio.h>
 #if !defined(BSD) && !defined(__APPLE__)
   #include <stdio_ext.h>
+  #include <time.h>
   #include <stat.h>
 #endif
 #include <stdlib.h>
@@ -9,7 +10,6 @@
 #include <math.h>
 #include <unistd.h>
 #include <termios.h>
-#include <time.h>
 #include <sys/time.h>
 #include <sys/stat.h>
 
