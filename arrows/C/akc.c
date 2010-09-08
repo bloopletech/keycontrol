@@ -1,6 +1,7 @@
 #include <stdio.h>
-#if !defined(BSD) || !defined(__APPLE__)
-  #include <stdio_ext.h> //include only if there
+#if !defined(BSD) && !defined(__APPLE__)
+  #include <stdio_ext.h>
+  #include <stat.h>
 #endif
 #include <stdlib.h>
 #include <ctype.h>
@@ -8,11 +9,10 @@
 #include <math.h>
 #include <unistd.h>
 #include <termios.h>
+#include <time.h>
 #include <sys/time.h>
-#if !defined(BSD) || !defined(__APPLE__)
-  #include <time.h> //include only if there
-  #include <sys/stat.h> //include only if there
-#endif
+#include <sys/stat.h>
+
 
 #define OUT(x) fputs((x), stdout)
 
