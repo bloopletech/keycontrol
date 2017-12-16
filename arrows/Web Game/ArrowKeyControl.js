@@ -7,12 +7,6 @@ var ajax = null;
 function load() {
   setupParts();
 
-  (new Image()).src = "Images/left.png";
-  (new Image()).src = "Images/up.png";
-  (new Image()).src = "Images/right.png";
-  (new Image()).src = "Images/down.png";
-
-  //document.body.onkeydown = endRound;
   window.onkeydown = endRound;
   ajax = new XMLHttpRequest();
   ajax.overrideMimeType("text/plain");
@@ -73,7 +67,7 @@ function nice(num) {
 
 var playing = false;
 //left up right down
-var codesMap = { 37: "Images/left.png", 38: "Images/up.png", 39: "Images/right.png", 40: "Images/down.png" };
+var codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
 var allowedCodes = [37, 38, 39, 40];
 
 var allowedTime = 0;
@@ -93,8 +87,7 @@ function generateCode() {
 
 function playGame(event) {
   $("play").style.visibility = "hidden";
-  $("out").src = "Images/blank.png";
-  $("outWrapper").style.visibility = "visible";
+  $("out").style.visibility = "visible";
 
   $("biginfo").innerHTML = "Wait...";
   $("biginfo").style.visibility = "visible";
@@ -115,7 +108,8 @@ function playGame(event) {
 
 function startRound() {
   code = generateCode();
-  $("out").src = codesMap[code];
+  $("out").classList.remove("left", "up", "right", "down");
+  $("out").classList.add(codesMap[code]);
 
   $("time_used").style.width = "13px";
   timeUsedInterval = window.setInterval(updateTimeUsed, 20);
@@ -155,7 +149,7 @@ function endRound(event) {
 
 function gameOver() {
   playing = false;
-  $("outWrapper").style.visibility = "hidden";
+  $("out").style.visibility = "hidden";
   $("biginfo").innerHTML = "Game Over";
   $("biginfo").style.visibility = "visible";
 

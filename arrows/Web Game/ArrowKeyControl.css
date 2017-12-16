@@ -2,18 +2,22 @@
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans'), local('OpenSans-Regular'), url(OpenSans-Regular.ttf) format('truetype');
+  src: local('Open Sans'), local('OpenSans-Regular'), url(fonts/OpenSans-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(OpenSans-Bold.ttf) format('truetype');
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/OpenSans-Bold.ttf) format('truetype');
 }
 
 body {
   margin: 0px;
+}
+
+* {
+  font-family: 'Open Sans';
 }
 
 #front, #back {
@@ -24,15 +28,12 @@ body {
   position: relative;
 }
 
-#frontImg {
-  position: absolute;
-  display: block;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  width: auto;
-  height: auto;
+#back {
+  background: url('images/sprites.png') -1px -1px;
+}
+
+#front {
+  background: url('images/sprites.png') -1px -183px;
 }
 
 #info {
@@ -49,17 +50,6 @@ body {
   display: none;
 }
 
-#backImg {
-  display: block;
-  -khtml-margin-top-collapse: separate;
-  -khtml-margin-bottom-collapse: separate;
-  position: absolute;
-  left: 0px;
-  width: 200px;
-  height: 180px;
-  top: 0px;
-}
-
 #done {
   position: absolute;
   right: 25px;
@@ -73,7 +63,6 @@ body {
   text-overflow: ellipsis;
   overflow: hidden;
   color: rgb(255, 255, 255);
-  font-family: 'Open Sans';
   text-align: right;
   padding: 0px;
   line-height: 18pt;
@@ -91,7 +80,6 @@ body {
   color: rgb(255, 255, 255);
   text-align: center;
   font-size: 18pt;
-  font-family: 'Open Sans';
   font-weight: bold;
   width: 134px;
   left: 34px;
@@ -109,7 +97,6 @@ body {
 #username {
   position: absolute;
   color: black;
-  font-family: 'Open Sans';
   right: 25px;
   font-size: 10pt;
   left: 25px;
@@ -120,7 +107,6 @@ body {
 #crypt {
   position: absolute;
   color: black;
-  font-family: 'Open Sans';
   font-size: 10pt;
   left: 25px;
   width: 144px;
@@ -129,7 +115,6 @@ body {
 
 #play {
   position: absolute;
-  font-family: 'Open Sans';
   font-weight: bold;
   text-align: center;
   font-size: 22px;
@@ -139,20 +124,36 @@ body {
   top: 46px;
 }
 
-#outWrapper {
+#out {
   position: absolute;
-  left: 25px;
-  width: 150px;
+  left: 52px;
+  width: 96px;
   top: 30px;
   height: 96px;
   text-align: center;
   visibility: hidden;
+  background: none;
+}
+
+#out.left {
+  background: url('images/sprites.png') -203px -183px;
+}
+
+#out.right {
+  background: url('images/sprites.png') -405px -99px;
+}
+
+#out.up {
+  background: url('images/sprites.png') -301px -183px;
+}
+
+#out.down {
+  background: url('images/sprites.png') -405px -1px;
 }
 
 #userDesc {
   position: absolute;
   color: black;
-  font-family: 'Open Sans';
   font-size: 10pt;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -165,7 +166,6 @@ body {
 #passDesc {
   position: absolute;
   color: black;
-  font-family: 'Open Sans';
   font-size: 10pt;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -177,7 +177,6 @@ body {
 
 #netScoringCheckBox {
   position: absolute;
-  font-family: 'Open Sans';
   font-size: 10pt;
   top: 25px;
   left: 25px;
@@ -193,7 +192,7 @@ body {
 }
 
 #time_used {
-  background-image: url(Images/front_time_used.png);
+  background: url('images/sprites.png') -203px -1px;
   width: 0px;
   z-index: 1;
 }
