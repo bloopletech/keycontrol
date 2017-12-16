@@ -1,3 +1,14 @@
+function preference(key, value) {
+  key = "akc-" + key;
+
+  if(arguments.length == 2) {
+    localStorage[key] = value;
+  }
+  else {
+    return localStorage[key];
+  }
+}
+
 function $(x) {
   return document.getElementById(x);
 }
@@ -10,52 +21,40 @@ function load() {
   window.onkeydown = endRound;
   ajax = new XMLHttpRequest();
   ajax.overrideMimeType("text/plain");
+
+  show();
 }
 
 function showBack(event) {
-  $("username").value = widget.preferenceForKey(K('username'));
-  $("crypt").value = widget.preferenceForKey(K('crypt'));
-  $("netScoring").checked = widget.preferenceForKey(K('netScoring')) != "false";
-
-  if(window.widget) widget.prepareForTransition("ToBack");
+  $("username").value = preference('username');
+  $("crypt").value = preference('crypt');
+  $("netScoring").checked = preference('netScoring') != "false";
 
   $("front").style.display = "none";
   $("back").style.display = "block";
-
-  if(window.widget) setTimeout('widget.performTransition();', 0);
 }
 
 function showFront(event) {
-  if(window.widget) widget.prepareForTransition("ToFront");
-
   $("front").style.display = "block";
   $("back").style.display = "none";
 
-  if(window.widget) setTimeout('widget.performTransition();', 0);
-
-  widget.setPreferenceForKey($("username").value, K('username'));
-  widget.setPreferenceForKey($("crypt").value, K('crypt'));
-  widget.setPreferenceForKey($("netScoring").checked ? "true" : "false", K('netScoring'));
+  preference('username', $("username").value);
+  preference('crypt', $("crypt").value);
+  preference('netScoring', $("netScoring").checked ? "true" : "false");
 }
 
 function show() {
-  if(widget.preferenceForKey(K('crypt')) == undefined || widget.preferenceForKey(K('username')) == undefined) {
-    widget.setPreferenceForKey(randomCrypt(20), K('crypt'));
-    widget.setPreferenceForKey('Anonymous-' + randomCrypt(6), K('username'));
+  if((typeof preference('crypt')) == 'undefined' || (typeof preference('username')) == 'undefined') {
+    preference('crypt', randomCrypt(20));
+    preference('username', 'Anonymous-' + randomCrypt(6));
   }
 }
-
-if(window.widget) widget.onshow = show;
 
 function randomCrypt(count) {
   var out = "";
   var randChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   for(var i = 0; i < count; i++) out += randChars.charAt(Math.floor(Math.random() * randChars.length + 1) - 1);
   return out;
-}
-
-function K(key) {
-  return widget.identifier + "-" + key;
 }
 
 function nice(num) {
@@ -153,17 +152,17 @@ function gameOver() {
   $("biginfo").innerHTML = "Game Over";
   $("biginfo").style.visibility = "visible";
 
-  var ns = widget.preferenceForKey(K("netScoring"));
+  var ns = preference("netScoring");
   if(ns == undefined || ns == "true") {
     ajax.onreadystatechange = function(http) {
       if((ajax.readyState == 4) && (ajax.responseText.length > 1)) {
         var parts = ajax.responseText.split("|");
-        if(parts[0] == "1") widget.setPreferenceForKey("false", K("netScoring"));
-        window.widget.openURL(parts[1]);
+        if(parts[0] == "1") preference("netScoring", "false");
+        window.open(parts[1]);
       }
     };
 
-    ajax.open("GET", "http://akc.bloople.net/add/dashboard/10/" + widget.preferenceForKey(K("username")) + "/" + widget.preferenceForKey(K("crypt")) + "/" + score
+    ajax.open("GET", "http://akc.bloople.net/add/dashboard/10/" + preference("username") + "/" + preference("crypt") + "/" + score
      + "?" + Math.random());
     ajax.send(" ");
   }
@@ -176,7 +175,7 @@ function gameOver() {
 }
 
 function gotoSite(event) {
-  window.widget.openURL("http://akc.bloople.net");
+  window.open("http://akc.bloople.net");
 }
 
 function updateTimeUsed() {
