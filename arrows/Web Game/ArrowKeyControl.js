@@ -11,6 +11,12 @@ var ajax = null;
 function load()
 {
     setupParts();
+
+    (new Image()).src = "Images/left.png";
+    (new Image()).src = "Images/up.png";
+    (new Image()).src = "Images/right.png";
+    (new Image()).src = "Images/down.png";
+
     //document.body.onkeydown = endRound;
     window.onkeydown = endRound;
     ajax = new XMLHttpRequest();
@@ -79,31 +85,31 @@ function nice(num)
 
 var playing = false;
 //left up right down
-var allowedChars = "\u25c0\u25b2\u25b6\u25bc";
+var codesMap = { 37: "Images/left.png", 38: "Images/up.png", 39: "Images/right.png", 40: "Images/down.png" };
 var allowedCodes = [37, 38, 39, 40];
 
 var allowedTime = 0;
 var percentChange = 0;
-var character = '';
+var code = '';
 var startTime = null;
 var score = 0;
 
 var timeUsedInterval = null;
 
-function generateCharacter()
+function generateCode()
 {
 
-   /*var newChar = character;
-   while(newChar == character) newChar = allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
-   return newChar;*/
-   return allowedChars.charAt(Math.floor(Math.random() * allowedChars.length + 1) - 1);
+   /*var newCode = code;
+   while(newCode == code) newCode = allowedCodes[Math.floor(Math.random() * allowedCodes.length)];
+   return newCode;*/
+   return allowedCodes[Math.floor(Math.random() * allowedCodes.length)];
 }
 
 function playGame(event)
 {
    $("play").style.visibility = "hidden";
-   $("out").innerHTML = "";
-   $("out").style.visibility = "visible";
+   $("out").src = "Images/blank.png";
+   $("outWrapper").style.visibility = "visible";
 
    $("biginfo").innerHTML = "Wait...";
    $("biginfo").style.visibility = "visible";
@@ -116,7 +122,7 @@ function playGame(event)
    {
       $("biginfo").style.visibility = "hidden";
       $("score").innerHTML = "GO!";
-      character = generateCharacter();
+      code = generateCode();
 
       startRound();
       playing = true;
@@ -125,8 +131,8 @@ function playGame(event)
 
 function startRound()
 {
-   character = generateCharacter();
-   $("out").innerHTML = character;
+   code = generateCode();
+   $("out").src = codesMap[code];
 
    $("time_used").style.width = "13px";
    timeUsedInterval = window.setInterval(updateTimeUsed, 20);
@@ -143,8 +149,8 @@ function endRound(event)
 
    $("time_used").style.width = "0px";
    window.clearInterval(timeUsedInterval);
-   
-   var correct = allowedChars[allowedCodes.indexOf(event.keyCode)] == character;
+
+   var correct = event.keyCode == code;
 
    if(diff < 50 || diff > allowedTime || !correct)
    {
@@ -171,7 +177,7 @@ function endRound(event)
 function gameOver()
 {
    playing = false;
-   $("out").style.visibility = "hidden";
+   $("outWrapper").style.visibility = "hidden";
    $("biginfo").innerHTML = "Game Over";
    $("biginfo").style.visibility = "visible";
 

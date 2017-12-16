@@ -137,19 +137,13 @@ body {
     top: 46px;
 }
 
-#out {
+#outWrapper {
     position: absolute;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-family: 'Open Sans';
     left: 25px;
     width: 150px;
-    top: 25px;
-    height: 106px;
+    top: 30px;
+    height: 96px;
     text-align: center;
-    letter-spacing: 4px;
-    line-height: 75pt;
-    font-size: 75pt;
     visibility: hidden;
 }
 
