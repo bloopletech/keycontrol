@@ -17,10 +17,16 @@ You may edit this file to customize your Dashboard widget.
 }
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
 
-#front, #back { width: 200px; height: 180px; overflow: hidden; position: relative; }
+#front, #back {
+  margin: 100px auto;
+  width: 200px;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
 
 #frontImg {
     position: absolute;
