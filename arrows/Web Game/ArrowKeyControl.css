@@ -41,7 +41,7 @@ body {
   position: relative;
 }
 
-#info {
+#settings {
   position: absolute;
   bottom: 18px;
   left: 18px;
@@ -75,7 +75,7 @@ body {
   font-size: 17pt;
 }
 
-#biginfo {
+#info {
   position: absolute;
   text-overflow: ellipsis;
   overflow: hidden;

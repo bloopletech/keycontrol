@@ -19,7 +19,7 @@ function load() {
   window.onkeydown = endRound;
 
   $("play").addEventListener("click", playGame);
-  $("info").addEventListener("click", showBack);
+  $("settings").addEventListener("click", showBack);
   $("done").addEventListener("click", showFront);
 
   ajax = new XMLHttpRequest();
@@ -89,18 +89,18 @@ function generateCode() {
 
 function playGame(event) {
   $("play").style.display = "none";
-  $("info").style.display = "none";
+  $("settings").style.display = "none";
   $("out").classList.add("blank");
 
-  $("biginfo").innerHTML = "Wait...";
-  $("biginfo").style.display = "block";
+  $("info").innerHTML = "Wait...";
+  $("info").style.display = "block";
 
   score = 0;
   allowedTime = 1000;
   percentChange = 0.1;
 
   setTimeout(function() {
-    $("biginfo").style.display = "none";
+    $("info").style.display = "none";
     $("score").innerHTML = "GO!";
     code = generateCode();
 
@@ -154,8 +154,8 @@ function gameOver() {
   playing = false;
   $("out").classList.remove("left", "up", "right", "down");
   $("out").classList.add("blank");
-  $("biginfo").innerHTML = "Game Over";
-  $("biginfo").style.display = "block";
+  $("info").innerHTML = "Game Over";
+  $("info").style.display = "block";
 
   var ns = preference("netScoring");
   if(ns == undefined || ns == "true") {
@@ -173,9 +173,9 @@ function gameOver() {
   }
 
   setTimeout(function() {
-    $("biginfo").style.display = "none";
+    $("info").style.display = "none";
     $("play").style.display = "block";
-    $("info").style.display = "block";
+    $("settings").style.display = "block";
     if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
   }, 1500);
 }
