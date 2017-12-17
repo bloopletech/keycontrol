@@ -12,6 +12,17 @@
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/OpenSans-Bold.ttf) format('truetype');
 }
 
+.sprite { background: url('Images/sprite.png') no-repeat top left; width: 96px; height: 96px;  } 
+.sprite.back { background-position: 0 0; width: 200px; height: 180px; } 
+.sprite.blank { background-position: -201px 0; } 
+.sprite.down { background-position: -298px 0; } 
+.sprite.front { background-position: -395px 0; width: 200px; height: 180px; } 
+.sprite.front_time_used { background-position: -596px 0; width: 200px; height: 180px; } 
+.sprite.left { background-position: -797px 0; } 
+.sprite.play { background-position: -894px 0; width: 130px; height: 64px; } 
+.sprite.right { background-position: -1025px 0; } 
+.sprite.up { background-position: -1122px 0; } 
+
 body {
   margin: 0px;
 }
@@ -26,14 +37,6 @@ body {
   height: 180px;
   overflow: hidden;
   position: relative;
-}
-
-#back {
-  background: url('images/sprites.png') -1px -1px;
-}
-
-#front {
-  background: url('images/sprites.png') -1px -183px;
 }
 
 #info {
@@ -131,24 +134,6 @@ body {
   top: 30px;
   height: 96px;
   text-align: center;
-  visibility: hidden;
-  background: none;
-}
-
-#out.left {
-  background: url('images/sprites.png') -203px -183px;
-}
-
-#out.right {
-  background: url('images/sprites.png') -405px -99px;
-}
-
-#out.up {
-  background: url('images/sprites.png') -301px -183px;
-}
-
-#out.down {
-  background: url('images/sprites.png') -405px -1px;
 }
 
 #userDesc {
@@ -192,7 +177,6 @@ body {
 }
 
 #time_used {
-  background: url('images/sprites.png') -203px -1px;
   width: 0px;
   z-index: 1;
 }

@@ -85,8 +85,8 @@ function generateCode() {
 }
 
 function playGame(event) {
-  $("play").style.visibility = "hidden";
-  $("out").style.visibility = "visible";
+  $("play").style.display = "none";
+  $("out").classList.add("blank");
 
   $("biginfo").innerHTML = "Wait...";
   $("biginfo").style.visibility = "visible";
@@ -148,7 +148,8 @@ function endRound(event) {
 
 function gameOver() {
   playing = false;
-  $("out").style.visibility = "hidden";
+  $("out").classList.remove("left", "up", "right", "down");
+  $("out").classList.add("blank");
   $("biginfo").innerHTML = "Game Over";
   $("biginfo").style.visibility = "visible";
 
@@ -169,7 +170,7 @@ function gameOver() {
 
   setTimeout(function() {
     $("biginfo").style.visibility = "hidden";
-    $("play").style.visibility = "visible";
+    $("play").style.display = "block";
     if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
   }, 1500);
 }
