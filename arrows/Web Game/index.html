@@ -3,36 +3,37 @@
   <head>
     <meta charset="utf-8">
     <link rel="StyleSheet" type="text/css" href="ArrowKeyControl.css">
-    <script src="Parts/parts.js" charset="utf-8"></script>
-    <script src="WidgetResources/AppleClasses/AppleAnimator.js"></script>
-    <script src="WidgetResources/AppleClasses/AppleButton.js"></script>
-    <script src="WidgetResources/AppleClasses/AppleInfoButton.js"></script>
-    <script src="en.lproj/localizedStrings.js"></script>
     <script src="ArrowKeyControl.js"></script>
   </head>
   <body onload="load();">
     <div id="front" class="sprite front">
-      <div id="time_used" class="sprite front_time_used">
-      </div>
-      <div id="content_wrapper">
-        <div id="info"></div>
+      <div id="time-used" class="sprite front_time_used"></div>
+      <div id="content-wrapper">
         <div id="out" class="sprite blank"></div>
-        <div id="play" class="sprite play"></div>
-        <div id="score"></div>
+        <div id="score">Have fun!</div>
         <div id="biginfo"></div>
+        <div id="play" class="sprite play">Play</div>
+        <div id="info" class="sprite info"></div>
       </div>
     </div>
     <div id="back" class="sprite back">
-      <div id="done"></div>
-      <div id="glassbutton"></div>
-      <div id="netScoringCheckBox">
-        <input type="checkbox" name="Checkbox" id="netScoring">
-        <div style="position: absolute; top: 2px; left: 18px; text-align: left; vertical-align: middle;" id="checkboxbutton1">Internet Scoring</div>
+      <div id="back-content">
+        <div class="input-group">
+          <label for="netScoring">
+            <input type="checkbox" name="Checkbox" id="netScoring">
+            Internet Scoring
+          </label>
+        </div>
+        <div class="input-group">
+          <label for="username">Username:</label>
+          <input type="text" name="" value="" id="username">
+        </div>
+        <div class="input-group">
+          <label for="crypt">Password:</label>
+          <input type="text" name="" value="" id="crypt">
+        </div>
+        <button id="done">Done</button>
       </div>
-      <input type="text" name="" value="" id="username">
-      <div id="userDesc"></div>
-      <input type="text" name="" value="" id="crypt">
-      <div id="passDesc"></div>
     </div>
   </body>
 </html>

@@ -12,16 +12,17 @@
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/OpenSans-Bold.ttf) format('truetype');
 }
 
-.sprite { background: url('Images/sprite.png') no-repeat top left; width: 96px; height: 96px;  } 
+.sprite { background: url('images/sprite.png') no-repeat top left; width: 96px; height: 96px;  } 
 .sprite.back { background-position: 0 0; width: 200px; height: 180px; } 
 .sprite.blank { background-position: -201px 0; } 
 .sprite.down { background-position: -298px 0; } 
 .sprite.front { background-position: -395px 0; width: 200px; height: 180px; } 
 .sprite.front_time_used { background-position: -596px 0; width: 200px; height: 180px; } 
-.sprite.left { background-position: -797px 0; } 
-.sprite.play { background-position: -894px 0; width: 130px; height: 64px; } 
-.sprite.right { background-position: -1025px 0; } 
-.sprite.up { background-position: -1122px 0; } 
+.sprite.info { background-position: -797px 0; width: 18px; height: 18px; } 
+.sprite.left { background-position: -816px 0; } 
+.sprite.play { background-position: -913px 0; width: 130px; height: 64px; } 
+.sprite.right { background-position: -1044px 0; } 
+.sprite.up { background-position: -1141px 0; } 
 
 body {
   margin: 0px;
@@ -29,6 +30,7 @@ body {
 
 * {
   font-family: 'Open Sans';
+  box-sizing: border-box;
 }
 
 #front, #back {
@@ -41,38 +43,35 @@ body {
 
 #info {
   position: absolute;
-  right: 15px;
   bottom: 18px;
-  width: 13px;
-  height: 13px;
-  top: 151px;
-  left: 16px;
+  left: 18px;
 }
 
 #back {
   display: none;
+  font-size: 14px;
+  color: #000;
+}
+
+#back-content {
+  padding: 25px;
 }
 
 #done {
-  position: absolute;
-  right: 25px;
-  margin-left: auto;
-  bottom: 25px;
-  margin-top: auto;
 }
 
 #score {
   position: absolute;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: rgb(255, 255, 255);
+  color: #fff;
   text-align: right;
   padding: 0px;
   line-height: 18pt;
   height: 27px;
   top: 133px;
-  width: 150px;
-  left: 25px;
+  width: 140px;
+  right: 25px;
   font-size: 17pt;
 }
 
@@ -80,40 +79,24 @@ body {
   position: absolute;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: rgb(255, 255, 255);
+  color: #fff;
   text-align: center;
   font-size: 18pt;
   font-weight: bold;
   width: 134px;
-  left: 34px;
+  left: 32px;
   top: 67px;
   height: auto;
-  visibility: hidden;
 }
 
-#glassbutton {
-  position: absolute;
-  left: 25px;
-  top: 132px;
+.input-group {
+  margin-bottom: 1px;
 }
 
-#username {
-  position: absolute;
-  color: black;
-  right: 25px;
-  font-size: 10pt;
-  left: 25px;
-  width: 144px;
-  top: 59px;
-}
-
-#crypt {
-  position: absolute;
-  color: black;
-  font-size: 10pt;
-  left: 25px;
-  width: 144px;
-  top: 101px;
+#username, #crypt {
+  display: inline-block;
+  width: 100%;
+  font-size: 14px;
 }
 
 #play {
@@ -125,6 +108,7 @@ body {
   height: 64px;
   left: 34px;
   top: 46px;
+  line-height: 64px;
 }
 
 #out {
@@ -136,39 +120,7 @@ body {
   text-align: center;
 }
 
-#userDesc {
-  position: absolute;
-  color: black;
-  font-size: 10pt;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  top: 46px;
-  left: 25px;
-  width: auto;
-  height: auto;
-}
-
-#passDesc {
-  position: absolute;
-  color: black;
-  font-size: 10pt;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  left: 25px;
-  top: 89px;
-  width: auto;
-  height: auto;
-}
-
-#netScoringCheckBox {
-  position: absolute;
-  font-size: 10pt;
-  top: 25px;
-  left: 25px;
-  width: 130px;
-}
-
-#time_used, #content_wrapper {
+#time-used, #content-wrapper {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -176,12 +128,12 @@ body {
   height: 200px;
 }
 
-#time_used {
+#time-used {
   width: 0px;
   z-index: 1;
 }
 
-#content_wrapper {
+#content-wrapper {
   z-index: 2;
   left: 0px;
   right: 0px;

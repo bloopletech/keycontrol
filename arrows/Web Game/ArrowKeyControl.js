@@ -16,9 +16,12 @@ function $(x) {
 var ajax = null;
 
 function load() {
-  setupParts();
-
   window.onkeydown = endRound;
+
+  $("play").addEventListener("click", playGame);
+  $("info").addEventListener("click", showBack);
+  $("done").addEventListener("click", showFront);
+
   ajax = new XMLHttpRequest();
   ajax.overrideMimeType("text/plain");
 
@@ -86,17 +89,18 @@ function generateCode() {
 
 function playGame(event) {
   $("play").style.display = "none";
+  $("info").style.display = "none";
   $("out").classList.add("blank");
 
   $("biginfo").innerHTML = "Wait...";
-  $("biginfo").style.visibility = "visible";
+  $("biginfo").style.display = "block";
 
   score = 0;
   allowedTime = 1000;
   percentChange = 0.1;
 
   setTimeout(function() {
-    $("biginfo").style.visibility = "hidden";
+    $("biginfo").style.display = "none";
     $("score").innerHTML = "GO!";
     code = generateCode();
 
@@ -110,7 +114,7 @@ function startRound() {
   $("out").classList.remove("left", "up", "right", "down");
   $("out").classList.add(codesMap[code]);
 
-  $("time_used").style.width = "13px";
+  $("time-used").style.width = "13px";
   timeUsedInterval = window.setInterval(updateTimeUsed, 20);
   
   startTime = new Date();
@@ -122,7 +126,7 @@ function endRound(event) {
 
   var diff = (new Date()).getTime() - startTime.getTime();
 
-  $("time_used").style.width = "0px";
+  $("time-used").style.width = "0px";
   window.clearInterval(timeUsedInterval);
 
   var correct = event.keyCode == code;
@@ -151,7 +155,7 @@ function gameOver() {
   $("out").classList.remove("left", "up", "right", "down");
   $("out").classList.add("blank");
   $("biginfo").innerHTML = "Game Over";
-  $("biginfo").style.visibility = "visible";
+  $("biginfo").style.display = "block";
 
   var ns = preference("netScoring");
   if(ns == undefined || ns == "true") {
@@ -169,8 +173,9 @@ function gameOver() {
   }
 
   setTimeout(function() {
-    $("biginfo").style.visibility = "hidden";
+    $("biginfo").style.display = "none";
     $("play").style.display = "block";
+    $("info").style.display = "block";
     if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
   }, 1500);
 }
@@ -182,10 +187,10 @@ function gotoSite(event) {
 function updateTimeUsed() {
   var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
   if(ratio > 1) {
-    $("time_used").style.width = "189px";
+    $("time-used").style.width = "189px";
     window.clearInterval(timeUsedInterval);
   }
   else {
-    $("time_used").style.width = (ratio * 176) + 13 + "px";
+    $("time-used").style.width = (ratio * 176) + 13 + "px";
   }
 }
