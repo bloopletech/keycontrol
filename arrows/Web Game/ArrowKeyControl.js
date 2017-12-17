@@ -13,21 +13,6 @@ function $(x) {
   return document.getElementById(x);
 }
 
-var ajax = null;
-
-function load() {
-  window.onkeydown = endRound;
-
-  $("play").addEventListener("click", playGame);
-  $("settings").addEventListener("click", showBack);
-  $("done").addEventListener("click", showFront);
-
-  ajax = new XMLHttpRequest();
-  ajax.overrideMimeType("text/plain");
-
-  show();
-}
-
 function showBack(event) {
   $("username").value = preference('username');
   $("crypt").value = preference('crypt');
@@ -46,20 +31,6 @@ function showFront(event) {
   preference('netScoring', $("netScoring").checked ? "true" : "false");
 }
 
-function show() {
-  if((typeof preference('crypt')) == 'undefined' || (typeof preference('username')) == 'undefined') {
-    preference('crypt', randomCrypt(20));
-    preference('username', 'Anonymous-' + randomCrypt(6));
-  }
-}
-
-function randomCrypt(count) {
-  var out = "";
-  var randChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  for(var i = 0; i < count; i++) out += randChars.charAt(Math.floor(Math.random() * randChars.length + 1) - 1);
-  return out;
-}
-
 function nice(num) {
 	var x = num + '';
 	var rgx = /(\d+)(\d{3})/;
@@ -67,25 +38,16 @@ function nice(num) {
 	return x;
 };
 
+var ajax = null;
 var playing = false;
-//left up right down
 var codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
-var allowedCodes = [37, 38, 39, 40];
-
-var allowedTime = 0;
-var percentChange = 0;
+var keyCodes = Object.keys(codesMap);
 var code = '';
+var allowedTime;
+var percentChange;
 var startTime = null;
-var score = 0;
-
+var score;
 var timeUsedInterval = null;
-
-function generateCode() {
-  /*var newCode = code;
-  while(newCode == code) newCode = allowedCodes[Math.floor(Math.random() * allowedCodes.length)];
-  return newCode;*/
-  return allowedCodes[Math.floor(Math.random() * allowedCodes.length)];
-}
 
 function playGame(event) {
   $("play").style.display = "none";
@@ -102,11 +64,28 @@ function playGame(event) {
   setTimeout(function() {
     $("info").style.display = "none";
     $("score").innerHTML = "GO!";
-    code = generateCode();
 
     startRound();
     playing = true;
   }, 1500);
+}
+
+function generateCode() {
+  /*var newCode = code;
+  while(newCode == code) newCode = keyCodes[Math.floor(Math.random() * keyCodes.length)];
+  return newCode;*/
+  return keyCodes[Math.floor(Math.random() * keyCodes.length)];
+}
+
+function updateTimeUsed() {
+  var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
+  if(ratio > 1) {
+    $("time-used").style.width = "189px";
+    window.clearInterval(timeUsedInterval);
+  }
+  else {
+    $("time-used").style.width = (ratio * 176) + 13 + "px";
+  }
 }
 
 function startRound() {
@@ -116,7 +95,7 @@ function startRound() {
 
   $("time-used").style.width = "13px";
   timeUsedInterval = window.setInterval(updateTimeUsed, 20);
-  
+
   startTime = new Date();
 }
 
@@ -157,6 +136,17 @@ function gameOver() {
   $("info").innerHTML = "Game Over";
   $("info").style.display = "block";
 
+  setTimeout(function() {
+    $("info").style.display = "none";
+    $("play").style.display = "block";
+    $("settings").style.display = "block";
+    if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
+  }, 1500);
+  
+  uploadScore(score);
+}
+
+function uploadScore(score) {
   var ns = preference("netScoring");
   if(ns == undefined || ns == "true") {
     ajax.onreadystatechange = function(http) {
@@ -171,26 +161,33 @@ function gameOver() {
      + "?" + Math.random());
     ajax.send(" ");
   }
-
-  setTimeout(function() {
-    $("info").style.display = "none";
-    $("play").style.display = "block";
-    $("settings").style.display = "block";
-    if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
-  }, 1500);
 }
 
-function gotoSite(event) {
-  window.open("http://akc.bloople.net");
+function randomCrypt(count) {
+  var out = "";
+  var randChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  for(var i = 0; i < count; i++) out += randChars.charAt(Math.floor(Math.random() * randChars.length + 1) - 1);
+  return out;
 }
 
-function updateTimeUsed() {
-  var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
-  if(ratio > 1) {
-    $("time-used").style.width = "189px";
-    window.clearInterval(timeUsedInterval);
-  }
-  else {
-    $("time-used").style.width = (ratio * 176) + 13 + "px";
+function initPreferences() {
+  if((typeof preference('crypt')) == 'undefined' || (typeof preference('username')) == 'undefined') {
+    preference('crypt', randomCrypt(20));
+    preference('username', 'Anonymous-' + randomCrypt(6));
   }
 }
+
+function init() {
+  window.onkeydown = endRound;
+
+  $("play").addEventListener("click", playGame);
+  $("settings").addEventListener("click", showBack);
+  $("done").addEventListener("click", showFront);
+
+  ajax = new XMLHttpRequest();
+  ajax.overrideMimeType("text/plain");
+
+  initPreferences();
+}
+
+document.addEventListener("DOMContentLoaded", init);
