@@ -39,12 +39,12 @@ var ajax = null;
 var playing = false;
 var codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
 var keyCodes = Object.keys(codesMap);
-var code = '';
+var code;
 var allowedTime;
 var percentChange;
-var startTime = null;
+var startTime;
 var score;
-var timeUsedInterval = null;
+var timeUsedInterval;
 
 function playGame(event) {
   $("body").classList.add("playing");
