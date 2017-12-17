@@ -142,3 +142,7 @@ body {
   bottom: 0px;
   top: 0px;
 }
+
+body.playing #play, body.playing #settings {
+  display: none;
+}

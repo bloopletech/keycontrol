@@ -9,26 +9,22 @@ function preference(key, value) {
   }
 }
 
-function $(x) {
-  return document.getElementById(x);
-}
-
 function showBack(event) {
-  $("username").value = preference('username');
-  $("crypt").value = preference('crypt');
-  $("netScoring").checked = preference('netScoring') != "false";
+  $("#username").value = preference('username');
+  $("#crypt").value = preference('crypt');
+  $("#netScoring").checked = preference('netScoring') != "false";
 
-  $("front").style.display = "none";
-  $("back").style.display = "block";
+  $("#front").style.display = "none";
+  $("#back").style.display = "block";
 }
 
 function showFront(event) {
-  $("front").style.display = "block";
-  $("back").style.display = "none";
+  $("#front").style.display = "block";
+  $("#back").style.display = "none";
 
-  preference('username', $("username").value);
-  preference('crypt', $("crypt").value);
-  preference('netScoring', $("netScoring").checked ? "true" : "false");
+  preference('username', $("#username").value);
+  preference('crypt', $("#crypt").value);
+  preference('netScoring', $("#netScoring").checked ? "true" : "false");
 }
 
 function nice(num) {
@@ -38,6 +34,7 @@ function nice(num) {
 	return x;
 };
 
+var $;
 var ajax = null;
 var playing = false;
 var codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
@@ -50,20 +47,18 @@ var score;
 var timeUsedInterval = null;
 
 function playGame(event) {
-  $("play").style.display = "none";
-  $("settings").style.display = "none";
-  $("out").classList.add("blank");
+  $("body").classList.add("playing");
 
-  $("info").innerHTML = "Wait...";
-  $("info").style.display = "block";
+  $("#info").innerHTML = "Wait...";
+  $("#info").style.display = "block";
 
   score = 0;
   allowedTime = 1000;
   percentChange = 0.1;
 
   setTimeout(function() {
-    $("info").style.display = "none";
-    $("score").innerHTML = "GO!";
+    $("#info").style.display = "none";
+    $("#score").innerHTML = "GO!";
 
     startRound();
     playing = true;
@@ -80,20 +75,20 @@ function generateCode() {
 function updateTimeUsed() {
   var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
   if(ratio > 1) {
-    $("time-used").style.width = "189px";
+    $("#time-used").style.width = "189px";
     window.clearInterval(timeUsedInterval);
   }
   else {
-    $("time-used").style.width = (ratio * 176) + 13 + "px";
+    $("#time-used").style.width = (ratio * 176) + 13 + "px";
   }
 }
 
 function startRound() {
   code = generateCode();
-  $("out").classList.remove("left", "up", "right", "down");
-  $("out").classList.add(codesMap[code]);
+  $("#out").classList.remove("left", "up", "right", "down");
+  $("#out").classList.add(codesMap[code]);
 
-  $("time-used").style.width = "13px";
+  $("#time-used").style.width = "13px";
   timeUsedInterval = window.setInterval(updateTimeUsed, 20);
 
   startTime = new Date();
@@ -105,7 +100,7 @@ function endRound(event) {
 
   var diff = (new Date()).getTime() - startTime.getTime();
 
-  $("time-used").style.width = "0px";
+  $("#time-used").style.width = "0px";
   window.clearInterval(timeUsedInterval);
 
   var correct = event.keyCode == code;
@@ -117,7 +112,7 @@ function endRound(event) {
 
   if(correct) {
     score += (1000 - diff);
-    $("score").innerHTML = nice(score);
+    $("#score").innerHTML = nice(score);
   }
 
   //scoring version 3
@@ -131,22 +126,26 @@ function endRound(event) {
 
 function gameOver() {
   playing = false;
-  $("out").classList.remove("left", "up", "right", "down");
-  $("out").classList.add("blank");
-  $("info").innerHTML = "Game Over";
-  $("info").style.display = "block";
+  $("#out").classList.remove("left", "up", "right", "down");
+  $("#out").classList.add("blank");
+  $("#info").innerHTML = "Game Over";
+  $("#info").style.display = "block";
 
   setTimeout(function() {
-    $("info").style.display = "none";
-    $("play").style.display = "block";
-    $("settings").style.display = "block";
-    if($("score").innerHTML == "GO!") $("score").innerHTML = "Have Fun!";
+    $("#info").style.display = "none";
+    $("body").classList.remove("playing");
+    if($("#score").innerHTML == "GO!") $("#score").innerHTML = "Have Fun!";
   }, 1500);
-  
+
   uploadScore(score);
 }
 
 function uploadScore(score) {
+  if(ajax == null) {
+    ajax = new XMLHttpRequest();
+    ajax.overrideMimeType("text/plain");
+  }
+
   var ns = preference("netScoring");
   if(ns == undefined || ns == "true") {
     ajax.onreadystatechange = function(http) {
@@ -178,14 +177,13 @@ function initPreferences() {
 }
 
 function init() {
+  $ = document.querySelector.bind(document);
+
   window.onkeydown = endRound;
 
-  $("play").addEventListener("click", playGame);
-  $("settings").addEventListener("click", showBack);
-  $("done").addEventListener("click", showFront);
-
-  ajax = new XMLHttpRequest();
-  ajax.overrideMimeType("text/plain");
+  $("#play").addEventListener("click", playGame);
+  $("#settings").addEventListener("click", showBack);
+  $("#done").addEventListener("click", showFront);
 
   initPreferences();
 }
