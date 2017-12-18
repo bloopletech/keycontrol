@@ -34,7 +34,7 @@ body {
 }
 
 #front, #back {
-  margin: 100px auto;
+  margin: 100px auto 50px auto;
   width: 200px;
   height: 180px;
   overflow: hidden;
@@ -145,4 +145,14 @@ body {
 
 body.playing #play, body.playing #settings {
   display: none;
+}
+
+#description {
+  margin: 0 auto;
+  padding: 25px;
+  max-width: 800px;
+}
+
+p {
+  margin: 0 0 15px 0;
 }
