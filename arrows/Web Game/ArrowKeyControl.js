@@ -27,118 +27,9 @@ function showFront(event) {
   preference('netScoring', $("#netScoring").checked ? "true" : "false");
 }
 
-function nice(num) {
-	var x = num + '';
-	var rgx = /(\d+)(\d{3})/;
-	while(rgx.test(x)) x = x.replace(rgx, '$1' + ',' + '$2');
-	return x;
-};
-
 var $;
+var gameUi;
 var ajax = null;
-var playing = false;
-var codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
-var keyCodes = Object.keys(codesMap);
-var code;
-var allowedTime;
-var percentChange;
-var startTime;
-var score;
-var timeUsedInterval;
-
-function playGame(event) {
-  $("body").classList.add("playing");
-
-  $("#info").innerHTML = "Wait...";
-  $("#info").style.display = "block";
-
-  score = 0;
-  allowedTime = 1000;
-  percentChange = 0.1;
-
-  setTimeout(function() {
-    $("#info").style.display = "none";
-    $("#score").innerHTML = "GO!";
-
-    startRound();
-    playing = true;
-  }, 1500);
-}
-
-function generateCode() {
-  /*var newCode = code;
-  while(newCode == code) newCode = keyCodes[Math.floor(Math.random() * keyCodes.length)];
-  return newCode;*/
-  return keyCodes[Math.floor(Math.random() * keyCodes.length)];
-}
-
-function updateTimeUsed() {
-  var ratio = ((new Date()).getTime() - startTime.getTime()) / (allowedTime + 0.0);
-  if(ratio > 1) {
-    $("#time-used").style.width = "189px";
-    window.clearInterval(timeUsedInterval);
-  }
-  else {
-    $("#time-used").style.width = (ratio * 176) + 13 + "px";
-  }
-}
-
-function startRound() {
-  code = generateCode();
-  $("#out").classList.remove("left", "up", "right", "down");
-  $("#out").classList.add(codesMap[code]);
-
-  $("#time-used").style.width = "13px";
-  timeUsedInterval = window.setInterval(updateTimeUsed, 20);
-
-  startTime = new Date();
-}
-
-function endRound(event) {
-  event.stopPropagation();
-  if(!playing) return;
-
-  var diff = (new Date()).getTime() - startTime.getTime();
-
-  $("#time-used").style.width = "0px";
-  window.clearInterval(timeUsedInterval);
-
-  var correct = event.keyCode == code;
-
-  if(diff < 50 || diff > allowedTime || !correct) {
-    gameOver();
-    return;
-  }
-
-  if(correct) {
-    score += (1000 - diff);
-    $("#score").innerHTML = nice(score);
-  }
-
-  //scoring version 3
-  if(allowedTime > 300) {
-    var allowedTimeChange = Math.round((allowedTime - diff) * percentChange);
-    allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
-  }
-
-  startRound();
-}
-
-function gameOver() {
-  playing = false;
-  $("#out").classList.remove("left", "up", "right", "down");
-  $("#out").classList.add("blank");
-  $("#info").innerHTML = "Game Over";
-  $("#info").style.display = "block";
-
-  setTimeout(function() {
-    $("#info").style.display = "none";
-    $("body").classList.remove("playing");
-    if($("#score").innerHTML == "GO!") $("#score").innerHTML = "Have Fun!";
-  }, 1500);
-
-  uploadScore(score);
-}
 
 function uploadScore(score) {
   if(ajax == null) {
@@ -179,9 +70,15 @@ function initPreferences() {
 function init() {
   $ = document.querySelector.bind(document);
 
-  window.onkeydown = endRound;
+  gameUi = new GameUi(uploadScore);
 
-  $("#play").addEventListener("click", playGame);
+  window.addEventListener("keydown", function(event) {
+    gameUi.endRound(event);
+  })
+
+  $("#play").addEventListener("click", function() {
+    gameUi.start();
+  });
   $("#settings").addEventListener("click", showBack);
   $("#done").addEventListener("click", showFront);
 
