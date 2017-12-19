@@ -1,13 +1,6 @@
 function GameUi(endedCallback) {
+  this.game = new Game();
   this.playing = false;
-
-  this.game = new Game({
-    roundStarted: this.roundStarted.bind(this),
-    updateTimeUsed: this.updateTimeUsed.bind(this),
-    scoreUpdated: this.scoreUpdated.bind(this),
-    ended: this.ended.bind(this)
-  });
-
   this.endedCallback = endedCallback;
 }
 
@@ -17,7 +10,7 @@ GameUi.prototype.start = function() {
   $("#info").innerHTML = "Wait...";
   $("#info").style.display = "block";
 
-  this.game.started();
+  this.game.start();
 
   setTimeout(this.postStarted.bind(this), 1500);
 }
@@ -26,12 +19,23 @@ GameUi.prototype.postStarted = function() {
   $("#info").style.display = "none";
   $("#score").innerHTML = "GO!";
 
-  this.game.startRound();
   this.playing = true;
+  this.startRound();
+}
+
+GameUi.prototype.startRound = function() {
+  var direction = this.game.roundStarted();
+  $("#out").classList.remove("left", "up", "right", "down");
+  $("#out").classList.add(direction);
+
+  $("#time-used").style.width = "13px";
+  this.timeUsedInterval = window.setInterval(this.updateTimeUsed.bind(this), 20);
 }
 
 GameUi.prototype.updateTimeUsed = function(ratio) {
+  var ratio = this.game.timeUsed();
   if(ratio > 1) {
+    window.clearInterval(this.timeUsedInterval);
     $("#time-used").style.width = "189px";
   }
   else {
@@ -39,20 +43,18 @@ GameUi.prototype.updateTimeUsed = function(ratio) {
   }
 }
 
-GameUi.prototype.roundStarted = function(direction) {
-  $("#out").classList.remove("left", "up", "right", "down");
-  $("#out").classList.add(direction);
-
-  $("#time-used").style.width = "13px";
-}
-
 GameUi.prototype.endRound = function(event) {
   event.stopPropagation();
   if(!this.playing) return;
 
+  window.clearInterval(this.timeUsedInterval);
   $("#time-used").style.width = "0px";
 
-  this.game.roundEnded(event.keyCode);
+  var gameOver = this.game.roundEnded(event.keyCode);
+  $("#score").innerHTML = this.nice(this.game.score);
+
+  if(gameOver) this.gameOver();
+  else this.startRound();
 }
 
 GameUi.prototype.nice = function(num) {
@@ -62,11 +64,7 @@ GameUi.prototype.nice = function(num) {
 	return x;
 };
 
-GameUi.prototype.scoreUpdated = function(score) {
-  $("#score").innerHTML = this.nice(score);
-}
-
-GameUi.prototype.ended = function(score) {
+GameUi.prototype.gameOver = function() {
   this.playing = false;
   $("#out").classList.remove("left", "up", "right", "down");
   $("#out").classList.add("blank");
@@ -75,7 +73,7 @@ GameUi.prototype.ended = function(score) {
 
   setTimeout(this.postEnded.bind(this), 1500);
 
-  this.endedCallback(score);
+  this.endedCallback(this.game.score);
 }
 
 GameUi.prototype.postEnded = function() {

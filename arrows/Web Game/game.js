@@ -1,15 +1,13 @@
-function Game(callbacks) {
+function Game() {
   this.codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
   this.keyCodes = Object.keys(this.codesMap);
-  this.code;
-  this.startTime;
-  this.timeUsedInterval;
-  this.callbacks = callbacks;
 }
 
-Game.prototype.started = function() {
+Game.prototype.start = function() {
   this.allowedTime = 1000;
   this.score = 0;
+  this.startTime = null;
+  this.code = null;
 }
 
 Game.prototype.generateCode = function() {
@@ -19,37 +17,25 @@ Game.prototype.generateCode = function() {
   return this.keyCodes[Math.floor(Math.random() * this.keyCodes.length)];
 }
 
-Game.prototype.updateTimeUsed = function() {
-  var ratio = ((new Date()).getTime() - this.startTime.getTime()) / (this.allowedTime + 0.0);
-  if(ratio > 1) window.clearInterval(this.timeUsedInterval);
-
-  this.callbacks.updateTimeUsed(ratio);
+Game.prototype.timeUsed = function() {
+  return ((new Date()).getTime() - this.startTime.getTime()) / (this.allowedTime + 0.0);
 }
 
-Game.prototype.startRound = function() {
+Game.prototype.roundStarted = function() {
   this.code = this.generateCode();
   this.startTime = new Date();
-  this.timeUsedInterval = window.setInterval(this.updateTimeUsed.bind(this), 20);
 
-  this.callbacks.roundStarted(this.codesMap[this.code]);
+  return this.codesMap[this.code];
 }
 
 Game.prototype.roundEnded = function(keyCode) {
   var diff = (new Date()).getTime() - this.startTime.getTime();
-  
-  window.clearInterval(this.timeUsedInterval);
-  
+
   var correct = keyCode == this.code;
 
-  if(diff < 50 || diff > this.allowedTime || !correct) {
-    this.callbacks.ended(this.score);
-    return;
-  }
+  if(diff < 50 || diff > this.allowedTime || !correct) return true;
 
-  if(correct) {
-    this.score += (1000 - diff);
-    this.callbacks.scoreUpdated(this.score);
-  }
+  this.score += (1000 - diff);
 
   //scoring version 3
   if(this.allowedTime > 300) {
@@ -57,5 +43,5 @@ Game.prototype.roundEnded = function(keyCode) {
     this.allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
   }
 
-  this.startRound();
+  return false;
 }
