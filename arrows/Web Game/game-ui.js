@@ -1,5 +1,6 @@
 function GameUi(endedCallback) {
   this.game = new Game();
+  this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
   this.playing = false;
   this.endedCallback = endedCallback;
 }
@@ -50,7 +51,7 @@ GameUi.prototype.endRound = function(event) {
   window.clearInterval(this.timeUsedInterval);
   $("#time-used").style.width = "0px";
 
-  var gameOver = this.game.roundEnded(event.keyCode);
+  var gameOver = this.game.roundEnded(this.CODES_MAP[event.keyCode]);
   $("#score").innerHTML = this.nice(this.game.score);
 
   if(gameOver) this.gameOver();

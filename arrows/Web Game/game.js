@@ -1,37 +1,34 @@
 function Game() {
-  this.codesMap = { 37: "left", 38: "up", 39: "right", 40: "down" };
-  this.keyCodes = Object.keys(this.codesMap);
+  this.DIRECTIONS = ["left", "up", "right", "down"];
 }
 
 Game.prototype.start = function() {
   this.allowedTime = 1000;
   this.score = 0;
   this.startTime = null;
-  this.code = null;
+  this.direction = null;
 }
 
-Game.prototype.generateCode = function() {
-  /*var newCode = this.code;
-  while(newCode == this.code) newCode = this.keyCodes[Math.floor(Math.random() * this.keyCodes.length)];
-  return newCode;*/
-  return this.keyCodes[Math.floor(Math.random() * this.keyCodes.length)];
+Game.prototype.nextDirection = function() {
+  /*var direction = this.direction;
+  while(direction == this.direction) direction = this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
+  return direction;*/
+  return this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
 }
 
 Game.prototype.timeUsed = function() {
-  return ((new Date()).getTime() - this.startTime.getTime()) / (this.allowedTime + 0.0);
+  return (Date.now() - this.startTime) / (this.allowedTime + 0.0);
 }
 
 Game.prototype.roundStarted = function() {
-  this.code = this.generateCode();
-  this.startTime = new Date();
-
-  return this.codesMap[this.code];
+  this.direction = this.nextDirection();
+  this.startTime = Date.now();
+  return this.direction;
 }
 
-Game.prototype.roundEnded = function(keyCode) {
-  var diff = (new Date()).getTime() - this.startTime.getTime();
-
-  var correct = keyCode == this.code;
+Game.prototype.roundEnded = function(playerDirection) {
+  var diff = Date.now() - this.startTime;
+  var correct = playerDirection == this.direction;
 
   if(diff < 50 || diff > this.allowedTime || !correct) return true;
 
