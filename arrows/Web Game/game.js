@@ -32,13 +32,8 @@ Game.prototype.roundEnded = function(playerDirection) {
 
   if(diff < 50 || diff > this.allowedTime || !correct) return true;
 
-  this.score += (1000 - diff);
-
-  //scoring version 3
-  if(this.allowedTime > 300) {
-    var allowedTimeChange = Math.round((this.allowedTime - diff) * 0.1);
-    this.allowedTime -= allowedTimeChange > 10 ? allowedTimeChange : 10;
-  }
+  this.score += diff;
+  this.allowedTime -= 10;
 
   return false;
 }
