@@ -73,7 +73,7 @@ function init() {
   gameUi = new GameUi(uploadScore);
 
   window.addEventListener("keydown", function(event) {
-    gameUi.endRound(event);
+    gameUi.onKeyDown(event);
   })
 
   $("#play").addEventListener("click", function() {

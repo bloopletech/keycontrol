@@ -1,11 +1,13 @@
 function GameUi(endedCallback) {
   this.game = new Game();
   this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
+  this.waiting = false;
   this.playing = false;
   this.endedCallback = endedCallback;
 }
 
 GameUi.prototype.start = function() {
+  this.waiting = true;
   $("body").classList.add("playing");
 
   $("#info").innerHTML = "Wait...";
@@ -20,6 +22,7 @@ GameUi.prototype.postStarted = function() {
   $("#info").style.display = "none";
   $("#score").innerHTML = "GO!";
 
+  this.waiting = false;
   this.playing = true;
   this.startRound();
 }
@@ -44,10 +47,14 @@ GameUi.prototype.updateTimeUsed = function(ratio) {
   }
 }
 
-GameUi.prototype.endRound = function(event) {
+GameUi.prototype.onKeyDown = function(event) {
   event.stopPropagation();
-  if(!this.playing) return;
+  if(this.waiting) return;
+  if(this.playing) this.endRound(event);
+  else if(event.keyCode == 32) this.start();
+}
 
+GameUi.prototype.endRound = function(event) {
   window.clearInterval(this.timeUsedInterval);
   $("#time-used").style.width = "0px";
 
@@ -67,6 +74,7 @@ GameUi.prototype.nice = function(num) {
 
 GameUi.prototype.gameOver = function() {
   this.playing = false;
+  this.waiting = true;
   $("#out").classList.remove("left", "up", "right", "down");
   $("#out").classList.add("blank");
   $("#info").innerHTML = "Game Over";
@@ -80,5 +88,6 @@ GameUi.prototype.gameOver = function() {
 GameUi.prototype.postEnded = function() {
   $("#info").style.display = "none";
   $("body").classList.remove("playing");
+  this.waiting = false;
   if($("#score").innerHTML == "GO!") $("#score").innerHTML = "Have Fun!";
 }

@@ -10,10 +10,10 @@ Game.prototype.start = function() {
 }
 
 Game.prototype.nextDirection = function() {
-  /*var direction = this.direction;
-  while(direction == this.direction) direction = this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
-  return direction;*/
-  return this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
+  var next = this.direction;
+  while(next == this.direction) next = this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
+  return next;
+  //return this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
 }
 
 Game.prototype.timeUsed = function() {
