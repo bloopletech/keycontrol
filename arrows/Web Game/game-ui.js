@@ -53,7 +53,7 @@ GameUi.prototype.updateTimeUsed = function(ratio) {
 }
 
 GameUi.prototype.onKeyDown = function(event) {
-  event.stopPropagation();
+  event.preventDefault();
   if(this.waiting) return;
   if(this.playing) this.endRound(event);
   else if(event.keyCode == 32) this.start();
