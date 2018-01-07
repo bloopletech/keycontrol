@@ -1,9 +1,10 @@
 function Game() {
   this.DIRECTIONS = ["left", "up", "right", "down"];
+  this.MAX_ALLOWED_TIME = 1000;
 }
 
 Game.prototype.start = function() {
-  this.allowedTime = 1000;
+  this.allowedTime = this.MAX_ALLOWED_TIME;
   this.score = 0;
   this.startTime = null;
   this.direction = null;
@@ -27,6 +28,8 @@ Game.prototype.roundStarted = function() {
 }
 
 Game.prototype.roundEnded = function(playerDirection) {
+  if(playerDirection == null) return true;
+
   var diff = Date.now() - this.startTime;
   var correct = playerDirection == this.direction;
 

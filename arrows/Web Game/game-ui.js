@@ -1,6 +1,7 @@
 function GameUi(endedCallback) {
   this.game = new Game();
   this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
+  this.DIRECTION_CLASSES = this.game.DIRECTIONS.concat("blank");
   this.waiting = false;
   this.playing = false;
   this.endedCallback = endedCallback;
@@ -27,13 +28,17 @@ GameUi.prototype.postStarted = function() {
   this.startRound();
 }
 
-GameUi.prototype.startRound = function() {
-  var direction = this.game.roundStarted();
-  $("#out").classList.remove("left", "up", "right", "down");
+GameUi.prototype.showDirection = function(direction) {
+  for(var i in this.DIRECTION_CLASSES) $("#out").classList.remove(this.DIRECTION_CLASSES[i]);
   $("#out").classList.add(direction);
+}
+
+GameUi.prototype.startRound = function() {
+  this.showDirection(this.game.roundStarted());
 
   $("#time-used").style.width = "13px";
   this.timeUsedInterval = window.setInterval(this.updateTimeUsed.bind(this), 20);
+  this.roundEndTimeout = window.setTimeout(this.endRound.bind(this), this.game.MAX_ALLOWED_TIME + 250);
 }
 
 GameUi.prototype.updateTimeUsed = function(ratio) {
@@ -56,9 +61,10 @@ GameUi.prototype.onKeyDown = function(event) {
 
 GameUi.prototype.endRound = function(event) {
   window.clearInterval(this.timeUsedInterval);
+  window.clearTimeout(this.roundEndTimeout);
   $("#time-used").style.width = "0px";
 
-  var gameOver = this.game.roundEnded(this.CODES_MAP[event.keyCode]);
+  var gameOver = this.game.roundEnded(event == null ? null : this.CODES_MAP[event.keyCode]);
   $("#score").innerHTML = this.nice(this.game.score);
 
   if(gameOver) this.gameOver();
@@ -75,8 +81,7 @@ GameUi.prototype.nice = function(num) {
 GameUi.prototype.gameOver = function() {
   this.playing = false;
   this.waiting = true;
-  $("#out").classList.remove("left", "up", "right", "down");
-  $("#out").classList.add("blank");
+  this.showDirection("blank");
   $("#info").innerHTML = "Game Over";
   $("#info").style.display = "block";
 
