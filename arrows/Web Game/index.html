@@ -9,14 +9,29 @@
     <script src="ArrowKeyControl.js"></script>
   </head>
   <body>
-    <div id="front" class="sprite front">
-      <div id="time-used" class="sprite front_time_used"></div>
-      <div id="content-wrapper">
-        <div id="out" class="sprite blank"></div>
-        <div id="score">Have fun!</div>
-        <div id="info"></div>
-        <div id="play" class="sprite play">Play</div>
+    <div id="front" class="front">
+      <div id="attract">
+        <div class="content">
+          <div id="play" class="sprite play">Play</div>
+        </div>
         <div id="settings" class="sprite info"></div>
+      </div>
+      <div id="waiting">
+        <div class="content">
+          <div>Wait...</div>
+        </div>
+      </div>
+      <div id="playing">
+        <div id="time-used"></div>
+        <div id="play-field">
+          <div id="out" class="sprite blank"></div>
+          <div id="score"></div>
+        </div>
+      </div>
+      <div id="game-over">
+        <div class="content">
+          <div>Game Over!<br>Score: <span id="game-over-score"></span></div>
+        </div>
       </div>
     </div>
     <div id="back" class="sprite back">

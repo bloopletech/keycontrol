@@ -2,29 +2,29 @@ function GameUi(endedCallback) {
   this.game = new Game();
   this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
   this.DIRECTION_CLASSES = this.game.DIRECTIONS.concat("blank");
-  this.waiting = false;
-  this.playing = false;
   this.endedCallback = endedCallback;
+  this.transition("attract");
+}
+
+GameUi.prototype.transition = function(state) {
+  this.state = state;
+  document.body.classList.remove("attract", "waiting", "playing", "game-over");
+  document.body.classList.add(state);
 }
 
 GameUi.prototype.start = function() {
-  this.waiting = true;
-  $("body").classList.add("playing");
-
-  $("#info").innerHTML = "Wait...";
-  $("#info").style.display = "block";
-
+  this.transition("waiting");
   this.game.start();
 
   setTimeout(this.postStarted.bind(this), 1500);
 }
 
 GameUi.prototype.postStarted = function() {
-  $("#info").style.display = "none";
-  $("#score").innerHTML = "GO!";
+  if(this.state != "waiting") return;
+  this.transition("playing");
+  $("#score").innerHTML = "0";
 
-  this.waiting = false;
-  this.playing = true;
+  this.updateTimeUsed();
   this.startRound();
 }
 
@@ -36,36 +36,32 @@ GameUi.prototype.showDirection = function(direction) {
 GameUi.prototype.startRound = function() {
   this.showDirection(this.game.roundStarted());
 
-  $("#time-used").style.width = "13px";
-  this.timeUsedInterval = window.setInterval(this.updateTimeUsed.bind(this), 20);
   this.roundEndTimeout = window.setTimeout(this.endRound.bind(this), this.game.MAX_ALLOWED_TIME + 250);
 }
 
-GameUi.prototype.updateTimeUsed = function(ratio) {
+GameUi.prototype.updateTimeUsed = function() {
+  this.timeUsedUpdater = window.requestAnimationFrame(this.updateTimeUsed.bind(this));
+
   var ratio = this.game.timeUsed();
   if(ratio > 1) {
-    window.clearInterval(this.timeUsedInterval);
-    $("#time-used").style.width = "189px";
+    ratio = 1;
   }
-  else {
-    $("#time-used").style.width = (ratio * 176) + 13 + "px";
-  }
+
+  $("#time-used").style.width = (ratio * 300) + "px";
 }
 
 GameUi.prototype.onKeyDown = function(event) {
   event.preventDefault();
-  if(this.waiting) return;
-  if(this.playing) this.endRound(event);
+  if(this.state == "waiting") return;
+  if(this.state == "playing") this.endRound(event);
   else if(event.keyCode == 32) this.start();
 }
 
 GameUi.prototype.endRound = function(event) {
-  window.clearInterval(this.timeUsedInterval);
   window.clearTimeout(this.roundEndTimeout);
-  $("#time-used").style.width = "0px";
 
   var gameOver = this.game.roundEnded(event == null ? null : this.CODES_MAP[event.keyCode]);
-  $("#score").innerHTML = this.nice(this.game.score);
+  $("#score").textContent = this.nice(this.game.score);
 
   if(gameOver) this.gameOver();
   else this.startRound();
@@ -79,20 +75,17 @@ GameUi.prototype.nice = function(num) {
 };
 
 GameUi.prototype.gameOver = function() {
-  this.playing = false;
-  this.waiting = true;
-  this.showDirection("blank");
-  $("#info").innerHTML = "Game Over";
-  $("#info").style.display = "block";
+  window.cancelAnimationFrame(this.timeUsedUpdater);
 
-  setTimeout(this.postEnded.bind(this), 1500);
+  $("#game-over-score").textContent = this.nice(this.game.score);
+  this.transition("game-over");
+
+  setTimeout(this.postEnded.bind(this), 3000);
 
   this.endedCallback(this.game.score);
 }
 
 GameUi.prototype.postEnded = function() {
-  $("#info").style.display = "none";
-  $("body").classList.remove("playing");
-  this.waiting = false;
-  if($("#score").innerHTML == "GO!") $("#score").innerHTML = "Have Fun!";
+  if(this.state != "game-over") return;
+  this.transition("attract");
 }

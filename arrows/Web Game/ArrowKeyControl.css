@@ -35,16 +35,74 @@ body {
 
 #front, #back {
   margin: 100px auto 50px auto;
-  width: 200px;
+  width: 300px;
   height: 180px;
   overflow: hidden;
   position: relative;
 }
 
+#front {
+  background-color: #242897;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #fff;
+}
+
+#attract, #waiting, #playing, #time-used, #play-field, #game-over {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#attract, #waiting, #playing, #game-over {
+  display: none;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+#play {
+  width: 130px;
+  height: 64px;
+  line-height: 64px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 22px;
+  color: #000;
+}
+
+#time-used {
+  width: 0px;
+  z-index: 1;
+  background-color: #B40404;
+}
+
+#play-field {
+  z-index: 2;
+  padding: 15px;
+}
+
+#out {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px auto;
+}
+
 #settings {
   position: absolute;
-  bottom: 18px;
-  left: 18px;
+  bottom: 5px;
+  left: 5px;
 }
 
 #back {
@@ -61,32 +119,9 @@ body {
 }
 
 #score {
-  position: absolute;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  color: #fff;
-  text-align: right;
-  padding: 0px;
-  line-height: 18pt;
   height: 27px;
-  top: 133px;
-  width: 140px;
-  right: 25px;
-  font-size: 17pt;
-}
-
-#info {
-  position: absolute;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  color: #fff;
   text-align: center;
-  font-size: 18pt;
-  font-weight: bold;
-  width: 134px;
-  left: 32px;
-  top: 67px;
-  height: auto;
+  font-size: 24px;
 }
 
 .input-group {
@@ -99,52 +134,22 @@ body {
   font-size: 14px;
 }
 
-#play {
-  position: absolute;
-  font-weight: bold;
-  text-align: center;
-  font-size: 22px;
-  width: 130px;
-  height: 64px;
-  left: 34px;
-  top: 46px;
-  line-height: 64px;
+
+
+body.attract #attract {
+  display: block;
 }
 
-#out {
-  position: absolute;
-  left: 52px;
-  width: 96px;
-  top: 30px;
-  height: 96px;
-  text-align: center;
+body.waiting #waiting {
+  display: block;
 }
 
-#time-used, #content-wrapper {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 220px;
-  height: 200px;
+body.playing #playing {
+  display: block;
 }
 
-#time-used {
-  width: 0px;
-  z-index: 1;
-}
-
-#content-wrapper {
-  z-index: 2;
-  left: 0px;
-  right: 0px;
-  width: auto;
-  height: auto;
-  bottom: 0px;
-  top: 0px;
-}
-
-body.playing #play, body.playing #settings {
-  display: none;
+body.game-over #game-over {
+  display: block;
 }
 
 #description {
@@ -153,6 +158,6 @@ body.playing #play, body.playing #settings {
   max-width: 800px;
 }
 
-p {
+#description p {
   margin: 0 0 15px 0;
 }
