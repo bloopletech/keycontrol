@@ -8,8 +8,8 @@ function GameUi(endedCallback) {
 
 GameUi.prototype.transition = function(state) {
   this.state = state;
-  document.body.classList.remove("attract", "waiting", "playing", "game-over");
-  document.body.classList.add(state);
+  $("#front").classList.remove("attract", "waiting", "playing", "game-over");
+  $("#front").classList.add(state);
 }
 
 GameUi.prototype.start = function() {
@@ -47,7 +47,7 @@ GameUi.prototype.updateTimeUsed = function() {
     ratio = 1;
   }
 
-  $("#time-used").style.width = (ratio * 300) + "px";
+  $("#time-used").style.width = (ratio * 100) + "%";
 }
 
 GameUi.prototype.onKeyDown = function(event) {

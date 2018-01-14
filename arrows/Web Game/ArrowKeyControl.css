@@ -35,7 +35,7 @@ body {
 
 #front, #back {
   margin: 100px auto 50px auto;
-  width: 300px;
+  width: 230px;
   height: 180px;
   overflow: hidden;
   position: relative;
@@ -134,21 +134,7 @@ body {
   font-size: 14px;
 }
 
-
-
-body.attract #attract {
-  display: block;
-}
-
-body.waiting #waiting {
-  display: block;
-}
-
-body.playing #playing {
-  display: block;
-}
-
-body.game-over #game-over {
+#front.attract #attract, #front.waiting #waiting, #front.playing #playing, #front.game-over #game-over {
   display: block;
 }
 
