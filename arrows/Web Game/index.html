@@ -10,27 +10,26 @@
   </head>
   <body>
     <div id="front" class="front">
-      <div id="attract">
-        <div class="content">
-          <div id="play" class="sprite play">Play</div>
+      <div id="attract" class="layer">
+        <div>
+          <div class="sprite play">Play</div>
         </div>
         <div id="settings" class="sprite info"></div>
       </div>
-      <div id="waiting">
-        <div class="content">
-          <div>Wait...</div>
-        </div>
+      <div id="waiting" class="layer">
+        <div>Wait...</div>
       </div>
-      <div id="playing">
-        <div id="time-used"></div>
-        <div id="play-field">
-          <div id="out" class="sprite blank"></div>
-          <div id="score"></div>
-        </div>
+      <div id="playing" class="layer">
+        <div id="out" class="sprite blank"></div>
+        <div id="time-used-bar"><div id="time-used"></div></div>
+        <div id="score"></div>
       </div>
-      <div id="game-over">
-        <div class="content">
-          <div>Game Over!<br>Score: <span id="game-over-score"></span></div>
+      <div id="game-over" class="layer">
+        <div>
+          <div id="game-over-out">
+            Game Over!<br>Score: <span id="game-over-score"></span>
+          </div>
+          <div class="sprite play">Play</div>
         </div>
       </div>
     </div>

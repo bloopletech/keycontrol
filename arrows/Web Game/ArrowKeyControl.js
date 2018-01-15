@@ -76,11 +76,11 @@ function init() {
     gameUi.onKeyDown(event);
   })
 
-  $("#play").addEventListener("click", function() {
-    gameUi.start();
-  });
-  $("#settings").addEventListener("click", showBack);
-  $("#done").addEventListener("click", showFront);
+  $("body").addEventListener("click", function(e) {
+    if(e.target.matches(".play")) gameUi.start();
+    else if(e.target.matches("#settings")) showBack;
+    else if(e.target.matches("#done")) showFront;
+  })
 
   initPreferences();
 }

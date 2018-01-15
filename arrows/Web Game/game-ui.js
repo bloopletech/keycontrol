@@ -39,6 +39,14 @@ GameUi.prototype.startRound = function() {
   this.roundEndTimeout = window.setTimeout(this.endRound.bind(this), this.game.MAX_ALLOWED_TIME + 250);
 }
 
+GameUi.prototype.scoreRank = function() {
+  var score = this.game.score;
+  if(score < 10000) return "unranked";
+  if(score < 20000) return "bronze";
+  if(score < 40000) return "silver";
+  return "gold";
+}
+
 GameUi.prototype.updateTimeUsed = function() {
   this.timeUsedUpdater = window.requestAnimationFrame(this.updateTimeUsed.bind(this));
 
@@ -48,6 +56,8 @@ GameUi.prototype.updateTimeUsed = function() {
   }
 
   $("#time-used").style.width = (ratio * 100) + "%";
+  $("#time-used").classList.remove("unranked", "bronze", "silver", "gold");
+  $("#time-used").classList.add(this.scoreRank());
 }
 
 GameUi.prototype.onKeyDown = function(event) {
@@ -80,12 +90,5 @@ GameUi.prototype.gameOver = function() {
   $("#game-over-score").textContent = this.nice(this.game.score);
   this.transition("game-over");
 
-  setTimeout(this.postEnded.bind(this), 3000);
-
   this.endedCallback(this.game.score);
-}
-
-GameUi.prototype.postEnded = function() {
-  if(this.state != "game-over") return;
-  this.transition("attract");
 }

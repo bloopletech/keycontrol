@@ -13,16 +13,13 @@
 }
 
 .sprite { background: url('images/sprite.png') no-repeat top left; width: 96px; height: 96px;  } 
-.sprite.back { background-position: 0 0; width: 200px; height: 180px; } 
-.sprite.blank { background-position: -201px 0; } 
-.sprite.down { background-position: -298px 0; } 
-.sprite.front { background-position: -395px 0; width: 200px; height: 180px; } 
-.sprite.front_time_used { background-position: -596px 0; width: 200px; height: 180px; } 
-.sprite.info { background-position: -797px 0; width: 18px; height: 18px; } 
-.sprite.left { background-position: -816px 0; } 
-.sprite.play { background-position: -913px 0; width: 130px; height: 64px; } 
-.sprite.right { background-position: -1044px 0; } 
-.sprite.up { background-position: -1141px 0; } 
+.sprite.blank { background-position: 0 0; } 
+.sprite.info { background-position: -97px 0; width: 18px; height: 18px; } 
+.sprite.play { background-position: -116px 0; width: 130px; height: 64px; } 
+.sprite.down { background-position: -247px 0; } 
+.sprite.left { background-position: -344px 0; } 
+.sprite.right { background-position: -441px 0; } 
+.sprite.up { background-position: -538px 0; } 
 
 body {
   margin: 0px;
@@ -48,31 +45,22 @@ body {
   color: #fff;
 }
 
-#attract, #waiting, #playing, #time-used, #play-field, #game-over {
+.layer {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-#attract, #waiting, #playing, #game-over {
-  display: none;
-}
-
-.content {
-  display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  padding: 15px;
+  flex-direction: column;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  line-height: 40px;
 }
 
-#play {
+.play {
   width: 130px;
   height: 64px;
   line-height: 64px;
@@ -82,21 +70,37 @@ body {
   color: #000;
 }
 
-#time-used {
-  width: 0px;
-  z-index: 1;
-  background-color: #B40404;
+#time-used-bar {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
 }
 
-#play-field {
-  z-index: 2;
-  padding: 15px;
+#time-used {
+  width: 0px;
+  height: 30px;
+}
+
+#time-used.unranked {
+  background-color: #555555;
+}
+
+#time-used.bronze {
+  background-color: #CD7F32;
+}
+
+#time-used.silver {
+  background-color: #C0C0C0;
+}
+
+#time-used.gold {
+  background-color: #D4AF37;
 }
 
 #out {
   width: 96px;
   height: 96px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto;
 }
 
 #settings {
@@ -122,6 +126,12 @@ body {
   height: 27px;
   text-align: center;
   font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#game-over-out {
+  margin-bottom: 10px;
 }
 
 .input-group {
@@ -135,7 +145,7 @@ body {
 }
 
 #front.attract #attract, #front.waiting #waiting, #front.playing #playing, #front.game-over #game-over {
-  display: block;
+  display: flex;
 }
 
 #description {
