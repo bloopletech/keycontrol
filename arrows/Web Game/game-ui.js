@@ -41,9 +41,8 @@ GameUi.prototype.startRound = function() {
 
 GameUi.prototype.scoreRank = function() {
   var score = this.game.score;
-  if(score < 10000) return "unranked";
-  if(score < 20000) return "bronze";
-  if(score < 40000) return "silver";
+  if(score < 10000) return "bronze";
+  if(score < 20000) return "silver";
   return "gold";
 }
 
