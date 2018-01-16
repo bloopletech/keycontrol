@@ -12,14 +12,14 @@
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/OpenSans-Bold.ttf) format('truetype');
 }
 
-.sprite { background: url('images/sprite.png') no-repeat top left; width: 96px; height: 96px;  } 
-.sprite.blank { background-position: 0 0; } 
-.sprite.info { background-position: -97px 0; width: 18px; height: 18px; } 
-.sprite.play { background-position: -116px 0; width: 130px; height: 64px; } 
-.sprite.down { background-position: -247px 0; } 
-.sprite.left { background-position: -344px 0; } 
-.sprite.right { background-position: -441px 0; } 
-.sprite.up { background-position: -538px 0; } 
+.sprite { background: url('images/sprite.png') no-repeat top left; width: 96px; height: 96px; }
+.sprite.blank { background-position: 0 0; }
+.sprite.down { background-position: -97px 0; }
+.sprite.info { background-position: -194px 0; width: 18px; height: 18px; }
+.sprite.left { background-position: -213px 0; }
+.sprite.right { background-position: -310px 0; }
+.sprite.up { background-position: -407px 0; }
+.sprite.play { background-position: -504px 0; width: 130px; height: 64px; }
 
 body {
   margin: 0px;
