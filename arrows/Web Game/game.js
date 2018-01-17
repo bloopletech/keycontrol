@@ -6,6 +6,7 @@ function Game() {
 Game.prototype.start = function() {
   this.allowedTime = this.MAX_ALLOWED_TIME;
   this.score = 0;
+  this.comboStack = 0;
   this.startTime = null;
   this.direction = null;
 }
@@ -37,6 +38,7 @@ Game.prototype.roundEnded = function(playerDirection) {
 
   this.score += diff;
   this.allowedTime -= 10;
+  this.comboStack++;
 
   return false;
 }

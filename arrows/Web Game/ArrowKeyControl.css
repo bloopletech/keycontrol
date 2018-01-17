@@ -26,23 +26,22 @@ body {
 }
 
 * {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.4;
   box-sizing: border-box;
 }
 
 #front, #back {
   margin: 100px auto 50px auto;
-  width: 230px;
-  height: 180px;
+  width: 280px;
+  height: 200px;
   overflow: hidden;
   position: relative;
 }
 
 #front {
-  background-color: #242897;
   border: 1px solid #000;
-  border-radius: 4px;
-  color: #fff;
+  border-radius: 6px;
 }
 
 .layer {
@@ -56,18 +55,25 @@ body {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+  background-color: #242897;
+  color: #fff;
 }
 
 .play {
-  width: 130px;
-  height: 64px;
-  line-height: 64px;
+  display: inline-block;
+  padding: 6px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  font-size: 22px;
-  color: #000;
+}
+
+#waiting {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 #time-used-bar {
@@ -81,19 +87,19 @@ body {
   height: 30px;
 }
 
-#time-used.unranked {
+.unranked {
   background-color: #555555;
 }
 
-#time-used.bronze {
+.bronze {
   background-color: #CD7F32;
 }
 
-#time-used.silver {
+.silver {
   background-color: #C0C0C0;
 }
 
-#time-used.gold {
+.gold {
   background-color: #D4AF37;
 }
 
@@ -130,8 +136,14 @@ body {
   line-height: 1;
 }
 
+#game-over {
+  color: #000;
+}
+
 #game-over-out {
   margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .input-group {
