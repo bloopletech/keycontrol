@@ -87,11 +87,18 @@ GameUi.prototype.nice = function(num) {
 	return x;
 };
 
+GameUi.prototype.rankDescription = function() {
+  var rank = this.scoreRank();
+  if(rank == "bronze") return "Bronze";
+  if(rank == "silver") return "Silver";
+  return "Gold";
+}
+
 GameUi.prototype.gameOver = function() {
   window.cancelAnimationFrame(this.timeUsedUpdater);
 
   $("#game-over-score").textContent = this.nice(this.game.score);
-  $("#game-over-rank").textContent = this.scoreRank();
+  $("#game-over-rank").textContent = this.rankDescription();
   $("#game-over-combo-stack").textContent = this.game.comboStack;
   this.transition("game-over");
   this.transitionRank($("#game-over"));
