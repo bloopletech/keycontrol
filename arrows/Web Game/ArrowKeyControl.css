@@ -19,7 +19,6 @@
 .sprite.left { background-position: -213px 0; }
 .sprite.right { background-position: -310px 0; }
 .sprite.up { background-position: -407px 0; }
-.sprite.play { background-position: -504px 0; width: 130px; height: 64px; }
 
 body {
   margin: 0px;
@@ -42,6 +41,10 @@ body {
 #front {
   border: 1px solid #000;
   border-radius: 6px;
+}
+
+#front.attract #attract, #front.waiting #waiting, #front.playing #playing, #front.game-over #game-over {
+  display: flex;
 }
 
 .layer {
@@ -71,9 +74,21 @@ body {
   text-align: center;
 }
 
+#settings {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
 #waiting {
   font-size: 24px;
   font-weight: bold;
+}
+
+#out {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
 }
 
 #time-used-bar {
@@ -89,30 +104,36 @@ body {
 
 .unranked {
   background-color: #555555;
+  color: #fff;
 }
 
 .bronze {
   background-color: #CD7F32;
+  color: #000;
 }
 
 .silver {
   background-color: #C0C0C0;
+  color: #000;
 }
 
 .gold {
   background-color: #D4AF37;
+  color: #000;
 }
 
-#out {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto;
+#score {
+  height: 27px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
 }
 
-#settings {
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
+#game-over-out {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #back {
@@ -128,24 +149,6 @@ body {
 #done {
 }
 
-#score {
-  height: 27px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-#game-over {
-  color: #000;
-}
-
-#game-over-out {
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
 .input-group {
   margin-bottom: 1px;
 }
@@ -154,10 +157,6 @@ body {
   display: inline-block;
   width: 100%;
   font-size: 14px;
-}
-
-#front.attract #attract, #front.waiting #waiting, #front.playing #playing, #front.game-over #game-over {
-  display: flex;
 }
 
 #description {
