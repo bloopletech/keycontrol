@@ -19,14 +19,16 @@
 .sprite.down { background-position: -291px 0; }
 .sprite.left { background-position: -388px 0; }
 
-body {
-  margin: 0px;
-}
-
 * {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.4;
   box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #front, #back {
@@ -81,12 +83,33 @@ body {
 .play {
   display: inline-block;
   padding: 6px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #2e6da4;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: #337ab7;
   font-size: 20px;
-  font-weight: bold;
+  color: #fff;
   text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.play:hover {
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+.play:active {
+  background-color: #286090;
+  border-color: #204d74;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.play:focus {
+  background-color: #286090;
+  border-color: #122b40;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 
 #settings {
