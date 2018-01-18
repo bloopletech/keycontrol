@@ -95,7 +95,7 @@ GameUi.prototype.gameOver = function() {
 
   $("#game-over-score").textContent = this.nice(this.game.score);
   $("#game-over-rank").textContent = this.rankDescription();
-  $("#game-over-combo-stack").textContent = this.game.comboStack;
+  $("#game-over-streak").textContent = this.game.comboStack;
   this.transition("game-over");
 
   this.endedCallback(this.game.score);
