@@ -46,11 +46,6 @@ GameUi.prototype.scoreRank = function() {
   return "gold";
 }
 
-GameUi.prototype.transitionRank = function(element) {
-  element.classList.remove("unranked", "bronze", "silver", "gold");
-  element.classList.add(this.scoreRank());
-}
-
 GameUi.prototype.updateTimeUsed = function() {
   this.timeUsedUpdater = window.requestAnimationFrame(this.updateTimeUsed.bind(this));
 
@@ -60,7 +55,8 @@ GameUi.prototype.updateTimeUsed = function() {
   }
 
   $("#time-used").style.width = (ratio * 100) + "%";
-  this.transitionRank($("#time-used"));
+  $("#time-used").classList.remove("unranked", "bronze", "silver", "gold");
+  $("#time-used").classList.add(this.scoreRank());
 }
 
 GameUi.prototype.onKeyDown = function(event) {
@@ -101,7 +97,6 @@ GameUi.prototype.gameOver = function() {
   $("#game-over-rank").textContent = this.rankDescription();
   $("#game-over-combo-stack").textContent = this.game.comboStack;
   this.transition("game-over");
-  this.transitionRank($("#game-over"));
 
   this.endedCallback(this.game.score);
 }
