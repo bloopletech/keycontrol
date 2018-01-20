@@ -51,8 +51,9 @@ html, body, #game-wrapper {
 #front {
   background-color: #fff;
   color: #000;
-  border: 1px solid #aaa;
-  border-radius: 7px;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.27);
 }
 
 #front.attract #attract, #front.waiting #waiting, #front.playing #time-used, #front.playing #playing, #front.game-over #time-used, #front.game-over #game-over {
