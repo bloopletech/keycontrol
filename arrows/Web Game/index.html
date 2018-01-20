@@ -9,48 +9,50 @@
     <script src="ArrowKeyControl.js"></script>
   </head>
   <body>
-    <div id="front">
-      <div id="attract" class="layer">
-        <div>
+    <div id="game-wrapper">
+      <div id="front">
+        <div id="attract" class="layer">
+          <div>
+            <a class="play">Play</a>
+          </div>
+          <div id="settings" class=""></div>
+        </div>
+        <div id="waiting" class="layer">
+          <div>Wait...</div>
+        </div>
+        <div id="time-used" class="layer"></div>
+        <div id="playing" class="layer">
+          <div id="out" class="sprite blank"></div>
+          <div id="score"></div>
+        </div>
+        <div id="game-over" class="layer">
+          <div id="game-over-out">
+            Game Over!<br>
+            Score: <span id="game-over-score"></span><br>
+            Rank: <span id="game-over-rank"></span><br>
+            Combo Streak: <span id="game-over-streak"></span>
+          </div>
           <a class="play">Play</a>
         </div>
-        <div id="settings" class=""></div>
       </div>
-      <div id="waiting" class="layer">
-        <div>Wait...</div>
-      </div>
-      <div id="time-used" class="layer"></div>
-      <div id="playing" class="layer">
-        <div id="out" class="sprite blank"></div>
-        <div id="score"></div>
-      </div>
-      <div id="game-over" class="layer">
-        <div id="game-over-out">
-          Game Over!<br>
-          Score: <span id="game-over-score"></span><br>
-          Rank: <span id="game-over-rank"></span><br>
-          Combo Streak: <span id="game-over-streak"></span>
+      <div id="back" class="back">
+        <div id="back-content">
+          <div class="input-group">
+            <label for="netScoring">
+              <input type="checkbox" name="Checkbox" id="netScoring">
+              Internet Scoring
+            </label>
+          </div>
+          <div class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" name="" value="" id="username">
+          </div>
+          <div class="input-group">
+            <label for="crypt">Password:</label>
+            <input type="text" name="" value="" id="crypt">
+          </div>
+          <button id="done">Done</button>
         </div>
-        <a class="play">Play</a>
-      </div>
-    </div>
-    <div id="back" class="back">
-      <div id="back-content">
-        <div class="input-group">
-          <label for="netScoring">
-            <input type="checkbox" name="Checkbox" id="netScoring">
-            Internet Scoring
-          </label>
-        </div>
-        <div class="input-group">
-          <label for="username">Username:</label>
-          <input type="text" name="" value="" id="username">
-        </div>
-        <div class="input-group">
-          <label for="crypt">Password:</label>
-          <input type="text" name="" value="" id="crypt">
-        </div>
-        <button id="done">Done</button>
       </div>
     </div>
     <div id="description">

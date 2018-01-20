@@ -31,8 +31,17 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+#game-wrapper {
+  padding: 100px 0 50px 0;
+  background: linear-gradient(to top, #1f1c2c, #928dab);
+}
+
+html, body, #game-wrapper {
+  height: 100%;
+}
+
 #front, #back {
-  margin: 100px auto 50px auto;
+  margin: 0 auto;
   width: 280px;
   height: 200px;
   overflow: hidden;
@@ -42,7 +51,7 @@ body {
 #front {
   background-color: #fff;
   color: #000;
-  border: 1px solid #000;
+  border: 1px solid #aaa;
   border-radius: 7px;
 }
 
@@ -141,6 +150,7 @@ body {
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: bold;
+  line-height: 1.5;
 }
 
 #back {
