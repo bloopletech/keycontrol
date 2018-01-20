@@ -93,9 +93,9 @@ GameUi.prototype.rankDescription = function() {
 GameUi.prototype.gameOver = function() {
   window.cancelAnimationFrame(this.timeUsedUpdater);
 
-  $("#game-over-score").textContent = this.nice(this.game.score);
-  $("#game-over-rank").textContent = this.rankDescription();
-  $("#game-over-streak").textContent = this.game.comboStack;
+  $("#results-score").textContent = this.nice(this.game.score);
+  $("#results-rank").textContent = this.rankDescription();
+  $("#results-streak").textContent = this.game.comboStack;
   this.transition("game-over");
 
   this.endedCallback(this.game.score);

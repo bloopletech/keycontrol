@@ -92,7 +92,7 @@ html, body, #game-wrapper {
 
 .play {
   display: inline-block;
-  padding: 6px 15px;
+  padding: 4px 15px;
   border: 1px solid #2e6da4;
   border-radius: 4px;
   background-color: #337ab7;
@@ -147,8 +147,8 @@ html, body, #game-wrapper {
   line-height: 1;
 }
 
-#game-over-out {
-  margin-bottom: 10px;
+#results {
+  margin-bottom: 15px;
   font-size: 20px;
   font-weight: bold;
   line-height: 1.5;
