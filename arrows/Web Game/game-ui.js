@@ -2,6 +2,43 @@ function GameUi(endedCallback) {
   this.game = new Game();
   this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
   this.DIRECTION_CLASSES = this.game.DIRECTIONS.concat("blank");
+  this.RANKS = {
+    bronze: {
+      minScore: 0,
+      humanName: "Bronze",
+      class: "bronze"
+    },
+    silver: {
+      minScore: 10000,
+      humanName: "Silver",
+      class: "silver"
+    },
+    gold: {
+      minScore: 20000,
+      humanName: "Gold",
+      class: "gold"
+    },
+    platinum: {
+      minScore: 23000,
+      humanName: "Platinum",
+      class: "platinum"
+    },
+    diamond: {
+      minScore: 26000,
+      humanName: "Diamond",
+      class: "diamond"
+    },
+    vanadium: {
+      minScore: 29000,
+      humanName: "Vanadium",
+      class: "vanadium"
+    },
+    strontium: {
+      minScore: 32000,
+      humanName: "Strontium",
+      class: "strontium"
+    }
+  };
   this.endedCallback = endedCallback;
   this.transition("attract");
 }
@@ -41,9 +78,14 @@ GameUi.prototype.startRound = function() {
 
 GameUi.prototype.scoreRank = function() {
   var score = this.game.score;
-  if(score < 10000) return "bronze";
-  if(score < 20000) return "silver";
-  return "gold";
+
+  var currentRank = null;
+  for(var i in this.RANKS) {
+    var rank = this.RANKS[i];
+    if(score >= rank.minScore) currentRank = rank;
+  }
+
+  return currentRank;
 }
 
 GameUi.prototype.updateTimeUsed = function() {
@@ -56,7 +98,7 @@ GameUi.prototype.updateTimeUsed = function() {
 
   $("#time-used").style.width = (ratio * 100) + "%";
   $("#time-used").classList.remove("unranked", "bronze", "silver", "gold");
-  $("#time-used").classList.add(this.scoreRank());
+  $("#time-used").classList.add(this.scoreRank().class);
 }
 
 GameUi.prototype.onKeyDown = function(event) {
@@ -83,18 +125,11 @@ GameUi.prototype.nice = function(num) {
 	return x;
 };
 
-GameUi.prototype.rankDescription = function() {
-  var rank = this.scoreRank();
-  if(rank == "bronze") return "Bronze";
-  if(rank == "silver") return "Silver";
-  return "Gold";
-}
-
 GameUi.prototype.gameOver = function() {
   window.cancelAnimationFrame(this.timeUsedUpdater);
 
   $("#results-score").textContent = this.nice(this.game.score);
-  $("#results-rank").textContent = this.rankDescription();
+  $("#results-rank").textContent = this.scoreRank().humanName;
   $("#results-streak").textContent = this.game.comboStack;
   this.transition("game-over");
 

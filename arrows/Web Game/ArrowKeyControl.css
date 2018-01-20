@@ -33,7 +33,7 @@ body {
 
 #game-wrapper {
   padding: 100px 0 50px 0;
-  background: linear-gradient(to top, #1f1c2c, #928dab);
+  background: linear-gradient(to bottom, #555, #333);
 }
 
 html, body, #game-wrapper {
@@ -78,17 +78,35 @@ html, body, #game-wrapper {
 }
 
 .bronze {
-  background-color: #CD7F32;
+  background: linear-gradient(to bottom, #D39B77, #FEFEF3, #935D38, #632E05);
 }
 
 .silver {
-  background-color: #C0C0C0;
+  background: linear-gradient(to bottom, #CACED2, #F1F2F6,  #757F88);
 }
 
 .gold {
-  background-color: #D4AF37;
+  background: linear-gradient(to bottom, #FCFCF4, #F7E36D, #B55F06, #5A4122);
 }
 
+.platinum {
+  background: linear-gradient(to bottom, #ECEDE8, #8E8F89, #67655F, #D8DCD8, #8C8B84);
+}
+
+.diamond {
+  /*background: linear-gradient(to bottom, #F4F5F8, #B5BDC3, #335B80, #0B2B3D);*/
+  /*background: linear-gradient(to bottom, #B4BCC1 10%, #F0F0F2, #E7E8EB, #697B82);*/
+  /*background: linear-gradient(to bottom, #F4F5F8, #335B80, #6086A4, #939F90, #DBDEE1, #B5BDC3, #335462);*/
+  background: linear-gradient(7deg, #335B80, #F4F5F8,  #939F90, #DBDEE1, #B5BDC3, #335462)
+}
+
+.strontium {
+  background: linear-gradient(to bottom, #E1D7B6, #D7CEB0, #E3B56C, #8B7A6A);
+}
+
+.vanadium {
+  background: linear-gradient(to bottom, #C6CDD9, #42455A, #73788C, #4B4F65);
+}
 
 .play {
   display: inline-block;
