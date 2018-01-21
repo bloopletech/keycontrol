@@ -97,7 +97,7 @@ GameUi.prototype.updateTimeUsed = function() {
   }
 
   $("#time-used").style.width = (ratio * 100) + "%";
-  $("#time-used").classList.remove("unranked", "bronze", "silver", "gold");
+  for(var i in this.RANKS) $("#time-used").classList.remove(this.RANKS[i].class);
   $("#time-used").classList.add(this.scoreRank().class);
 }
 
