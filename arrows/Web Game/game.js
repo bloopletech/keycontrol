@@ -1,12 +1,12 @@
 function Game() {
-  this.DIRECTIONS = ["left", "up", "right", "down"];
+  this.DIRECTIONS = ["left", "up", "right", "down", "wait"];
   this.MAX_ALLOWED_TIME = 1000;
 }
 
 Game.prototype.start = function() {
   this.allowedTime = this.MAX_ALLOWED_TIME;
   this.score = 0;
-  this.comboStack = 0;
+  this.streak = 0;
   this.startTime = null;
   this.direction = null;
 }
@@ -29,16 +29,16 @@ Game.prototype.roundStarted = function() {
 }
 
 Game.prototype.roundEnded = function(playerDirection) {
-  if(playerDirection == null) return true;
-
   var diff = Date.now() - this.startTime;
   var correct = playerDirection == this.direction;
+  if(this.direction == "wait") diff = 50;
 
   if(diff < 50 || diff > this.allowedTime || !correct) return true;
 
-  this.score += diff;
-  this.allowedTime -= 10;
-  this.comboStack++;
+  this.streak++;
+  //console.log("streak: ", this.streak, ", diff: ", diff, ", allowedTime: ", this.allowedTime);
+  this.score += (this.allowedTime - diff) + (this.streak * 100);
+  this.allowedTime -= 7;
 
   return false;
 }

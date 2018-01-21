@@ -1,6 +1,6 @@
-function GameUi(endedCallback) {
+function Engine(endedCallback) {
   this.game = new Game();
-  this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
+  this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down", 0: "wait" };
   this.DIRECTION_CLASSES = this.game.DIRECTIONS.concat("blank");
   this.RANKS = {
     bronze: {
@@ -9,32 +9,32 @@ function GameUi(endedCallback) {
       class: "bronze"
     },
     silver: {
-      minScore: 10000,
+      minScore: 50000,
       humanName: "Silver",
       class: "silver"
     },
     gold: {
-      minScore: 20000,
+      minScore: 80000,
       humanName: "Gold",
       class: "gold"
     },
     platinum: {
-      minScore: 23000,
+      minScore: 100000,
       humanName: "Platinum",
       class: "platinum"
     },
     diamond: {
-      minScore: 26000,
+      minScore: 1100000,
       humanName: "Diamond",
       class: "diamond"
     },
     vanadium: {
-      minScore: 29000,
+      minScore: 120000,
       humanName: "Vanadium",
       class: "vanadium"
     },
     strontium: {
-      minScore: 32000,
+      minScore: 130000,
       humanName: "Strontium",
       class: "strontium"
     }
@@ -43,20 +43,20 @@ function GameUi(endedCallback) {
   this.transition("attract");
 }
 
-GameUi.prototype.transition = function(state) {
+Engine.prototype.transition = function(state) {
   this.state = state;
   $("#front").classList.remove("attract", "waiting", "playing", "game-over");
   $("#front").classList.add(state);
 }
 
-GameUi.prototype.start = function() {
+Engine.prototype.start = function() {
   this.transition("waiting");
   this.game.start();
 
   setTimeout(this.postStarted.bind(this), 1500);
 }
 
-GameUi.prototype.postStarted = function() {
+Engine.prototype.postStarted = function() {
   if(this.state != "waiting") return;
   this.transition("playing");
   $("#score").innerHTML = "0";
@@ -65,18 +65,18 @@ GameUi.prototype.postStarted = function() {
   this.startRound();
 }
 
-GameUi.prototype.showDirection = function(direction) {
+Engine.prototype.showDirection = function(direction) {
   for(var i in this.DIRECTION_CLASSES) $("#out").classList.remove(this.DIRECTION_CLASSES[i]);
   $("#out").classList.add(direction);
 }
 
-GameUi.prototype.startRound = function() {
+Engine.prototype.startRound = function() {
   this.showDirection(this.game.roundStarted());
 
-  this.roundEndTimeout = window.setTimeout(this.endRound.bind(this), this.game.MAX_ALLOWED_TIME + 250);
+  this.roundEndTimeout = window.setTimeout(this.endRound.bind(this), this.game.allowedTime + 20);
 }
 
-GameUi.prototype.scoreRank = function() {
+Engine.prototype.scoreRank = function() {
   var score = this.game.score;
 
   var currentRank = null;
@@ -88,7 +88,7 @@ GameUi.prototype.scoreRank = function() {
   return currentRank;
 }
 
-GameUi.prototype.updateTimeUsed = function() {
+Engine.prototype.updateTimeUsed = function() {
   this.timeUsedUpdater = window.requestAnimationFrame(this.updateTimeUsed.bind(this));
 
   var ratio = this.game.timeUsed();
@@ -101,36 +101,36 @@ GameUi.prototype.updateTimeUsed = function() {
   $("#time-used").classList.add(this.scoreRank().class);
 }
 
-GameUi.prototype.onKeyDown = function(event) {
+Engine.prototype.onKeyDown = function(event) {
   event.preventDefault();
   if(this.state == "waiting") return;
   if(this.state == "playing") this.endRound(event);
   else if(event.keyCode == 32) this.start();
 }
 
-GameUi.prototype.endRound = function(event) {
+Engine.prototype.endRound = function(event) {
   window.clearTimeout(this.roundEndTimeout);
 
-  var gameOver = this.game.roundEnded(event == null ? null : this.CODES_MAP[event.keyCode]);
+  var gameOver = this.game.roundEnded(this.CODES_MAP[event == undefined ? 0 : event.keyCode]);
   $("#score").textContent = this.nice(this.game.score);
 
   if(gameOver) this.gameOver();
   else this.startRound();
 }
 
-GameUi.prototype.nice = function(num) {
+Engine.prototype.nice = function(num) {
 	var x = num + '';
 	var rgx = /(\d+)(\d{3})/;
 	while(rgx.test(x)) x = x.replace(rgx, '$1' + ',' + '$2');
 	return x;
 };
 
-GameUi.prototype.gameOver = function() {
+Engine.prototype.gameOver = function() {
   window.cancelAnimationFrame(this.timeUsedUpdater);
 
   $("#results-score").textContent = this.nice(this.game.score);
   $("#results-rank").textContent = this.scoreRank().humanName;
-  $("#results-streak").textContent = this.game.comboStack;
+  $("#results-streak").textContent = this.game.streak;
   this.transition("game-over");
 
   this.endedCallback(this.game.score);

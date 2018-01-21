@@ -18,6 +18,7 @@
 .sprite.right { background-position: -194px 0; }
 .sprite.down { background-position: -291px 0; }
 .sprite.left { background-position: -388px 0; }
+.sprite.wait { background-position: -485px 0; }
 
 * {
   font-family: 'Open Sans', sans-serif;

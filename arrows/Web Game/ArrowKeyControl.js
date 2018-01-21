@@ -28,7 +28,6 @@ function showFront(event) {
 }
 
 var $;
-var gameUi;
 var ajax = null;
 
 function uploadScore(score) {
@@ -70,14 +69,14 @@ function initPreferences() {
 function init() {
   $ = document.querySelector.bind(document);
 
-  gameUi = new GameUi(uploadScore);
+  var engine = new Engine(uploadScore);
 
   window.addEventListener("keydown", function(event) {
-    gameUi.onKeyDown(event);
+    engine.onKeyDown(event);
   })
 
   $("body").addEventListener("click", function(e) {
-    if(e.target.matches(".play")) gameUi.start();
+    if(e.target.matches(".play")) engine.start();
     else if(e.target.matches("#settings")) showBack;
     else if(e.target.matches("#done")) showFront;
   })

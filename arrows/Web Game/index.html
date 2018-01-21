@@ -5,7 +5,7 @@
     <title>ArrowKeyControl</title>
     <link rel="StyleSheet" type="text/css" href="ArrowKeyControl.css">
     <script src="game.js"></script>
-    <script src="game-ui.js"></script>
+    <script src="engine.js"></script>
     <script src="ArrowKeyControl.js"></script>
   </head>
   <body>
@@ -56,13 +56,11 @@
       </div>
       <div id="description">
         <p>ArrowKeyControl is a reaction testing game that tests your speed and concentration.</p>
-        <p>ArrowKeyControl does this by displaying an arrow; the arrow corresponds to one of the arrow keys on the
-          keyboard. You have to type arrow displayed (which could be the up, down, left, or right arrow keys). As
-          soon as you type a key, the arrow changes and you go again.
+        <p>You have to type what you see: up, down, left, or right arrow, except for the wait clock.
+          The wait clock means <i>don't</i> type anything! Get it wrong and it's game over.</p>
         <p>You have 1 second to hit the first key, and every time you hit a key, the time allowed to hit the next key
-          decreases. The game continues like this as long as you press each key fast enough; too slow and the game ends.
-          Pressing the right key at the last possible moment gives you a better score. Enter a wrong key and the game is
-          over!</p>
+          decreases. The game continues like this as long as you press each key fast enough;
+          too slow and the game ends.</p>
       </div>
     </div>
   </body>
