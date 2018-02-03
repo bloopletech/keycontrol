@@ -33,12 +33,18 @@ Game.prototype.roundEnded = function(playerDirection) {
   var correct = playerDirection == this.direction;
   if(this.direction == "wait") diff = 50;
 
-  if(diff < 50 || diff > this.allowedTime || !correct) return true;
+  console.log(this.streak + "," + diff + "," + this.allowedTime);
+
+  if(diff < 50 || (diff > this.allowedTime) || !correct) return true;
 
   this.streak++;
   //console.log("streak: ", this.streak, ", diff: ", diff, ", allowedTime: ", this.allowedTime);
   this.score += (this.allowedTime - diff) + (this.streak * 100);
-  this.allowedTime -= 7;
+
+  if(this.direction != "wait") {
+    if(this.allowedTime > 700) this.allowedTime -= 10;
+    else if(this.allowedTime > 300) this.allowedTime -= 3;
+  }
 
   return false;
 }

@@ -40,6 +40,9 @@ function Engine(endedCallback) {
     }
   };
   this.endedCallback = endedCallback;
+  
+  this.$timeUsed = $("#time-used");
+  
   this.transition("attract");
 }
 
@@ -96,9 +99,9 @@ Engine.prototype.updateTimeUsed = function() {
     ratio = 1;
   }
 
-  $("#time-used").style.width = (ratio * 100) + "%";
-  for(var i in this.RANKS) $("#time-used").classList.remove(this.RANKS[i].class);
-  $("#time-used").classList.add(this.scoreRank().class);
+  this.$timeUsed.style.width = (ratio * 100) + "%";
+  for(var i in this.RANKS) this.$timeUsed.classList.remove(this.RANKS[i].class);
+  this.$timeUsed.classList.add(this.scoreRank().class);
 }
 
 Engine.prototype.onKeyDown = function(event) {
