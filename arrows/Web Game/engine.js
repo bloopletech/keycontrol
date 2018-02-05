@@ -1,6 +1,6 @@
 function Engine(endedCallback) {
   this.game = new Game();
-  this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down", 0: "wait" };
+  this.CODES_MAP = { 37: "left", 38: "up", 39: "right", 40: "down" };
   this.DIRECTION_CLASSES = this.game.DIRECTIONS.concat("blank");
   this.RANKS = {
     bronze: {
@@ -40,9 +40,8 @@ function Engine(endedCallback) {
     }
   };
   this.endedCallback = endedCallback;
-  
   this.$timeUsed = $("#time-used");
-  
+
   this.transition("attract");
 }
 
@@ -54,18 +53,19 @@ Engine.prototype.transition = function(state) {
 
 Engine.prototype.start = function() {
   this.transition("waiting");
-  this.game.start();
-
   setTimeout(this.postStarted.bind(this), 1500);
 }
 
 Engine.prototype.postStarted = function() {
   if(this.state != "waiting") return;
+
   this.transition("playing");
   $("#score").innerHTML = "0";
 
+  this.game.start();
   this.updateTimeUsed();
   this.startRound();
+  this.gameEndTimeout = window.setTimeout(this.gameOver.bind(this), this.game.ALLOWED_TIME + 20);
 }
 
 Engine.prototype.showDirection = function(direction) {
@@ -75,8 +75,6 @@ Engine.prototype.showDirection = function(direction) {
 
 Engine.prototype.startRound = function() {
   this.showDirection(this.game.roundStarted());
-
-  this.roundEndTimeout = window.setTimeout(this.endRound.bind(this), this.game.allowedTime + 20);
 }
 
 Engine.prototype.scoreRank = function() {
@@ -112,9 +110,7 @@ Engine.prototype.onKeyDown = function(event) {
 }
 
 Engine.prototype.endRound = function(event) {
-  window.clearTimeout(this.roundEndTimeout);
-
-  var gameOver = this.game.roundEnded(this.CODES_MAP[event == undefined ? 0 : event.keyCode]);
+  var gameOver = this.game.roundEnded(this.CODES_MAP[event.keyCode]);
   $("#score").textContent = this.nice(this.game.score);
 
   if(gameOver) this.gameOver();
@@ -129,7 +125,10 @@ Engine.prototype.nice = function(num) {
 };
 
 Engine.prototype.gameOver = function() {
+  if(this.state != "playing") return;
+
   window.cancelAnimationFrame(this.timeUsedUpdater);
+  window.clearTimeout(this.gameEndTimeout);
 
   $("#results-score").textContent = this.nice(this.game.score);
   $("#results-rank").textContent = this.scoreRank().humanName;
