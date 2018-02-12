@@ -1,7 +1,7 @@
 function Game() {
   this.DIRECTIONS = ["left", "up", "right", "down"];
   this.ALLOWED_TIME = 30000;
-  this.SCORING_TIME = 1000;
+  this.ROUND_SCORING_TIME = 1000;
 }
 
 Game.prototype.start = function() {
@@ -18,13 +18,30 @@ Game.prototype.nextDirection = function() {
   //return this.DIRECTIONS[Math.floor(Math.random() * this.DIRECTIONS.length)];
 }
 
-Game.prototype.timeUsed = function() {
+Game.prototype.timeRemaining = function() {
+  return this.ALLOWED_TIME - (Date.now() - this.startTime);
+}
+
+Game.prototype.timeUsedRatio = function() {
   return (Date.now() - this.startTime) / (this.ALLOWED_TIME + 0.0);
+}
+
+Game.prototype.roundTimeUsedRatio = function() {
+  return (Date.now() - this.roundStartTime) / (this.roundScoringTime + 0.0);
+}
+
+Game.prototype.calcRoundScoringTime = function() {
+  var score = this.score;
+  if(score >= 50000) return 700;
+  if(score >= 30000) return 800;
+  if(score >= 20000) return 900;
+  return 1000;
 }
 
 Game.prototype.roundStarted = function() {
   this.direction = this.nextDirection();
   this.roundStartTime = Date.now();
+  this.roundScoringTime = this.calcRoundScoringTime();
   return this.direction;
 }
 
@@ -40,7 +57,9 @@ Game.prototype.roundEnded = function(playerDirection) {
   if(roundDiff < 50 || (diff > this.ALLOWED_TIME) || !correct) return true;
 
   this.streak++;
-  this.score += Math.max(0, (this.SCORING_TIME - roundDiff)) + (this.streak * 100);
+  var roundScore = this.ROUND_SCORING_TIME - roundDiff;
+  if(roundScore > 0) this.score += roundScore + (this.streak * 100);
+  else this.streak = 0;
 
   return false;
 }
