@@ -1,10 +1,9 @@
 function Game() {
   this.DIRECTIONS = ["left", "up", "right", "down", "wait"];
-  this.MAX_ALLOWED_TIME = 1000;
 }
 
 Game.prototype.start = function() {
-  this.allowedTime = this.MAX_ALLOWED_TIME;
+  this.allowedTime = 1000;
   this.score = 0;
   this.streak = 0;
   this.startTime = null;
@@ -33,12 +32,13 @@ Game.prototype.roundEnded = function(playerDirection) {
   var correct = playerDirection == this.direction;
   if(this.direction == "wait") diff = 50;
 
+  //console.log(this.streak + "," + diff + "," + this.allowedTime);
+
   if(diff < 50 || diff > this.allowedTime || !correct) return true;
 
   this.streak++;
-  //console.log("streak: ", this.streak, ", diff: ", diff, ", allowedTime: ", this.allowedTime);
   this.score += (this.allowedTime - diff) + (this.streak * 100);
-  this.allowedTime -= 7;
+  if(this.streak % 10 == 0) this.allowedTime -= 35;
 
   return false;
 }
