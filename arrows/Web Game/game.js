@@ -1,5 +1,5 @@
 function Game() {
-  this.DIRECTIONS = ["left", "up", "right", "down", "wait"];
+  this.DIRECTIONS = ["left", "up", "right", "down"];
 }
 
 Game.prototype.start = function() {
@@ -30,7 +30,6 @@ Game.prototype.roundStarted = function() {
 Game.prototype.roundEnded = function(playerDirection) {
   var diff = Date.now() - this.startTime;
   var correct = playerDirection == this.direction;
-  if(this.direction == "wait") diff = 50;
 
   //console.log(this.streak + "," + diff + "," + this.allowedTime);
 
