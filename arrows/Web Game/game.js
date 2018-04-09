@@ -37,8 +37,10 @@ Game.prototype.roundEnded = function(playerDirection) {
   if(diff < 50 || diff > this.allowedTime || !correct) return true;
 
   this.streak++;
-  this.score += (this.allowedTime - diff) + (this.streak * 100);
-  if(this.streak % 10 == 0) this.allowedTime -= 35;
+  var delta = (this.allowedTime - diff) + (this.streak * 100);
+  if(diff <= (this.allowedTime * 0.3)) delta *= 2;
+  this.score += delta;
+  if((this.streak % 10 == 0) && (this.allowedTime > 300)) this.allowedTime -= 35;
 
   return false;
 }
